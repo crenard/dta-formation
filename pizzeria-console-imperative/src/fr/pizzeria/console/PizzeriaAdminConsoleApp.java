@@ -5,7 +5,7 @@ import java.util.*;
 public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in); //Scanner pour lire les entrÃ©es clavier des utilisateurs
 		String[][] listePizzas = {{"PEP","Peperoni","12.50"},
 				{"MAR","Margherita","14.00"},
 				{"REI","La Reine","11.50"},
@@ -18,12 +18,11 @@ public class PizzeriaAdminConsoleApp {
 		int pizzaPick = 0;
 		int choix = 0;
 		while (choix != 99){ 
-			System.out.println("***** Pizzeria Administration *****\n1. Lister les pizzas\n2. Ajouter une nouvelle pizza\n3. Mettre à jour une pizza\n4. Supprimer une pizza\n99. Sortir");
+			System.out.println("***** Pizzeria Administration *****\n1. Lister les pizzas\n2. Ajouter une nouvelle pizza\n3. Mettre a jour une pizza\n4. Supprimer une pizza\n99. Sortir");
 			choix = sc.nextInt();	
-			sc.nextLine();
+			sc.nextLine(); // Vider la ligne
 			switch (choix){
 			case 1 :
-
 				printPizzas(listePizzas);
 				break;
 			case 2 :
@@ -39,7 +38,7 @@ public class PizzeriaAdminConsoleApp {
 				break;
 			case 3 :
 				printPizzas(listePizzas);
-				System.out.println("Veuillez choisir le numéro de la pizza");
+				System.out.println("Veuillez choisir le numero de la pizza a modifier (99 pour abandonner)");
 				pizzaPick = sc.nextInt();sc.nextLine();
 				if (pizzaPick != 99){
 					System.out.println("Veuillez saisir le code");
@@ -54,7 +53,7 @@ public class PizzeriaAdminConsoleApp {
 				break;
 			case 4 :
 				printPizzas(listePizzas);
-				System.out.println("Veuillez choisir le numéro de la pizza");
+				System.out.println("Veuillez choisir le numero de la pizza a supprimer (99 pour abandonner)");
 				pizzaPick = sc.nextInt();sc.nextLine();
 				if (pizzaPick != 99){
 					listePizzas = removePizza(listePizzas, pizzaPick);
@@ -63,7 +62,9 @@ public class PizzeriaAdminConsoleApp {
 				break;
 			case 99 :
 				System.out.println("Au revoir !");
+				break;
 			default :
+				System.out.println("Choix incorrect, recommencez");
 				break;
 			}
 		}
@@ -72,7 +73,7 @@ public class PizzeriaAdminConsoleApp {
 
 	public static void printPizzas(String[][] listePizzas){
 		for (String[] pizza : listePizzas){
-			System.out.println(pizza[0]+" -> "+pizza[1]+" ("+pizza[2]+" €)");
+			System.out.println(pizza[0]+" -> "+pizza[1]+" ("+pizza[2]+" ï¿½)");
 		}
 		System.out.println("\n");
 	}
@@ -92,7 +93,7 @@ public class PizzeriaAdminConsoleApp {
 	public static String[][] removePizza(String[][] listePizzas, int rank){
 		int size = listePizzas.length;
 		listePizzas[rank-1]=listePizzas[size-1];
-		String [][] newList = Arrays.copyOf(listePizzas, size-1);
+		String [][] newList = Arrays.copyOf(listePizzas, size-1); // Oui, c'est moche, et on perd l'ordre initial. Zut.
 		return newList;
 	}
 	
