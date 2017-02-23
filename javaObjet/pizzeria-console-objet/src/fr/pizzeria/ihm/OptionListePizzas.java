@@ -17,12 +17,11 @@ public class OptionListePizzas extends OptionMenu {
 	}
 
 	@Override
-	public boolean execute() {
-		for (Pizza pizza : dao.findAllPizzas()){
+	public void execute() {
+		for (Pizza pizza : dao.findAllPizzas()) {
 			System.out.println(pizza.code + " -> " + pizza.nom + " (" + pizza.prix + " €)");
 		}
 		System.out.println(Pizza.nbPizzas + " pizzas ont été créées\n");
-		return true;
 	}
 
 }

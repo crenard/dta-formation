@@ -3,6 +3,7 @@ package fr.pizzeria.ihm;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.exception.StockageException;
 
 public class OptionRemovePizza extends OptionMenu {
 
@@ -16,18 +17,16 @@ public class OptionRemovePizza extends OptionMenu {
 	}
 
 	@Override
-	public boolean execute() {
+	public void execute() throws StockageException {
 		System.out.println("Veuillez choisir le code de la pizza a supprimer (99 pour abandonner)");
 		String pizzaPick = sc.nextLine();
-		if (pizzaPick != "99"){
-			boolean result = dao.deletePizza(pizzaPick);
-			if (!result){
-				System.out.println("\nCette pizza n'existe pas\n");
-				return false;
+		if (pizzaPick != "99") {
+			try {
+				dao.deletePizza(pizzaPick);
+			} catch (StockageException e) {
+				throw new StockageException("Code incorrect, cette pizza n'existe pas");
 			}
-			return true;
 		}
-		return false;
 	}
 
 }

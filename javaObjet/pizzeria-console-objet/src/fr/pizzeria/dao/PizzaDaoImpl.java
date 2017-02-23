@@ -2,61 +2,72 @@ package fr.pizzeria.dao;
 
 import java.util.Arrays;
 
+import fr.pizzeria.exception.*;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoImpl implements IPizzaDao {
-	
+
 	private Pizza[] pizzas;
-	
-	public PizzaDaoImpl(Pizza[] pizzas){
+
+	public PizzaDaoImpl(Pizza[] pizzas) {
 		this.pizzas = pizzas;
 	}
-	
+
 	@Override
 	public Pizza[] findAllPizzas() {
 		return pizzas;
 	}
 
 	@Override
-	public boolean saveNewPizza(Pizza pizza) {
-
-		int size = pizzas.length;
-		Pizza[] newPizzas = Arrays.copyOf(pizzas, size+1);
-		newPizzas[size] = pizza;
-		pizzas = newPizzas;
-		Pizza.nbPizzas++;
-		return true;
+	public void saveNewPizza(Pizza pizza) throws SavePizzaException {
+		try {
+			int size = pizzas.length;
+			Pizza[] newPizzas = Arrays.copyOf(pizzas, size + 1);
+			newPizzas[size] = pizza;
+			pizzas = newPizzas;
+			Pizza.nbPizzas++;
+		} catch (Exception e) {
+			throw new SavePizzaException(e.getCause());
+		}
 	}
 
 	@Override
-	public boolean updatePizza(String codePizza, Pizza newPizza) {
+	public void updatePizza(String codePizza, Pizza newPizza) throws UpdatePizzaException {
 		int index = 0;
-		for (Pizza pizza : pizzas){
-			if (codePizza.equals(pizza.code)){
+		boolean found = false;
+		for (Pizza pizza : pizzas) {
+			if (codePizza.equals(pizza.code)) {
 				pizzas[index] = newPizza;
-				return true;
+				found = true;
+				break;
 			}
 			index++;
 		}
-		return false;
+		if (!found) {
+			throw new UpdatePizzaException();
+		}
 	}
 
 	@Override
-	public boolean deletePizza(String codePizza) {
+	public void deletePizza(String codePizza) throws DeletePizzaException {
 		int index = 0;
 		int size = pizzas.length;
-		for (Pizza pizza : pizzas){
-			if (codePizza.equals(pizza.code)){
-				Pizza[] newPizzas = new Pizza[size-1];
+		boolean found = false;
+		for (Pizza pizza : pizzas) {
+			if (codePizza.equals(pizza.code)) {
+				Pizza[] newPizzas = new Pizza[size - 1];
 				System.arraycopy(pizzas, 0, newPizzas, 0, index);
 				System.arraycopy(pizzas, index + 1, newPizzas, index, size - index - 1);
 				pizzas = newPizzas;
 				Pizza.nbPizzas--;
-				return true;
+				found = true;
+				break;
 			}
 			index++;
 		}
-		return false;
+		if (!found) {
+			throw new DeletePizzaException();
+		}
 	}
 
 }

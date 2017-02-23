@@ -1,5 +1,7 @@
 package fr.pizzeria.ihm;
 
+import fr.pizzeria.exception.StockageException;
+
 public class Menu {
 	private String titre;
 	private OptionMenu[] actions;
@@ -19,6 +21,10 @@ public class Menu {
 	}
 
 	public void executer(int choix) {
-		actions[choix - 1].execute();
+		try {
+			actions[choix - 1].execute();
+		} catch (StockageException e) {
+			System.err.println("\n" + e.getMessage());
+		}
 	}
 }
