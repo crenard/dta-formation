@@ -29,7 +29,7 @@ public class OptionAddPizza extends OptionMenu {
 		try {
 			dao.saveNewPizza(newPizza);
 		} catch (StockageException e) {
-			throw new StockageException("Une erreur a été enregistrée : " + e.getCause());
+			throw new StockageException("\n!!! Une erreur a été enregistrée : " + e.getCause());
 		}
 
 	}

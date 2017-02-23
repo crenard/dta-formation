@@ -32,7 +32,7 @@ public class OptionChangePizza extends OptionMenu {
 			try {
 				dao.updatePizza(pizzaPick, newPizza);
 			} catch (StockageException e) {
-				throw new StockageException("Code incorrect, cette pizza n'existe pas");
+				throw new StockageException("\n!!! Code incorrect, cette pizza n'existe pas");
 			}
 		}
 	}

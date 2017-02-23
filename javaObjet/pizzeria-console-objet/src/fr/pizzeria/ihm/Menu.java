@@ -24,7 +24,7 @@ public class Menu {
 		try {
 			actions[choix - 1].execute();
 		} catch (StockageException e) {
-			System.err.println("\n" + e.getMessage());
+			System.out.println(e.getMessage() + "\n");
 		}
 	}
 }

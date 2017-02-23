@@ -24,7 +24,7 @@ public class OptionRemovePizza extends OptionMenu {
 			try {
 				dao.deletePizza(pizzaPick);
 			} catch (StockageException e) {
-				throw new StockageException("Code incorrect, cette pizza n'existe pas");
+				throw new StockageException("\n!!! Code incorrect, cette pizza n'existe pas");
 			}
 		}
 	}
