@@ -19,7 +19,7 @@ public class PizzaDaoImpl implements IPizzaDao {
 	}
 
 	@Override
-	public void saveNewPizza(Pizza pizza) throws SavePizzaException {
+	public void saveNewPizza(Pizza pizza) throws StockageException {
 		try {
 			int size = pizzas.length;
 			Pizza[] newPizzas = Arrays.copyOf(pizzas, size + 1);
@@ -32,7 +32,7 @@ public class PizzaDaoImpl implements IPizzaDao {
 	}
 
 	@Override
-	public void updatePizza(String codePizza, Pizza newPizza) throws UpdatePizzaException {
+	public void updatePizza(String codePizza, Pizza newPizza) throws StockageException {
 		int index = 0;
 		boolean found = false;
 		for (Pizza pizza : pizzas) {
@@ -49,7 +49,7 @@ public class PizzaDaoImpl implements IPizzaDao {
 	}
 
 	@Override
-	public void deletePizza(String codePizza) throws DeletePizzaException {
+	public void deletePizza(String codePizza) throws StockageException {
 		int index = 0;
 		int size = pizzas.length;
 		boolean found = false;

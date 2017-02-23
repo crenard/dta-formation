@@ -6,9 +6,9 @@ import fr.pizzeria.model.Pizza;
 public interface IPizzaDao {
 	Pizza[] findAllPizzas();
 
-	void saveNewPizza(Pizza pizza) throws SavePizzaException;
+	void saveNewPizza(Pizza pizza) throws StockageException;
 
-	void updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException;
+	void updatePizza(String codePizza, Pizza pizza) throws StockageException;
 
-	void deletePizza(String codePizza) throws DeletePizzaException;
+	void deletePizza(String codePizza) throws StockageException;
 }
