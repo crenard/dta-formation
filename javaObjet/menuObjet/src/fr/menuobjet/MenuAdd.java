@@ -1,16 +1,12 @@
-package fr.menuObjet;
+package fr.menuobjet;
 
 public class MenuAdd extends MenuItem{
 
-	public MenuAdd(){
-		index = 2;
+	public String getLibelle(){
+		return "Ajouter une pizza";
 	}
 	
-	public void printItem(){
-		System.out.println("2 : Ajouter une pizza");
-	}
-	
-	public void action(){
+	public void faireAction(){
 		System.out.println("*Faire semblant d'ajouter une pizza*");
 	}
 }

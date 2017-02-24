@@ -1,17 +1,12 @@
-package fr.menuObjet;
+package fr.menuobjet;
 
 public class MenuRemove extends MenuItem{
 
-
-	public MenuRemove(){
-		index = 3;
+	public String getLibelle(){
+		return "Retirer une pizza";
 	}
 	
-	public void printItem(){
-		System.out.println("3 : Retirer une pizza");
-	}
-	
-	public void action(){
+	public void faireAction(){
 		System.out.println("*Faire semblant de retirer une pizza*");
 	}
 }

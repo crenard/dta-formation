@@ -1,14 +1,9 @@
-package fr.menuObjet;
+package fr.menuobjet;
 
 public abstract class MenuItem {
-    
-	int index;
 	
-    public abstract void printItem();
+    public abstract String getLibelle();
     
-    public abstract void action();
+    public abstract void faireAction();
     
-    public boolean compareTo(int i){
-    	return i==index;
-    }
 }
