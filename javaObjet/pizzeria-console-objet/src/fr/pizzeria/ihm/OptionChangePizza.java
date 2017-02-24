@@ -19,7 +19,7 @@ public class OptionChangePizza extends OptionMenu {
 	@Override
 	public void execute() throws StockageException {
 		System.out.println("Veuillez choisir le code de la pizza a modifier (99 pour abandonner)");
-		String pizzaPick = ihmTools.getSc().nextLine().toUpperCase();
+		String pizzaPick = ihmTools.getSc().nextLine();
 		if (pizzaPick != "99") {
 			System.out.println("Veuillez saisir le code");
 			String code = ihmTools.getSc().nextLine().toUpperCase();

@@ -39,7 +39,7 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 
 	private int findPizza(String code) {
 		for (Pizza pizza : pizzas) {
-			if (code.equals(pizza.getCode())) {
+			if (code.equalsIgnoreCase(pizza.getCode())) {
 				return pizzas.indexOf(pizza);
 			}
 		}

@@ -19,7 +19,7 @@ public class OptionAddPizza extends OptionMenu {
 	@Override
 	public void execute() throws StockageException {
 		System.out.println("Veuillez saisir le code");
-		String code = ihmTools.getSc().nextLine().toUpperCase();
+		String code = ihmTools.getSc().nextLine();
 
 		System.out.println("Veuillez saisir le nom (sans espaces)");
 		String nom = ihmTools.getSc().nextLine();
