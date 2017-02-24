@@ -1,14 +1,12 @@
 package fr.pizzeria.ihm;
 
-import java.util.Scanner;
-
-import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.ihm.tools.IhmTools;
 import fr.pizzeria.model.Pizza;
 
 public class OptionListePizzas extends OptionMenu {
 
-	public OptionListePizzas(IPizzaDao dao, Scanner sc) {
-		super(dao, sc);
+	public OptionListePizzas(IhmTools ihmTools) {
+		super(ihmTools);
 	}
 
 	@Override
@@ -18,7 +16,7 @@ public class OptionListePizzas extends OptionMenu {
 
 	@Override
 	public void execute() {
-		for (Pizza pizza : dao.findAllPizzas()) {
+		for (Pizza pizza : ihmTools.getDao().findAll()) {
 			System.out.println(pizza.code + " -> " + pizza.nom + " (" + pizza.prix + " €)");
 		}
 		System.out.println(Pizza.nbPizzas + " pizzas ont été créées\n");

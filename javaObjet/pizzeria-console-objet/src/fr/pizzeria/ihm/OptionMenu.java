@@ -1,18 +1,14 @@
 package fr.pizzeria.ihm;
 
-import java.util.Scanner;
-
-import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.exception.StockageException;
+import fr.pizzeria.ihm.tools.IhmTools;
 
 public abstract class OptionMenu {
 
-	protected IPizzaDao dao;
-	public Scanner sc;
+	protected IhmTools ihmTools;
 
-	public OptionMenu(IPizzaDao dao, Scanner sc) {
-		this.dao = dao;
-		this.sc = sc;
+	public OptionMenu(IhmTools ihmTools) {
+		this.ihmTools = ihmTools;
 	}
 
 	public abstract String getLibelle();
