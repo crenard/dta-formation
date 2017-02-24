@@ -19,7 +19,6 @@ public class OptionListePizzas extends OptionMenu {
 		for (Pizza pizza : ihmTools.getDao().findAll()) {
 			System.out.println(pizza.getCode() + " -> " + pizza.getNom() + " (" + pizza.getPrix() + " €)");
 		}
-		System.out.println(Pizza.nbPizzas + " pizzas ont été créées\n");
 	}
 
 }

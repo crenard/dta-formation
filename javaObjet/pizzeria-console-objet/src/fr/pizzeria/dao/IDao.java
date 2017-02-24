@@ -1,9 +1,11 @@
 package fr.pizzeria.dao;
 
+import java.util.List;
+
 import fr.pizzeria.exception.*;
 
 public interface IDao<T> {
-	T[] findAll();
+	List<T> findAll();
 
 	void save(T t) throws StockageException;
 

@@ -1,12 +1,15 @@
 package fr.pizzeria.ihm;
 
+import java.util.*;
+import java.util.Map.Entry;
+
 import fr.pizzeria.exception.StockageException;
 
 public class Menu {
 	private String titre;
-	private OptionMenu[] actions;
+	private Map<Integer, OptionMenu> actions;
 
-	public Menu(String titre, OptionMenu[] actions) {
+	public Menu(String titre, Map<Integer, OptionMenu> actions) {
 		this.titre = titre;
 		this.actions = actions;
 	}
@@ -14,15 +17,15 @@ public class Menu {
 	public void afficher() {
 		System.out.println(titre);
 		System.out.println("Veuillez choisir une action (99 pour abandonner)");
-		for (int i = 0; i < actions.length; i++) {
-			System.out.println((i + 1) + " : " + actions[i].getLibelle());
+		for (Entry<Integer, OptionMenu> entrySet : actions.entrySet()) {
+			System.out.println(entrySet.getKey() + " : " + entrySet.getValue().getLibelle());
 		}
 		System.out.println("5 : Quitter");
 	}
 
 	public void executer(int choix) {
 		try {
-			actions[choix - 1].execute();
+			actions.get(choix).execute();
 		} catch (StockageException e) {
 			System.out.println(e.getMessage() + "\n");
 		}

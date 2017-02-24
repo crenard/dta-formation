@@ -4,7 +4,6 @@ public class Pizza {
 	private String code = "NUL";
 	private String nom = "NoName";
 	private double prix = 0.00;
-	public static int nbPizzas = 0;
 
 	public Pizza() {
 	}
@@ -25,6 +24,5 @@ public class Pizza {
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
-		nbPizzas++;
 	}
 }

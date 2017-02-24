@@ -1,5 +1,7 @@
 package fr.pizzeria.console;
 
+import java.util.*;
+
 import fr.pizzeria.ihm.*;
 import fr.pizzeria.ihm.tools.IhmTools;
 
@@ -7,12 +9,12 @@ public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args) {
 		IhmTools ihmTools = new IhmTools();
-		OptionMenu optionList = new OptionListePizzas(ihmTools);
-		OptionMenu optionAdd = new OptionAddPizza(ihmTools);
-		OptionMenu optionChange = new OptionChangePizza(ihmTools);
-		OptionMenu optionRemove = new OptionRemovePizza(ihmTools);
 
-		OptionMenu[] options = { optionList, optionAdd, optionChange, optionRemove };
+		Map<Integer, OptionMenu> options = new HashMap<>();
+		options.put(1, new OptionListePizzas(ihmTools));
+		options.put(2, new OptionAddPizza(ihmTools));
+		options.put(3, new OptionChangePizza(ihmTools));
+		options.put(4, new OptionRemovePizza(ihmTools));
 
 		Menu menu = new Menu("**** Pizzeria Administration ****", options);
 
@@ -22,7 +24,7 @@ public class PizzeriaAdminConsoleApp {
 			choix = ihmTools.getSc().nextInt();
 			ihmTools.getSc().nextLine();
 
-			while (choix > options.length + 1) {
+			while (choix > options.size() + 1) {
 				System.out.println("\n!!! Entrez une valeur autorisée !!!\n");
 				menu.afficher();
 				choix = ihmTools.getSc().nextInt();
