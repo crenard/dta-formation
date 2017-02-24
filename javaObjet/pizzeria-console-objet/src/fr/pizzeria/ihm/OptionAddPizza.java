@@ -17,15 +17,14 @@ public class OptionAddPizza extends OptionMenu {
 
 	@Override
 	public void execute() throws StockageException {
-		Pizza newPizza = new Pizza();
 		System.out.println("Veuillez saisir le code");
-		newPizza.code = ihmTools.getSc().nextLine();
+		String code = ihmTools.getSc().nextLine();
 		System.out.println("Veuillez saisir le nom (sans espaces)");
-		newPizza.nom = ihmTools.getSc().nextLine();
+		String nom = ihmTools.getSc().nextLine();
 		System.out.println("Veuillez saisir le prix");
-		newPizza.prix = ihmTools.getSc().nextDouble();
+		Double prix = ihmTools.getSc().nextDouble();
 		try {
-			ihmTools.getDao().save(newPizza);
+			ihmTools.getDao().save(new Pizza(code, nom, prix));
 		} catch (StockageException e) {
 			throw new StockageException("\n!!! Une erreur a été enregistrée : " + e.getCause());
 		}

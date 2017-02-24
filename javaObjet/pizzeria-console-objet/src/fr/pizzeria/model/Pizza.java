@@ -1,17 +1,27 @@
 package fr.pizzeria.model;
 
 public class Pizza {
-	public int id = 0;
-	public String code = "NUL";
-	public String nom = "NoName";
-	public double prix = 0.00;
+	private String code = "NUL";
+	private String nom = "NoName";
+	private double prix = 0.00;
 	public static int nbPizzas = 0;
-	
-	public Pizza(){		
+
+	public Pizza() {
 	}
-	
-	public Pizza(int id, String code, String nom, double prix){
-		this.id = id;
+
+	public String getCode() {
+		return code;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public double getPrix() {
+		return prix;
+	}
+
+	public Pizza(String code, String nom, double prix) {
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
