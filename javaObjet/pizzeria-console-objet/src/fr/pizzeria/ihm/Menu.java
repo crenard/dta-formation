@@ -15,7 +15,7 @@ public class Menu {
 	}
 
 	public void afficher() {
-		System.out.println(titre);
+		System.out.println("\n" + titre);
 		System.out.println("Veuillez choisir une action (99 pour abandonner)");
 		for (Entry<Integer, OptionMenu> entrySet : actions.entrySet()) {
 			System.out.println(entrySet.getKey() + " : " + entrySet.getValue().getLibelle());

@@ -3,6 +3,7 @@ package fr.pizzeria.dao;
 import java.util.*;
 
 import fr.pizzeria.exception.*;
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoImpl implements IDao<Pizza> {
@@ -10,14 +11,15 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 	private List<Pizza> pizzas = new ArrayList<>();
 
 	public PizzaDaoImpl() {
-		pizzas.add(new Pizza("PEP", "Peperoni", 12.50));
-		pizzas.add(new Pizza("MAR", "Margherita", 14.00));
-		pizzas.add(new Pizza("REI", "La Reine", 11.50));
-		pizzas.add(new Pizza("FRO", "La 4 fromage", 12.00));
-		pizzas.add(new Pizza("CAN", "La cannibale", 12.50));
-		pizzas.add(new Pizza("SAV", "La savoyarde", 13.00));
-		pizzas.add(new Pizza("ORI", "L'orientale", 13.50));
-		pizzas.add(new Pizza("IND", "L'indienne", 14.00));
+		pizzas.add(new Pizza("PEP", "Peperoni", 12.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("MAR", "Margherita", 14.00, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("REI", "La Reine", 11.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("FRO", "La 4 fromage", 12.00, CategoriePizza.VEGETARIEN));
+		pizzas.add(new Pizza("CAN", "La cannibale", 12.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("SAV", "La savoyarde", 13.00, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("ORI", "L'orientale", 13.50, CategoriePizza.VEGETARIEN));
+		pizzas.add(new Pizza("SAU", "La saumonette", 14.00, CategoriePizza.POISSON));
+		Collections.sort(pizzas);
 	}
 
 	@Override
@@ -29,6 +31,7 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 	public void save(Pizza pizza) throws StockageException {
 		try {
 			pizzas.add(pizza);
+			Collections.sort(pizzas);
 		} catch (Exception e) {
 			throw new SavePizzaException(e.getCause());
 		}
@@ -48,6 +51,7 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 		int index = findPizza(codePizza);
 		if (index > -1) {
 			pizzas.set(index, newPizza);
+			Collections.sort(pizzas);
 		} else {
 			throw new UpdatePizzaException();
 		}

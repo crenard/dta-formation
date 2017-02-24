@@ -2,6 +2,7 @@ package fr.pizzeria.ihm;
 
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class OptionAddPizza extends OptionMenu {
@@ -18,13 +19,26 @@ public class OptionAddPizza extends OptionMenu {
 	@Override
 	public void execute() throws StockageException {
 		System.out.println("Veuillez saisir le code");
-		String code = ihmTools.getSc().nextLine();
+		String code = ihmTools.getSc().nextLine().toUpperCase();
+
 		System.out.println("Veuillez saisir le nom (sans espaces)");
 		String nom = ihmTools.getSc().nextLine();
+
 		System.out.println("Veuillez saisir le prix");
 		Double prix = ihmTools.getSc().nextDouble();
+
+		System.out.println("Veuillez saisir la catégorie :");
+		CategoriePizza[] categories = CategoriePizza.values();
+
+		for (int i = 0; i < categories.length; i++) {
+			System.out.println(i + 1 + " : " + categories[i].getLibelle());
+		}
+
+		int choixCategory = ihmTools.getSc().nextInt();
+		ihmTools.getSc().nextLine();
+		CategoriePizza category = categories[choixCategory - 1];
 		try {
-			ihmTools.getDao().save(new Pizza(code, nom, prix));
+			ihmTools.getDao().save(new Pizza(code, nom, prix, category));
 		} catch (StockageException e) {
 			throw new StockageException("\n!!! Une erreur a été enregistrée : " + e.getCause());
 		}

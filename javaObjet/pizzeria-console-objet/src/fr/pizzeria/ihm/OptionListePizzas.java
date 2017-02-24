@@ -17,7 +17,7 @@ public class OptionListePizzas extends OptionMenu {
 	@Override
 	public void execute() {
 		for (Pizza pizza : ihmTools.getDao().findAll()) {
-			System.out.println(pizza.getCode() + " -> " + pizza.getNom() + " (" + pizza.getPrix() + " €)");
+			System.out.println(pizza.toString());
 		}
 	}
 

@@ -1,12 +1,10 @@
 package fr.pizzeria.model;
 
-public class Pizza {
+public class Pizza implements Comparable<Pizza> {
 	private String code = "NUL";
 	private String nom = "NoName";
 	private double prix = 0.00;
-
-	public Pizza() {
-	}
+	private CategoriePizza categorie;
 
 	public String getCode() {
 		return code;
@@ -20,9 +18,22 @@ public class Pizza {
 		return prix;
 	}
 
-	public Pizza(String code, String nom, double prix) {
+	public CategoriePizza getCategorie() {
+		return categorie;
+	}
+
+	public Pizza(String code, String nom, double prix, CategoriePizza category) {
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
+		this.categorie = category;
+	}
+
+	public String toString() {
+		return code + " -> " + nom + " (" + prix + " €) : " + categorie.getLibelle();
+	}
+
+	public int compareTo(Pizza pizza) {
+		return this.code.compareTo(pizza.getCode());
 	}
 }
