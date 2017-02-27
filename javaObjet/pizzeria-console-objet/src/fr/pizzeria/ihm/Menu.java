@@ -16,11 +16,11 @@ public class Menu {
 
 	public void afficher() {
 		System.out.println("\n" + titre);
-		System.out.println("Veuillez choisir une action (99 pour abandonner)");
+		System.out.println("Veuillez choisir une action :");
 		for (Entry<Integer, OptionMenu> entrySet : actions.entrySet()) {
 			System.out.println(entrySet.getKey() + " : " + entrySet.getValue().getLibelle());
 		}
-		System.out.println("5 : Quitter");
+		System.out.println(actions.size() + 1 + " : Quitter");
 	}
 
 	public void executer(int choix) {

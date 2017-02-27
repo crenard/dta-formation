@@ -44,7 +44,7 @@ public class Pizza implements Comparable<Pizza> {
 					if (field.getAnnotation(ToString.class).uppercase()) {
 						fieldValue = fieldValue.toUpperCase();
 					}
-					sb.append(fieldValue).append(" ");
+					sb.append(fieldValue).append(";");
 				}
 			}
 		} catch (IllegalArgumentException | IllegalAccessException e) {

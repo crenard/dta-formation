@@ -1,6 +1,7 @@
-package fr.pizzeria.ihm;
+package fr.pizzeria.ihm.pizza;
 
 import fr.pizzeria.exception.StockageException;
+import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
 public class OptionRemovePizza extends OptionMenu {
@@ -20,7 +21,7 @@ public class OptionRemovePizza extends OptionMenu {
 		String pizzaPick = ihmTools.getSc().nextLine();
 		if (pizzaPick != "99") {
 			try {
-				ihmTools.getDao().delete(pizzaPick);
+				ihmTools.getDaoPizza().delete(pizzaPick);
 			} catch (StockageException e) {
 				throw new StockageException("\n!!! Code incorrect, cette pizza n'existe pas");
 			}

@@ -33,7 +33,7 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 			pizzas.add(pizza);
 			Collections.sort(pizzas);
 		} catch (Exception e) {
-			throw new SavePizzaException(e.getCause());
+			throw new SaveException(e.getCause());
 		}
 	}
 
@@ -53,8 +53,9 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 			pizzas.set(index, newPizza);
 			Collections.sort(pizzas);
 		} else {
-			throw new UpdatePizzaException();
+			throw new UpdateException();
 		}
+
 	}
 
 	@Override
@@ -63,7 +64,7 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 		if (index > -1) {
 			pizzas.remove(index);
 		} else {
-			throw new DeletePizzaException();
+			throw new DeleteException();
 		}
 	}
 

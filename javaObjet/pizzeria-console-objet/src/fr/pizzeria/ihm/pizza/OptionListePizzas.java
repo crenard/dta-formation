@@ -1,7 +1,7 @@
-package fr.pizzeria.ihm;
+package fr.pizzeria.ihm.pizza;
 
+import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
-import fr.pizzeria.model.Pizza;
 
 public class OptionListePizzas extends OptionMenu {
 
@@ -16,9 +16,7 @@ public class OptionListePizzas extends OptionMenu {
 
 	@Override
 	public void execute() {
-		for (Pizza pizza : ihmTools.getDao().findAll()) {
-			System.out.println(pizza.toString());
-		}
+		ihmTools.getDaoPizza().findAll().stream().forEach(System.out::println);
 	}
 
 }
