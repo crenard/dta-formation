@@ -11,6 +11,7 @@ public class ChatClientApp {
 
 		new ChatConsoleView(sc).execute();
 
+		sc.close();
 	}
 
 }
