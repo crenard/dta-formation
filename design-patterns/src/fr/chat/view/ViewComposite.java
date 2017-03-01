@@ -14,12 +14,9 @@ public abstract class ViewComposite {
 		return children.size();
 	}
 
-	protected abstract void executeBefore();
-
-	public void execute() {
-		executeBefore();
+	public void print() {
 		for (ViewComposite view : children) {
-			view.execute();
+			view.print();
 		}
 	}
 

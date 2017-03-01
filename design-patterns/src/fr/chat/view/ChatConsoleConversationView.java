@@ -16,7 +16,7 @@ public class ChatConsoleConversationView extends ViewComposite {
 	}
 
 	@Override
-	protected void executeBefore() {
+	public void print() {
 		System.out.println("== Conversations ==");
 		message = sc.nextLine();
 	}

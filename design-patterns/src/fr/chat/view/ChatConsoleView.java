@@ -9,9 +9,4 @@ public class ChatConsoleView extends ViewComposite {
 		this.add(new ChatConsoleLoginView(sc));
 		this.add(new ChatConsoleConversationView(sc));
 	}
-
-	@Override
-	protected void executeBefore() {
-	}
-
 }

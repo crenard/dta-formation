@@ -9,7 +9,7 @@ public class ChatConsoleTitleView extends ViewComposite {
 	}
 
 	@Override
-	protected void executeBefore() {
+	public void print() {
 		System.out.println(title);
 	}
 
