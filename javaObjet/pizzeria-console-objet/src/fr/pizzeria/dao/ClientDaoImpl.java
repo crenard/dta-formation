@@ -11,10 +11,10 @@ public class ClientDaoImpl implements IClientDao {
 
 	public ClientDaoImpl() {
 		super();
-		clients.add(new Client("1", "Marcel", "Gris"));
-		clients.add(new Client("2", "Francis", "Rapiere"));
-		clients.add(new Client("3", "Rosa", "Spark"));
-		clients.add(new Client("4", "Richard", "Rahl"));
+		clients.add(new Client(1, "Marcel", "Gris"));
+		clients.add(new Client(2, "Francis", "Rapiere"));
+		clients.add(new Client(3, "Rosa", "Spark"));
+		clients.add(new Client(4, "Richard", "Rahl"));
 	}
 
 	@Override
@@ -29,13 +29,23 @@ public class ClientDaoImpl implements IClientDao {
 	}
 
 	@Override
-	public void crediter(Client client, double ajout) throws CreditException {
-		client.crediterCompte(ajout);
+	public void crediter(int clientId, double ajout) throws CreditException, StockageException {
+		Optional<Client> optClient = clients.stream().filter(c -> c.getId() == clientId).findFirst();
+		if (optClient.isPresent()) {
+			optClient.get().crediterCompte(ajout);
+		} else {
+			throw new StockageException();
+		}
 	}
 
 	@Override
-	public void debiter(Client client, double retrait) throws DebitException {
-		client.debiterCompte(retrait);
+	public void debiter(int clientId, double retrait) throws DebitException, StockageException {
+		Optional<Client> optClient = clients.stream().filter(c -> c.getId() == clientId).findFirst();
+		if (optClient.isPresent()) {
+			optClient.get().debiterCompte(retrait);
+		} else {
+			throw new StockageException();
+		}
 	}
 
 }

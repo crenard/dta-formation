@@ -4,6 +4,7 @@ import java.util.*;
 
 import fr.pizzeria.exception.CreditException;
 import fr.pizzeria.exception.DebitException;
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Client;
 
 public interface IClientDao {
@@ -11,7 +12,7 @@ public interface IClientDao {
 
 	void newClient(Client c);
 
-	void crediter(Client c, double ajout) throws CreditException;
+	void crediter(int clientId, double ajout) throws CreditException, StockageException;
 
-	void debiter(Client c, double retrait) throws DebitException;
+	void debiter(int clientId, double retrait) throws DebitException, StockageException;
 }

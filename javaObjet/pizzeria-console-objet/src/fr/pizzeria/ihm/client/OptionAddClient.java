@@ -3,6 +3,7 @@ package fr.pizzeria.ihm.client;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.model.Client;
 
 public class OptionAddClient extends OptionMenu {
 
@@ -17,8 +18,15 @@ public class OptionAddClient extends OptionMenu {
 
 	@Override
 	public void execute() throws StockageException {
-		// TODO Auto-generated method stub
+		int size = ihmTools.getDaoClient().findAll().size();
 
+		System.out.println("Veuillez saisir le prenom");
+		String prenom = ihmTools.getSc().nextLine();
+
+		System.out.println("Veuillez saisir le nom");
+		String nom = ihmTools.getSc().nextLine();
+
+		ihmTools.getDaoClient().newClient(new Client(size + 1, prenom, nom));
 	}
 
 }

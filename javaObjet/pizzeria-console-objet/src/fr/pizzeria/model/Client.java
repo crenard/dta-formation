@@ -3,19 +3,19 @@ package fr.pizzeria.model;
 import fr.pizzeria.exception.*;
 
 public class Client implements Comparable<Client> {
-	private String id;
+	private int id;
 	private String nom;
 	private String prenom;
 	private double solde;
 
-	public Client(String id, String nom, String prenom) {
+	public Client(int id, String prenom, String nom) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.solde = 0.0;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -51,10 +51,11 @@ public class Client implements Comparable<Client> {
 
 	@Override
 	public String toString() {
-		return id + " -> " + prenom + nom + " (" + solde + " €)";
+		return id + " -> " + prenom + " " + nom + " (" + solde + " €)";
 	}
 
 	public int compareTo(Client client) {
-		return this.id.compareTo(client.getId());
+		Integer cli1 = new Integer(this.id), cli2 = new Integer(client.getId());
+		return cli1.compareTo(cli2);
 	}
 }
