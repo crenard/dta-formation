@@ -1,6 +1,7 @@
 package dta.chat.model;
 
 import dta.chat.exception.ChatClientException;
+import dta.chat.history.HistoryFacade;
 import dta.chat.model.observer.ChatObservable;
 import dta.chat.model.socket.ChatSocket;
 
@@ -9,6 +10,7 @@ public class ChatConversationModel extends ChatObservable<ChatMessage> implement
 	private ChatSocket socket;
 
 	private String login;
+	HistoryFacade facade = new HistoryFacade();
 
 	public ChatConversationModel(ChatSocket socket) {
 		this.socket = socket;
@@ -17,6 +19,7 @@ public class ChatConversationModel extends ChatObservable<ChatMessage> implement
 	public void setLogin(String login) {
 		this.login = login;
 		this.notifyObservers(new ChatMessage("Welcome", login));
+		facade.findLastMessages().forEach(m -> System.out.println(m.getLogin() + " : " + m.getMsg()));
 	}
 
 	@Override

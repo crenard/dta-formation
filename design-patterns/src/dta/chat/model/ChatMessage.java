@@ -19,5 +19,4 @@ public class ChatMessage implements Serializable {
 	public String getMsg() {
 		return text;
 	}
-
 }

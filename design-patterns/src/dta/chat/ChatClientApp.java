@@ -1,12 +1,10 @@
 package dta.chat;
 
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
-import dta.chat.exception.ChatClientException;
-import dta.chat.model.ChatConversationModel;
-import dta.chat.model.socket.ChatSocketImpl;
+import dta.chat.exception.*;
+import dta.chat.model.*;
+import dta.chat.model.socket.*;
 import dta.chat.view.*;
 
 public class ChatClientApp {
@@ -16,7 +14,7 @@ public class ChatClientApp {
 
 	public static void main(String[] args) {
 		try (Scanner sc = new Scanner(System.in)) {
-			ChatConversationModel model = new ChatConversationModel(new ChatSocketImpl(IP_ADRESS, PORT));
+			ChatConversationModel model = new ChatConversationModel(new ChatSocketProxy(IP_ADRESS, PORT));
 			final ChatConsoleView view = new ChatConsoleView(sc);
 
 			view.setAuthController((login) -> model.setLogin(login));
