@@ -1,4 +1,4 @@
-package fr.chat.view;
+package dta.chat.view;
 
 import java.util.*;
 

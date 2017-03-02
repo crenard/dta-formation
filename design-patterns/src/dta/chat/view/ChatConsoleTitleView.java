@@ -1,4 +1,4 @@
-package fr.chat.view;
+package dta.chat.view;
 
 public class ChatConsoleTitleView extends ViewComposite {
 

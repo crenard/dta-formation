@@ -1,11 +1,11 @@
-package fr.chat.view;
+package dta.chat.view;
 
 import java.util.*;
 
-import fr.chat.controller.ChatAuthController;
-import fr.chat.model.ChatMessage;
-import fr.chat.model.observer.ChatObservable;
-import fr.chat.model.observer.ChatObserver;
+import dta.chat.controller.ChatAuthController;
+import dta.chat.model.ChatMessage;
+import dta.chat.model.observer.ChatObservable;
+import dta.chat.model.observer.ChatObserver;
 
 public abstract class ViewComposite implements ChatObserver<ChatMessage> {
 

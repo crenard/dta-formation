@@ -1,4 +1,4 @@
-package fr.chat.model.observer;
+package dta.chat.model.observer;
 
 import java.util.*;
 

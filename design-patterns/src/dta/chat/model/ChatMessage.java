@@ -1,8 +1,11 @@
-package fr.chat.model;
+package dta.chat.model;
 
-public class ChatMessage {
+import java.io.Serializable;
+
+public class ChatMessage implements Serializable {
 	private String login;
 	private String text;
+	private static final long serialVersionUID = 12L;
 
 	public ChatMessage(String login, String text) {
 		this.login = login;
@@ -13,7 +16,7 @@ public class ChatMessage {
 		return login;
 	}
 
-	public String getText() {
+	public String getMsg() {
 		return text;
 	}
 

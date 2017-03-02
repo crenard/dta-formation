@@ -1,4 +1,4 @@
-package fr.chat.controller;
+package dta.chat.controller;
 
 @FunctionalInterface
 public interface ChatAuthController {

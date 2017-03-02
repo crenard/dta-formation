@@ -1,8 +1,8 @@
-package fr.chat.view;
+package dta.chat.view;
 
-import fr.chat.model.ChatMessage;
-import fr.chat.model.observer.ChatObservable;
-import fr.chat.model.observer.ChatObserver;
+import dta.chat.model.ChatMessage;
+import dta.chat.model.observer.ChatObservable;
+import dta.chat.model.observer.ChatObserver;
 
 public class ChatConsoleConversationView extends ViewComposite implements ChatObserver<ChatMessage> {
 
@@ -13,7 +13,7 @@ public class ChatConsoleConversationView extends ViewComposite implements ChatOb
 
 	@Override
 	public void update(ChatObservable<ChatMessage> observable, ChatMessage obj) {
-		System.out.println(obj.getLogin() + " : " + obj.getText());
+		System.out.println(obj.getLogin() + " : " + obj.getMsg());
 	}
 
 }
