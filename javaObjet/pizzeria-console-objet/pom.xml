@@ -40,8 +40,22 @@
            				</goals>
          			</execution>
        			</executions>
-     			</plugin>
-			</plugins>
+     		</plugin>
+     		<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-source-plugin</artifactId>
+		        <version>3.0.1</version>
+		        <executions>
+		          <execution>
+		            <id>attach-sources</id>
+		            <phase>package</phase>
+		            <goals>
+		              <goal>jar-no-fork</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+	      	</plugin>
+		</plugins>
 		<finalName>pizzeria</finalName> 
 	</build>
 	<artifactId>pizzeria-console-objet</artifactId>
