@@ -4,6 +4,7 @@ import org.junit.*;
 import static org.hamcrest.CoreMatchers.*;
 
 import fr.pizzeria.exception.StockageException;
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 import static org.junit.Assert.*;
@@ -30,6 +31,16 @@ public class PizzaDaoImplTest {
 		dao.save(pizza);
 		List<Pizza> all = dao.findAll();
 		assertThat(all.size(), anyOf(is(8), is(9)));
+	}
+
+	@Test
+	public void testEquals() {
+		Pizza p1 = new Pizza("GRE", "gredue", 0, CategoriePizza.VIANDE);
+		Pizza p2 = new Pizza("GRE", "grebel", 4.5, CategoriePizza.VEGETARIEN);
+		Pizza p3 = new Pizza("GAB", "gabrie", 0, CategoriePizza.VIANDE);
+		assertTrue(p1.equals(p1));
+		assertTrue(p1.equals(p2));
+		assertFalse(p1.equals(p3));
 	}
 
 }

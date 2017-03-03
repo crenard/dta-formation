@@ -2,6 +2,8 @@ package fr.pizzeria.model;
 
 import java.lang.reflect.Field;
 
+import org.apache.commons.lang3.builder.*;
+
 public class Pizza implements Comparable<Pizza> {
 	@ToString(uppercase = true)
 	private String code;
@@ -57,4 +59,23 @@ public class Pizza implements Comparable<Pizza> {
 	public int compareTo(Pizza pizza) {
 		return this.code.compareTo(pizza.getCode());
 	}
+
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder(23, 31).append(code).toHashCode();
+
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pizza other = (Pizza) obj;
+		return new EqualsBuilder().append(code, other.code).isEquals();
+	}
+
 }
