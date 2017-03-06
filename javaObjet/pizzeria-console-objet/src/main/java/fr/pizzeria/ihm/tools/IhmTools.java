@@ -10,8 +10,8 @@ public class IhmTools {
 	private IDao<Pizza> daoPizza;
 	private IClientDao daoClient;
 
-	public IhmTools() {
-		this.daoPizza = new PizzaDaoFichiers();
+	public IhmTools(IDao<Pizza> dao) {
+		this.daoPizza = dao;
 		this.daoClient = new ClientDaoImpl();
 	}
 

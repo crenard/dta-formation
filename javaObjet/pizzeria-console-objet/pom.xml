@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>dta</groupId>
 	<version>1.0.0</version>
 	<properties>
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,23 +17,47 @@
 		</dependency>
 	</dependencies>
 	
-	<build>
-	<plugins>
-		<plugin>
-   			<artifactId>maven-shade-plugin</artifactId>
-   			<configuration>
-    		</configuration>
-     		<executions>
-       			<execution>
-         			<phase>package</phase>
-         			<goals>
-           				<goal>shade</goal>
-         			</goals>
-       			</execution>
-     		</executions>
-   		</plugin>
-	</plugins>
+	<build>    
+		<resources>
+      		<resource>
+       			<directory>src/main/resources</directory>
+       			<filtering>true</filtering>
+      		</resource>
+    	</resources>
+		<plugins>
+			<plugin>
+	   			<artifactId>maven-shade-plugin</artifactId>
+	   			<configuration>
+	    		</configuration>
+	     		<executions>
+	       			<execution>
+	         			<phase>package</phase>
+	         			<goals>
+	           				<goal>shade</goal>
+	         			</goals>
+	       			</execution>
+	     		</executions>
+   			</plugin>
+		</plugins>
 	</build>
+	
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<dao.impl>PizzaDaoImpl</dao.impl>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<dao.impl>PizzaDaoFichiers</dao.impl>
+			</properties>
+		</profile>
+	</profiles>
 	
 	<parent>
 		<groupId>dta</groupId>
