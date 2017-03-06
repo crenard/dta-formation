@@ -9,18 +9,6 @@
 	<artifactId>pizzeria-console-objet</artifactId>
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-library</artifactId>
-		</dependency>
-		<dependency>
-  			<groupId>org.apache.commons</groupId>
- 			<artifactId>commons-lang3</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>Maven-Dao</groupId>
 			<artifactId>pizzeria-dao</artifactId>
 		</dependency>
@@ -29,6 +17,24 @@
 			<artifactId>pizzeria-model</artifactId>
 		</dependency>
 	</dependencies>
+	
+	<build>
+	<plugins>
+		<plugin>
+   			<artifactId>maven-shade-plugin</artifactId>
+   			<configuration>
+    		</configuration>
+     		<executions>
+       			<execution>
+         			<phase>package</phase>
+         			<goals>
+           				<goal>shade</goal>
+         			</goals>
+       			</execution>
+     		</executions>
+   		</plugin>
+	</plugins>
+	</build>
 	
 	<parent>
 		<groupId>dta</groupId>
