@@ -1,9 +1,9 @@
 package fr.pizzeria.ihm.client;
 
+import fr.pizzeria.model.Client;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
-import fr.pizzeria.model.Client;
 
 public class OptionAddClient extends OptionMenu {
 

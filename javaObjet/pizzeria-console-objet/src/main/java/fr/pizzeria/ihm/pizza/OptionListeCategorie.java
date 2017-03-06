@@ -2,9 +2,9 @@ package fr.pizzeria.ihm.pizza;
 
 import java.util.stream.Collectors;
 
+import fr.pizzeria.model.*;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
-import fr.pizzeria.model.Pizza;
 
 public class OptionListeCategorie extends OptionMenu {
 

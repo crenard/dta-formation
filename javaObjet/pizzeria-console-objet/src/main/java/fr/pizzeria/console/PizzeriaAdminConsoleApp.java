@@ -2,7 +2,6 @@ package fr.pizzeria.console;
 
 import fr.pizzeria.ihm.*;
 import fr.pizzeria.ihm.tools.IhmTools;
-import fr.pizzeria.model.Pizza;
 
 public class PizzeriaAdminConsoleApp {
 

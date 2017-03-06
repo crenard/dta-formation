@@ -1,10 +1,9 @@
 package fr.pizzeria.ihm.pizza;
 
+import fr.pizzeria.model.*;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
-import fr.pizzeria.model.CategoriePizza;
-import fr.pizzeria.model.Pizza;
 
 public class OptionAddPizza extends OptionMenu {
 
@@ -28,7 +27,7 @@ public class OptionAddPizza extends OptionMenu {
 		System.out.println("Veuillez saisir le prix");
 		Double prix = ihmTools.getSc().nextDouble();
 
-		System.out.println("Veuillez saisir la catégorie :");
+		System.out.println("Veuillez saisir la catï¿½gorie :");
 		CategoriePizza[] categories = CategoriePizza.values();
 
 		for (int i = 0; i < categories.length; i++) {
@@ -41,7 +40,7 @@ public class OptionAddPizza extends OptionMenu {
 		try {
 			ihmTools.getDaoPizza().save(new Pizza(code, nom, prix, category));
 		} catch (StockageException e) {
-			throw new StockageException("\n!!! Une erreur a été enregistrée : " + e.getCause());
+			throw new StockageException("\n!!! Une erreur a ï¿½tï¿½ enregistrï¿½e : " + e.getCause());
 		}
 
 	}

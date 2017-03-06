@@ -51,7 +51,7 @@ public class Client implements Comparable<Client> {
 
 	@Override
 	public String toString() {
-		return id + " -> " + prenom + " " + nom + " (" + solde + " €)";
+		return id + " -> " + prenom + " " + nom + " (" + solde + " ï¿½)";
 	}
 
 	public int compareTo(Client client) {

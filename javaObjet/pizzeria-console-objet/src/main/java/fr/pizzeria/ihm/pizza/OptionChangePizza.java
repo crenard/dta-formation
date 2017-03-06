@@ -1,10 +1,9 @@
 package fr.pizzeria.ihm.pizza;
 
+import fr.pizzeria.model.*;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
-import fr.pizzeria.model.CategoriePizza;
-import fr.pizzeria.model.Pizza;
 
 public class OptionChangePizza extends OptionMenu {
 
@@ -31,7 +30,7 @@ public class OptionChangePizza extends OptionMenu {
 			System.out.println("Veuillez saisir le prix");
 			Double prix = ihmTools.getSc().nextDouble();
 
-			System.out.println("Veuillez saisir la catégorie :");
+			System.out.println("Veuillez saisir la catï¿½gorie :");
 			CategoriePizza[] categories = CategoriePizza.values();
 			for (int i = 0; i < categories.length; i++) {
 				System.out.println(i + 1 + " : " + categories[i].getLibelle());
