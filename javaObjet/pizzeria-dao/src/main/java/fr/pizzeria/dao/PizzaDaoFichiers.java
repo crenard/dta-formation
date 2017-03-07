@@ -37,7 +37,7 @@ public class PizzaDaoFichiers implements IDao<Pizza> {
 			Files.write(Paths.get(newPizza.getCode(), ".txt"), newPizza.toString().getBytes(),
 					StandardOpenOption.CREATE_NEW);
 		} catch (IOException e) {
-			throw new SaveException(e.getCause());
+			throw new SaveException(e);
 		}
 
 	}
@@ -53,7 +53,7 @@ public class PizzaDaoFichiers implements IDao<Pizza> {
 		try {
 			Files.delete(Paths.get("data", codePizza + ".txt"));
 		} catch (IOException e) {
-			throw new DeleteException();
+			throw new DeleteException(e);
 		}
 
 	}

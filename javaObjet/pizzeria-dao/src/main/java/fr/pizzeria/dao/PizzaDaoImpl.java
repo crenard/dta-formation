@@ -33,7 +33,7 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 			pizzas.add(pizza);
 			Collections.sort(pizzas);
 		} catch (Exception e) {
-			throw new SaveException(e.getCause());
+			throw new SaveException(e);
 		}
 	}
 

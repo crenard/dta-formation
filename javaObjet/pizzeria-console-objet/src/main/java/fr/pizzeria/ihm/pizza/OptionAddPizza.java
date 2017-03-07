@@ -40,7 +40,7 @@ public class OptionAddPizza extends OptionMenu {
 		try {
 			ihmTools.getDaoPizza().save(new Pizza(code, nom, prix, category));
 		} catch (StockageException e) {
-			throw new StockageException("\n!!! Une erreur a �t� enregistr�e : " + e.getCause());
+			throw new StockageException("\n!!! Une erreur a �t� enregistr�e : " + e);
 		}
 
 	}
