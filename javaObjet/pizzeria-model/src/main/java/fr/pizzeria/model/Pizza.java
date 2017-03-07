@@ -39,20 +39,27 @@ public class Pizza implements Comparable<Pizza> {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder("");
-		try {
-			for (Field field : this.getClass().getDeclaredFields()) {
-				if (field.isAnnotationPresent(ToString.class)) {
-					String fieldValue = field.get(this).toString();
-					if (field.getAnnotation(ToString.class).uppercase()) {
-						fieldValue = fieldValue.toUpperCase();
-					}
-					sb.append(fieldValue).append(";");
-				}
-			}
-		} catch (IllegalArgumentException | IllegalAccessException e) {
+		for (Field field : this.getClass().getDeclaredFields()) {
+			appendIfAnnoted(field, sb);
 		}
 		return sb.toString();
+	}
 
+	private StringBuilder appendIfAnnoted(Field field, StringBuilder sb) {
+		if (field.isAnnotationPresent(ToString.class)) {
+			String fieldValue;
+			try {
+				fieldValue = field.get(this).toString();
+
+				if (field.getAnnotation(ToString.class).uppercase()) {
+					fieldValue = fieldValue.toUpperCase();
+				}
+				sb.append(fieldValue).append(";");
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				System.out.println("ToString error");
+			}
+		}
+		return sb;
 	}
 
 	@Override
