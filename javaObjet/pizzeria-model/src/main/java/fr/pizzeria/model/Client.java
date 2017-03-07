@@ -1,6 +1,10 @@
 package fr.pizzeria.model;
 
-import fr.pizzeria.exception.*;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import fr.pizzeria.exception.CreditException;
+import fr.pizzeria.exception.DebitException;
 
 public class Client implements Comparable<Client> {
 	private int id;
@@ -58,5 +62,22 @@ public class Client implements Comparable<Client> {
 	public int compareTo(Client client) {
 		Integer cli1 = new Integer(this.id), cli2 = new Integer(client.getId());
 		return cli1.compareTo(cli2);
+	}
+
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder(23, 31).append(id).toHashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Client other = (Client) obj;
+		return new EqualsBuilder().append(id, other.id).isEquals();
 	}
 }

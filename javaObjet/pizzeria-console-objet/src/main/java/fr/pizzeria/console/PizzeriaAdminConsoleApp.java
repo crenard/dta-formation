@@ -9,6 +9,10 @@ import fr.pizzeria.model.Pizza;
 
 public class PizzeriaAdminConsoleApp {
 
+	private PizzeriaAdminConsoleApp() {
+		throw new IllegalAccessError("Utility class");
+	}
+
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException {

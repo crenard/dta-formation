@@ -50,7 +50,6 @@ public class Pizza implements Comparable<Pizza> {
 				}
 			}
 		} catch (IllegalArgumentException | IllegalAccessException e) {
-			e.printStackTrace();
 		}
 		return sb.toString();
 
@@ -64,7 +63,6 @@ public class Pizza implements Comparable<Pizza> {
 	@Override
 	public int hashCode() {
 		return new HashCodeBuilder(23, 31).append(code).toHashCode();
-
 	}
 
 	@Override
