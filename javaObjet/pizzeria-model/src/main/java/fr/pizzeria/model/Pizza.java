@@ -56,6 +56,7 @@ public class Pizza implements Comparable<Pizza> {
 
 	}
 
+	@Override
 	public int compareTo(Pizza pizza) {
 		return this.code.compareTo(pizza.getCode());
 	}

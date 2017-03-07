@@ -54,6 +54,7 @@ public class Client implements Comparable<Client> {
 		return id + " -> " + prenom + " " + nom + " (" + solde + " �)";
 	}
 
+	@Override
 	public int compareTo(Client client) {
 		Integer cli1 = new Integer(this.id), cli2 = new Integer(client.getId());
 		return cli1.compareTo(cli2);

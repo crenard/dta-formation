@@ -12,8 +12,4 @@ public enum CategoriePizza {
 	public String getLibelle() {
 		return libelle;
 	}
-
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
 }

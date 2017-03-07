@@ -9,17 +9,14 @@ import fr.pizzeria.model.*;
 
 public class PizzaDaoFichiers implements IDao<Pizza> {
 
-	public PizzaDaoFichiers() {
-	}
-
 	@Override
 	public List<Pizza> findAll() {
-		List<Pizza> pizzas = new ArrayList<Pizza>();
+		List<Pizza> pizzas = new ArrayList<>();
 		try {
 			Files.list(Paths.get("data")).forEach(path -> {
 				try {
-					String[] PizzaStr = Files.readAllLines(path).get(0).split(";");
-					pizzas.add(new Pizza(PizzaStr[0], PizzaStr[1], Double.parseDouble(PizzaStr[2]),
+					String[] pizzaStr = Files.readAllLines(path).get(0).split(";");
+					pizzas.add(new Pizza(pizzaStr[0], pizzaStr[1], Double.parseDouble(pizzaStr[2]),
 							CategoriePizza.VIANDE));
 				} catch (IOException e) {
 					e.printStackTrace();
