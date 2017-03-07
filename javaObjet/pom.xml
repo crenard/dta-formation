@@ -95,12 +95,12 @@
             <dependency>
                 <groupId>dta</groupId>
                 <artifactId>cyrille-pizzeria-dao</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>1.0</version>
             </dependency>
             <dependency>
                 <groupId>dta</groupId>
                 <artifactId>cyrille-pizzeria-model</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
