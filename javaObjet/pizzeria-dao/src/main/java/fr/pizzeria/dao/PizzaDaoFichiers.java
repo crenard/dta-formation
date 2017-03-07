@@ -19,11 +19,9 @@ public class PizzaDaoFichiers implements IDao<Pizza> {
 					pizzas.add(new Pizza(pizzaStr[0], pizzaStr[1], Double.parseDouble(pizzaStr[2]),
 							CategoriePizza.VIANDE));
 				} catch (IOException e) {
-					e.printStackTrace();
 				}
 			});
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		return pizzas;
 	}
