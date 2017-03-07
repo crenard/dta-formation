@@ -1,6 +1,7 @@
 package fr.pizzeria.model;
 
 import java.lang.reflect.Field;
+import java.util.logging.Logger;
 
 import org.apache.commons.lang3.builder.*;
 
@@ -12,6 +13,13 @@ public class Pizza implements Comparable<Pizza> {
 	@ToString
 	private double prix;
 	private CategoriePizza categorie;
+
+	public Pizza(String code, String nom, double prix, CategoriePizza category) {
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		this.categorie = category;
+	}
 
 	public String getCode() {
 		return code;
@@ -27,13 +35,6 @@ public class Pizza implements Comparable<Pizza> {
 
 	public CategoriePizza getCategorie() {
 		return categorie;
-	}
-
-	public Pizza(String code, String nom, double prix, CategoriePizza category) {
-		this.code = code;
-		this.nom = nom;
-		this.prix = prix;
-		this.categorie = category;
 	}
 
 	@Override

@@ -13,15 +13,18 @@ public class PizzaDaoFichiers implements IDao<Pizza> {
 	public List<Pizza> findAll() {
 		List<Pizza> pizzas = new ArrayList<>();
 		try {
-			Files.list(Paths.get("data")).forEach(path -> {
-				try {
-					String[] pizzaStr = Files.readAllLines(path).get(0).split(";");
-					pizzas.add(new Pizza(pizzaStr[0], pizzaStr[1], Double.parseDouble(pizzaStr[2]),
-							CategoriePizza.VIANDE));
-				} catch (IOException e) {
-					throw new StockageException(e);
-				}
-			});
+			Files.list(Paths.get("data")).forEach(path -> extractPizzasFromFile(path));
+		} catch (IOException e) {
+			throw new StockageException(e);
+		}
+		return pizzas;
+	}
+
+	private List<Pizza> extractPizzasFromFile(Path path) {
+		List<Pizza> pizzas = new ArrayList<>();
+		try {
+			String[] pizzaStr = Files.readAllLines(path).get(0).split(";");
+			pizzas.add(new Pizza(pizzaStr[0], pizzaStr[1], Double.parseDouble(pizzaStr[2]), CategoriePizza.VIANDE));
 		} catch (IOException e) {
 			throw new StockageException(e);
 		}
