@@ -19,15 +19,17 @@ public class PizzaDaoFichiers implements IDao<Pizza> {
 					pizzas.add(new Pizza(pizzaStr[0], pizzaStr[1], Double.parseDouble(pizzaStr[2]),
 							CategoriePizza.VIANDE));
 				} catch (IOException e) {
+					throw new StockageException(e);
 				}
 			});
 		} catch (IOException e) {
+			throw new StockageException(e);
 		}
 		return pizzas;
 	}
 
 	@Override
-	public void save(Pizza newPizza) throws StockageException {
+	public void save(Pizza newPizza) {
 		try {
 			Files.write(Paths.get(newPizza.getCode(), ".txt"), newPizza.toString().getBytes(),
 					StandardOpenOption.CREATE_NEW);
@@ -38,13 +40,13 @@ public class PizzaDaoFichiers implements IDao<Pizza> {
 	}
 
 	@Override
-	public void update(String codePizza, Pizza newPizza) throws StockageException {
+	public void update(String codePizza, Pizza newPizza) {
 		delete(codePizza);
 		save(newPizza);
 	}
 
 	@Override
-	public void delete(String codePizza) throws StockageException {
+	public void delete(String codePizza) {
 		try {
 			Files.delete(Paths.get("data", codePizza + ".txt"));
 		} catch (IOException e) {

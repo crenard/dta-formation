@@ -28,7 +28,7 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 	}
 
 	@Override
-	public void save(Pizza pizza) throws StockageException {
+	public void save(Pizza pizza) {
 		try {
 			pizzas.add(pizza);
 			Collections.sort(pizzas);
@@ -47,7 +47,7 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 	}
 
 	@Override
-	public void update(String codePizza, Pizza newPizza) throws StockageException {
+	public void update(String codePizza, Pizza newPizza) {
 		int index = findPizza(codePizza);
 		if (index > -1) {
 			pizzas.set(index, newPizza);
@@ -59,7 +59,7 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 	}
 
 	@Override
-	public void delete(String codePizza) throws StockageException {
+	public void delete(String codePizza) {
 		int index = findPizza(codePizza);
 		if (index > -1) {
 			pizzas.remove(index);

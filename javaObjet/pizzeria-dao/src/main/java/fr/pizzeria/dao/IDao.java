@@ -5,7 +5,7 @@ import java.util.List;
 import fr.pizzeria.exception.*;
 
 public interface IDao<T> {
-	List<T> findAll();
+	List<T> findAll() throws StockageException;
 
 	void save(T t) throws StockageException;
 

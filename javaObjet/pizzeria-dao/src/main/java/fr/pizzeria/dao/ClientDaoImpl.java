@@ -29,7 +29,7 @@ public class ClientDaoImpl implements IClientDao {
 	}
 
 	@Override
-	public void crediter(int clientId, double ajout) throws CreditException, StockageException {
+	public void crediter(int clientId, double ajout) {
 		Optional<Client> optClient = clients.stream().filter(c -> c.getId() == clientId).findFirst();
 		if (optClient.isPresent()) {
 			optClient.get().crediterCompte(ajout);
@@ -39,7 +39,7 @@ public class ClientDaoImpl implements IClientDao {
 	}
 
 	@Override
-	public void debiter(int clientId, double retrait) throws DebitException, StockageException {
+	public void debiter(int clientId, double retrait) {
 		Optional<Client> optClient = clients.stream().filter(c -> c.getId() == clientId).findFirst();
 		if (optClient.isPresent()) {
 			optClient.get().debiterCompte(retrait);
