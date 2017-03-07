@@ -2,8 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>Maven-Dao</groupId>
-  <artifactId>pizzeria-dao</artifactId>
+  <artifactId>cyrille-pizzeria-dao</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
@@ -17,8 +16,8 @@
       <artifactId>junit</artifactId>
     </dependency>
     <dependency>
-    	<groupId>Maven-Model</groupId>
-    	<artifactId>pizzeria-model</artifactId>
+    	<groupId>dta</groupId>
+    	<artifactId>cyrille-pizzeria-model</artifactId>
     </dependency>
     <dependency>
     	<groupId>org.hamcrest</groupId>
@@ -28,7 +27,7 @@
   
 	<parent>
 		<groupId>dta</groupId>
-		<artifactId>dta-parent</artifactId>
+		<artifactId>cyrille-pizzeria</artifactId>
 		<version>1.0</version>
 		<relativePath>../</relativePath>		
 	</parent>
