@@ -67,8 +67,4 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 			throw new DeleteException();
 		}
 	}
-
-	public void closeConnection() {
-		//
-	}
 }

@@ -57,8 +57,4 @@ public class PizzaDaoFichiers implements IDao<Pizza> {
 		}
 
 	}
-
-	public void closeConnection() {
-		//
-	}
 }

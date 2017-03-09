@@ -93,14 +93,14 @@
 				<version>3.5</version>
 			</dependency>
 			<dependency>
-				<groupId>dta</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>cyrille-pizzeria-dao</artifactId>
-				<version>1.0</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>dta</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>cyrille-pizzeria-model</artifactId>
-				<version>1.0</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>

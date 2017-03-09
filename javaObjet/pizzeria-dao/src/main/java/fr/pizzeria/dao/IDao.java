@@ -10,6 +10,4 @@ public interface IDao<T> {
 	void update(String codePizza, T t);
 
 	void delete(String codePizza);
-
-	void closeConnection();
 }
