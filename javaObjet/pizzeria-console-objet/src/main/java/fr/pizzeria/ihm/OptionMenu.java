@@ -13,5 +13,5 @@ public abstract class OptionMenu {
 
 	public abstract String getLibelle();
 
-	public abstract void execute() throws StockageException;
+	public abstract void execute();
 }

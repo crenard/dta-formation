@@ -18,7 +18,7 @@ public class OptionClient extends OptionMenu {
 	}
 
 	@Override
-	public void execute() throws StockageException {
+	public void execute() {
 		Menu menuClient = new MenuClient("**** Administration des clients ****", ihmTools);
 		menuClient.executer();
 	}

@@ -16,7 +16,7 @@ public class OptionAddPizza extends OptionMenu {
 	}
 
 	@Override
-	public void execute() throws StockageException {
+	public void execute() {
 		try {
 			ihmTools.getDaoPizza().save(ihmTools.saisirPizza());
 		} catch (StockageException e) {

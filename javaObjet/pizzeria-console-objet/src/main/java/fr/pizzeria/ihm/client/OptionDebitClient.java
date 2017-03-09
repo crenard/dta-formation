@@ -16,7 +16,7 @@ public class OptionDebitClient extends OptionMenu {
 	}
 
 	@Override
-	public void execute() throws SoldeException {
+	public void execute() {
 		System.out.println("Veuillez saisir l'id du client a debiter");
 		int clientId = ihmTools.getSc().nextInt();
 

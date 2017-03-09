@@ -35,7 +35,7 @@ public class Client implements Comparable<Client> {
 		return solde;
 	}
 
-	public void crediterCompte(double montant) throws CreditException {
+	public void crediterCompte(double montant) {
 		double tempSolde = solde + montant;
 		if (tempSolde > 5000.0) {
 			throw new CreditException();
@@ -44,7 +44,7 @@ public class Client implements Comparable<Client> {
 		}
 	}
 
-	public void debiterCompte(double montant) throws DebitException {
+	public void debiterCompte(double montant) {
 		double tempSolde = solde - montant;
 		if (tempSolde < 0.0) {
 			throw new DebitException();

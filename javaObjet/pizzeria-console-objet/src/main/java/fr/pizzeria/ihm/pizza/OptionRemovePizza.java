@@ -16,7 +16,7 @@ public class OptionRemovePizza extends OptionMenu {
 	}
 
 	@Override
-	public void execute() throws StockageException {
+	public void execute() {
 		System.out.println("Veuillez choisir le code de la pizza a supprimer (99 pour abandonner)");
 		String pizzaPick = ihmTools.getSc().nextLine();
 		if (!"99".equals(pizzaPick)) {

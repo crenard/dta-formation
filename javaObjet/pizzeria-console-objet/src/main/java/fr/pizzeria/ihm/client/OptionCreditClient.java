@@ -16,7 +16,7 @@ public class OptionCreditClient extends OptionMenu {
 	}
 
 	@Override
-	public void execute() throws SoldeException {
+	public void execute() {
 		System.out.println("Veuillez saisir l'id du client a crediter");
 		int clientId = ihmTools.getSc().nextInt();
 

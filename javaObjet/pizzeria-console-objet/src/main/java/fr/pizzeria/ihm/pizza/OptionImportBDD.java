@@ -16,7 +16,7 @@ public class OptionImportBDD extends OptionMenu {
 	}
 
 	@Override
-	public void execute() throws StockageException {
+	public void execute() {
 
 	}
 

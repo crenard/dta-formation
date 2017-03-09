@@ -18,7 +18,7 @@ public class OptionPizza extends OptionMenu {
 	}
 
 	@Override
-	public void execute() throws StockageException {
+	public void execute() {
 		Menu menuPizza = new MenuPizza("**** Administration des pizzas ****", ihmTools);
 		menuPizza.executer();
 	}

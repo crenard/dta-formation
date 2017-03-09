@@ -45,6 +45,7 @@ public class PizzaDaoJDBC implements IDao<Pizza> {
 		}
 	}
 
+	@FunctionalInterface
 	interface Exec {
 		void execute(PreparedStatement request) throws SQLException;
 	}

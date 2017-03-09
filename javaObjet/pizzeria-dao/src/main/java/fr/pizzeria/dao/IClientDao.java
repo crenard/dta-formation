@@ -2,7 +2,6 @@ package fr.pizzeria.dao;
 
 import java.util.*;
 
-import fr.pizzeria.exception.*;
 import fr.pizzeria.model.Client;
 
 public interface IClientDao {
@@ -10,7 +9,7 @@ public interface IClientDao {
 
 	void newClient(Client c);
 
-	void crediter(int clientId, double ajout) throws CreditException, StockageException;
+	void crediter(int clientId, double ajout);
 
-	void debiter(int clientId, double retrait) throws DebitException, StockageException;
+	void debiter(int clientId, double retrait);
 }

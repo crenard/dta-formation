@@ -16,7 +16,7 @@ public class OptionListeClients extends OptionMenu {
 	}
 
 	@Override
-	public void execute() throws StockageException {
+	public void execute() {
 		ihmTools.getDaoClient().findAll().stream().forEach(System.out::println);
 
 	}

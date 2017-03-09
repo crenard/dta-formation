@@ -17,7 +17,7 @@ public class OptionAddClient extends OptionMenu {
 	}
 
 	@Override
-	public void execute() throws StockageException {
+	public void execute() {
 		int size = ihmTools.getDaoClient().findAll().size();
 
 		System.out.println("Veuillez saisir le prenom");
