@@ -68,4 +68,7 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 		}
 	}
 
+	public void close() {
+		//
+	}
 }

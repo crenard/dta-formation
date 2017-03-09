@@ -13,4 +13,8 @@ public class StockageException extends RuntimeException {
 	public StockageException(Throwable cause) {
 		super(cause);
 	}
+
+	public StockageException(String message, Throwable cause) {
+		super(message, cause);
+	}
 }

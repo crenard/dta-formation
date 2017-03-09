@@ -13,4 +13,8 @@ public class SaveException extends StockageException {
 	public SaveException(Throwable cause) {
 		super(cause);
 	}
+
+	public SaveException(String message, Throwable cause) {
+		super(message, cause);
+	}
 }

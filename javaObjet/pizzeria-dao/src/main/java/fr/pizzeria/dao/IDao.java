@@ -12,4 +12,6 @@ public interface IDao<T> {
 	void update(String codePizza, T t) throws StockageException;
 
 	void delete(String codePizza) throws StockageException;
+
+	void close();
 }

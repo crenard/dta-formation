@@ -13,4 +13,8 @@ public class UpdateException extends StockageException {
 	public UpdateException(Throwable cause) {
 		super(cause);
 	}
+
+	public UpdateException(String message, Throwable cause) {
+		super(message, cause);
+	}
 }

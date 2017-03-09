@@ -40,12 +40,11 @@
    			</plugin>
 		</plugins>
 	</build>
-	
 	<profiles>
 		<profile>
 			<id>dev</id>
 			<properties>
-				<dao.impl>PizzaDaoImpl</dao.impl>
+				<daoImpl>PizzaDaoJDBC</daoImpl>
 			</properties>
 		</profile>
 		<profile>
@@ -54,11 +53,10 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<dao.impl>PizzaDaoFichiers</dao.impl>
+				<daoImpl>PizzaDaoFichiers</daoImpl>
 			</properties>
 		</profile>
 	</profiles>
-	
 	<parent>
 		<groupId>dta</groupId>
 		<artifactId>cyrille-pizzeria</artifactId>
