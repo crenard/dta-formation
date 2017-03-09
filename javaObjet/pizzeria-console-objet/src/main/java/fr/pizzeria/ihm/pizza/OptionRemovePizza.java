@@ -19,7 +19,7 @@ public class OptionRemovePizza extends OptionMenu {
 	public void execute() throws StockageException {
 		System.out.println("Veuillez choisir le code de la pizza a supprimer (99 pour abandonner)");
 		String pizzaPick = ihmTools.getSc().nextLine();
-		if (pizzaPick != "99") {
+		if (!"99".equals(pizzaPick)) {
 			try {
 				ihmTools.getDaoPizza().delete(pizzaPick);
 			} catch (StockageException e) {

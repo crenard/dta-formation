@@ -20,8 +20,7 @@ public class OptionListePizzas extends OptionMenu {
 		try {
 			ihmTools.getDaoPizza().findAll().stream().forEach(System.out::println);
 		} catch (ConnectionException e) {
-			System.out.println(e.getMessage());
-			throw new ConnectionException(e);
+			throw new ConnectionException("\n!!! Une erreur a ete enregistree : " + e);
 		}
 	}
 }

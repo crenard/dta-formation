@@ -9,18 +9,19 @@ import fr.pizzeria.model.*;
 public class PizzaDaoJDBC implements IDao<Pizza> {
 
 	public PizzaDaoJDBC() {
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("jdbc");
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
+			Class.forName(resourceBundle.getString("driver"));
 		} catch (ClassNotFoundException e) {
 			throw new ConnectionException(e);
 		}
 	}
 
-	private Connection connect() {
+	private static Connection connect() {
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("jdbc");
 		try {
-			return DriverManager.getConnection(resourceBundle.getString("user"), resourceBundle.getString("password"),
-					resourceBundle.getString("url"));
+			return DriverManager.getConnection(resourceBundle.getString("url"), resourceBundle.getString("user"),
+					resourceBundle.getString("password"));
 		} catch (SQLException e) {
 			throw new ConnectionException("Erreur de connection a la base", e);
 		}
@@ -28,7 +29,6 @@ public class PizzaDaoJDBC implements IDao<Pizza> {
 
 	@Override
 	public List<Pizza> findAll() {
-		this.connect();
 		List<Pizza> pizzas = new ArrayList<>();
 
 		try (Connection conn = connect();
@@ -45,42 +45,42 @@ public class PizzaDaoJDBC implements IDao<Pizza> {
 		}
 	}
 
-	@Override
-	public void save(Pizza newPizza) {
-		this.connect();
-		try (Connection conn = connect();
-				PreparedStatement request = conn
-						.prepareStatement("INSERT INTO pizza (code, description, prix, categorie) VALUES (?,?,?,?)")) {
-			request.setString(1, newPizza.getCode());
-			request.setString(2, newPizza.getNom());
-			request.setDouble(3, newPizza.getPrix());
-			request.setString(4, newPizza.getCategorie().toString());
+	interface Exec {
+		void execute(PreparedStatement request) throws SQLException;
+	}
+
+	private void executeUpdate(String sqlRequest, Exec ex, String exceptionMessage) {
+		try (Connection conn = connect(); PreparedStatement request = conn.prepareStatement(sqlRequest)) {
+			ex.execute(request);
 			request.executeUpdate();
 		} catch (SQLException e) {
-			throw new ConnectionException("Sauvegarde impossible", e);
+			throw new ConnectionException(exceptionMessage, e);
 		}
 	}
 
 	@Override
+	public void save(Pizza newPizza) {
+		executeUpdate("INSERT INTO pizza (code, description, prix, categorie) VALUES (?,?,?,?)", request -> {
+			request.setString(1, newPizza.getCode());
+			request.setString(2, newPizza.getNom());
+			request.setDouble(3, newPizza.getPrix());
+			request.setString(4, newPizza.getCategorie().toString());
+		}, "Sauvegarde impossible");
+	}
+
+	@Override
 	public void update(String codePizza, Pizza newPizza) {
-		this.connect();
-		try (Connection conn = connect();
-				PreparedStatement request = conn.prepareStatement(
-						"UPDATE pizza SET code=?, description=?, prix=?, categorie=? WHERE code = ?")) {
+		executeUpdate("UPDATE pizza SET code=?, description=?, prix=?, categorie=? WHERE code = ?", request -> {
 			request.setString(1, newPizza.getCode());
 			request.setString(2, newPizza.getNom());
 			request.setDouble(3, newPizza.getPrix());
 			request.setString(4, newPizza.getCategorie().toString());
 			request.setString(5, codePizza);
-			request.executeUpdate();
-		} catch (SQLException e) {
-			throw new ConnectionException("Mise a jour impossible", e);
-		}
+		}, "Mise a jour impossible");
 	}
 
 	@Override
 	public void delete(String codePizza) {
-		this.connect();
 		try (Connection conn = connect();
 				PreparedStatement request = conn.prepareStatement("DELETE FROM pizza WHERE code = ?")) {
 			request.setString(1, codePizza);
@@ -88,5 +88,10 @@ public class PizzaDaoJDBC implements IDao<Pizza> {
 		} catch (SQLException e) {
 			throw new ConnectionException("Suppression impossible", e);
 		}
+	}
+
+	@Override
+	public void importBDD() {
+		// TODO
 	}
 }
