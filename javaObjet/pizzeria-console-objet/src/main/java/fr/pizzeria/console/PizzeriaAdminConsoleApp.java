@@ -28,7 +28,7 @@ public class PizzeriaAdminConsoleApp {
 
 		System.out.println("\nAu revoir, a bientot !");
 		ihmTools.getSc().close();
-		daoImplInstance.close();
+		daoImplInstance.closeConnection();
 
 	}
 }

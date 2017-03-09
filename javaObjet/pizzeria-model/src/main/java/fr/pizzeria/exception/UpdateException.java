@@ -1,5 +1,6 @@
 package fr.pizzeria.exception;
 
+@SuppressWarnings("serial")
 public class UpdateException extends StockageException {
 
 	public UpdateException() {

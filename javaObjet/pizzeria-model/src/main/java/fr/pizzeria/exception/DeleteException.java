@@ -1,5 +1,6 @@
 package fr.pizzeria.exception;
 
+@SuppressWarnings("serial")
 public class DeleteException extends StockageException {
 
 	public DeleteException() {

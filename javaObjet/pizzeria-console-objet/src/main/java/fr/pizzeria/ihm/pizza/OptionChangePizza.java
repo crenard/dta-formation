@@ -43,7 +43,7 @@ public class OptionChangePizza extends OptionMenu {
 			try {
 				ihmTools.getDaoPizza().update(pizzaPick, new Pizza(code, nom, prix, category));
 			} catch (StockageException e) {
-				throw new StockageException("\n!!! Code incorrect, cette pizza n'existe pas");
+				throw new StockageException("\n!!! Code incorrect, cette pizza n'existe pas", e);
 			}
 		}
 	}

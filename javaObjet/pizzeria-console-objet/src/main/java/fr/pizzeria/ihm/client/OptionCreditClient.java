@@ -26,9 +26,9 @@ public class OptionCreditClient extends OptionMenu {
 		try {
 			ihmTools.getDaoClient().crediter(clientId, ajout);
 		} catch (CreditException e) {
-			throw new CreditException("\n!!! Le montant ne peux pas exceder 5000€");
+			throw new CreditException("\n!!! Le montant ne peux pas exceder 5000â‚¬", e);
 		} catch (StockageException e) {
-			throw new CreditException("\n!!! Code incorrect, ce client n'existe pas");
+			throw new CreditException("\n!!! Code incorrect, ce client n'existe pas", e);
 		}
 	}
 

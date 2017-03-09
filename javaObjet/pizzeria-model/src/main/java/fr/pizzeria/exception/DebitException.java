@@ -1,5 +1,6 @@
 package fr.pizzeria.exception;
 
+@SuppressWarnings("serial")
 public class DebitException extends SoldeException {
 
 	public DebitException() {
@@ -12,6 +13,10 @@ public class DebitException extends SoldeException {
 
 	public DebitException(Throwable cause) {
 		super(cause);
+	}
+
+	public DebitException(String message, Throwable cause) {
+		super(message, cause);
 	}
 
 }

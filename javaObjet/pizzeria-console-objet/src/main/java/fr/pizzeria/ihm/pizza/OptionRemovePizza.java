@@ -23,7 +23,7 @@ public class OptionRemovePizza extends OptionMenu {
 			try {
 				ihmTools.getDaoPizza().delete(pizzaPick);
 			} catch (StockageException e) {
-				throw new StockageException("\n!!! Code incorrect, cette pizza n'existe pas");
+				throw new StockageException("\n!!! Code incorrect, cette pizza n'existe pas", e);
 			}
 		}
 	}

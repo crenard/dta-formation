@@ -26,9 +26,9 @@ public class OptionDebitClient extends OptionMenu {
 		try {
 			ihmTools.getDaoClient().debiter(clientId, ajout);
 		} catch (DebitException e) {
-			throw new DebitException("\n!!! Pas assez d'argent sur le compte");
+			throw new DebitException("\n!!! Pas assez d'argent sur le compte", e);
 		} catch (StockageException e) {
-			throw new CreditException("\n!!! Code incorrect, ce client n'existe pas");
+			throw new DebitException("\n!!! Code incorrect, ce client n'existe pas", e);
 		}
 
 	}

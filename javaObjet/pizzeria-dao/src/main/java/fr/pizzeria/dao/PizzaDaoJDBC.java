@@ -102,7 +102,7 @@ public class PizzaDaoJDBC implements IDao<Pizza> {
 		}
 	}
 
-	public void close() {
+	public void closeConnection() {
 		try {
 			conn.close();
 		} catch (SQLException e) {
