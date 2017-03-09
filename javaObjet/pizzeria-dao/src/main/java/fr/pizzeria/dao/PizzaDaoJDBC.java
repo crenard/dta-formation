@@ -9,13 +9,13 @@ import fr.pizzeria.model.*;
 public class PizzaDaoJDBC implements IDao<Pizza> {
 
 	private Connection conn;
-	private String user;
-	private String password;
 
 	public PizzaDaoJDBC() {
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("jdbc");
-		user = resourceBundle.getString("user");
-		password = resourceBundle.getString("password");
+
+		String user = resourceBundle.getString("user");
+		String password = resourceBundle.getString("password");
+		String url = resourceBundle.getString("url");
 
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -23,7 +23,7 @@ public class PizzaDaoJDBC implements IDao<Pizza> {
 			throw new ConnectionException(e);
 		}
 		try {
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/pizzeria", user, password);
+			conn = DriverManager.getConnection(url, user, password);
 		} catch (SQLException e) {
 			throw new ConnectionException("Erreur de connection a la base", e);
 		}

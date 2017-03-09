@@ -42,15 +42,15 @@
 	<profiles>
 		<profile>
 			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<properties>
 				<daoImpl>PizzaDaoJDBC</daoImpl>
 			</properties>
 		</profile>
 		<profile>
 			<id>prod</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<properties>
 				<daoImpl>PizzaDaoFichiers</daoImpl>
 			</properties>

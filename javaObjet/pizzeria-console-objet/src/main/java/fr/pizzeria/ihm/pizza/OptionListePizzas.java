@@ -1,5 +1,6 @@
 package fr.pizzeria.ihm.pizza;
 
+import fr.pizzeria.exception.ConnectionException;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
@@ -16,7 +17,10 @@ public class OptionListePizzas extends OptionMenu {
 
 	@Override
 	public void execute() {
-		ihmTools.getDaoPizza().findAll().stream().forEach(System.out::println);
+		try {
+			ihmTools.getDaoPizza().findAll().stream().forEach(System.out::println);
+		} catch (ConnectionException e) {
+			System.out.println(e.getMessage());
+		}
 	}
-
 }
