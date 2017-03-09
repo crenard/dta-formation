@@ -1,1 +1,1 @@
-CAN;La cannibale;12.5
+CAN;LaCannibale;12.5

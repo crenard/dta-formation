@@ -13,6 +13,7 @@ public class MenuPizza extends Menu {
 		actions.put(4, new OptionRemovePizza(ihmTools));
 		actions.put(5, new OptionListeCategorie(ihmTools));
 		actions.put(6, new OptionExpensivePizza(ihmTools));
+		actions.put(7, new OptionImportBDD(ihmTools));
 	}
 
 }

@@ -2,6 +2,7 @@ package fr.pizzeria.dao;
 
 import java.sql.*;
 import java.util.*;
+import org.apache.commons.collections4.ListUtils;
 
 import fr.pizzeria.exception.*;
 import fr.pizzeria.model.*;
@@ -93,6 +94,31 @@ public class PizzaDaoJDBC implements IDao<Pizza> {
 
 	@Override
 	public void importBDD() {
-		// TODO
+		IDao<Pizza> daoFichiers = new PizzaDaoFichiers();
+		List<Pizza> list = new ArrayList<>();
+
+		list = daoFichiers.findAll();
+
+		List<List<Pizza>> parts = ListUtils.partition(list, 3);
+		for (List<Pizza> part : parts) {
+			try (Connection conn = connect()) {
+				conn.setAutoCommit(false);
+				for (Pizza pizza : part) {
+					try (PreparedStatement request = conn.prepareStatement(
+							"INSERT INTO pizza (code, description, prix, categorie) VALUES (?,?,?,?)")) {
+						request.setString(1, pizza.getCode());
+						request.setString(2, pizza.getNom());
+						request.setDouble(3, pizza.getPrix());
+						request.setString(4, pizza.getCategorie().toString());
+						request.executeUpdate();
+					} catch (SQLException e) {
+						throw new ConnectionException("Requete impossible", e);
+					}
+				}
+				conn.commit();
+			} catch (SQLException e1) {
+				throw new ConnectionException("Connexion impossible", e1);
+			}
+		}
 	}
 }
