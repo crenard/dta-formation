@@ -21,6 +21,7 @@ public class OptionListePizzas extends OptionMenu {
 			ihmTools.getDaoPizza().findAll().stream().forEach(System.out::println);
 		} catch (ConnectionException e) {
 			System.out.println(e.getMessage());
+			throw new ConnectionException(e);
 		}
 	}
 }
