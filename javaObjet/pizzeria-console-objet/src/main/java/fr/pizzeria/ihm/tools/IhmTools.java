@@ -9,11 +9,13 @@ import fr.pizzeria.model.Pizza;
 public class IhmTools {
 	private Scanner sc = new Scanner(System.in);
 	private IDao<Pizza> daoPizza;
+	private IDao<Pizza> daoSource;
 	private IClientDao daoClient;
 
-	public IhmTools(IDao<Pizza> dao) {
+	public IhmTools(IDao<Pizza> dao, IDao<Pizza> source) {
 		this.daoPizza = dao;
 		this.daoClient = new ClientDaoImpl();
+		this.daoSource = source;
 	}
 
 	public IDao<Pizza> getDaoPizza() {
@@ -22,6 +24,10 @@ public class IhmTools {
 
 	public IClientDao getDaoClient() {
 		return daoClient;
+	}
+
+	public IDao<Pizza> getDaoSource() {
+		return daoSource;
 	}
 
 	public Scanner getSc() {

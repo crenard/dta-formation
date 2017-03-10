@@ -1,6 +1,5 @@
 package fr.pizzeria.ihm.client;
 
-import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 

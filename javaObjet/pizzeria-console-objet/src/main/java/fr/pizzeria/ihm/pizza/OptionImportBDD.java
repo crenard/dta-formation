@@ -19,7 +19,7 @@ public class OptionImportBDD extends OptionMenu {
 	@Override
 	public void execute() {
 		try {
-			ihmTools.getDaoPizza().importBDD();
+			ihmTools.getDaoPizza().importBDD(ihmTools.getDaoSource());
 		} catch (StockageException e) {
 			throw new ConnectionException("\n!!! Une erreur a ete enregistree : " + e);
 		}

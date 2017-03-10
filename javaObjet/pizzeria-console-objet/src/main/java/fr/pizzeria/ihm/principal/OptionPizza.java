@@ -1,6 +1,5 @@
 package fr.pizzeria.ihm.principal;
 
-import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.Menu;
 import fr.pizzeria.ihm.MenuPizza;
 import fr.pizzeria.ihm.OptionMenu;

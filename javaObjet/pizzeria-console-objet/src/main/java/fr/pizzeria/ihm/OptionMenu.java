@@ -1,6 +1,5 @@
 package fr.pizzeria.ihm;
 
-import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.tools.IhmTools;
 
 public abstract class OptionMenu {

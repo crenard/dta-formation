@@ -11,7 +11,7 @@ public interface IDao<T> {
 
 	void delete(String codePizza);
 
-	default void importBDD() {
+	default void importBDD(IDao<T> source) {
 		System.out.println("Invalide dans ce mode, veuillez configurer l’application en mode Base de donnees");
 	}
 }

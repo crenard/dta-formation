@@ -93,11 +93,8 @@ public class PizzaDaoJDBC implements IDao<Pizza> {
 	}
 
 	@Override
-	public void importBDD() {
-		IDao<Pizza> daoFichiers = new PizzaDaoFichiers();
-		List<Pizza> list = new ArrayList<>();
-
-		list = daoFichiers.findAll();
+	public void importBDD(IDao<Pizza> daoSource) {
+		List<Pizza> list = daoSource.findAll();
 
 		List<List<Pizza>> parts = ListUtils.partition(list, 3);
 		try (Connection conn = connect();

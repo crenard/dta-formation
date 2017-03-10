@@ -19,9 +19,9 @@ public class PizzeriaAdminConsoleApp {
 
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("application");
 
-		String daoImpl = resourceBundle.getString("daoImpl");
-		IDao<Pizza> daoImplInstance = (IDao<Pizza>) Class.forName(daoImpl).newInstance();
-		IhmTools ihmTools = new IhmTools(daoImplInstance);
+		IDao<Pizza> daoImplInstance = (IDao<Pizza>) Class.forName(resourceBundle.getString("daoImpl")).newInstance();
+		IDao<Pizza> daoSourceImports = (IDao<Pizza>) Class.forName(resourceBundle.getString("daoSource")).newInstance();
+		IhmTools ihmTools = new IhmTools(daoImplInstance, daoSourceImports);
 
 		Menu menu = new MenuPrincipal("**** Pizzeria Administration ****", ihmTools);
 		menu.executer();
