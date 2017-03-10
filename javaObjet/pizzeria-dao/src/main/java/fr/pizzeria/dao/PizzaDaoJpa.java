@@ -3,7 +3,7 @@ package fr.pizzeria.dao;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.*;
 
 import javax.persistence.*;
 
@@ -23,7 +23,7 @@ public class PizzaDaoJpa implements IDao<Pizza> {
 		return emFactory.createEntityManager().createQuery("SELECT p FROM Pizza p", Pizza.class).getResultList();
 	}
 
-	private void execute(Consumer<EntityManager> exec) {
+	private void emCreation(Consumer<EntityManager> exec) {
 		EntityManager em = emFactory.createEntityManager();
 		EntityTransaction et = em.getTransaction();
 		et.begin();
@@ -34,38 +34,33 @@ public class PizzaDaoJpa implements IDao<Pizza> {
 
 	@Override
 	public void save(Pizza newPizza) {
-		execute(em -> em.persist(newPizza));
+		emCreation(em -> em.persist(newPizza));
+	}
+
+	private void queryExec(EntityManager em, String codePizza, String exceptionMsg, Consumer<Pizza> exec) {
+		TypedQuery<Pizza> query = em.createQuery("SELECT p FROM Pizza p WHERE code LIKE :code", Pizza.class);
+		query.setParameter("code", codePizza);
+		Pizza oldPizza = query.getSingleResult();
+		if (oldPizza != null) {
+			exec.accept(oldPizza);
+		} else {
+			throw new StockageException(exceptionMsg);
+		}
 	}
 
 	@Override
 	public void update(String codePizza, Pizza pizza) {
-		execute(em -> {
-			TypedQuery<Pizza> query = em.createQuery("SELECT p FROM Pizza p WHERE code LIKE :code", Pizza.class);
-			query.setParameter("code", codePizza);
-
-			Pizza oldPizza = query.getSingleResult();
-			if (oldPizza != null) {
-				Pizza newPizza = pizza;
-				newPizza.setId(oldPizza.getId());
-				em.merge(newPizza);
-			} else {
-				throw new StockageException("Mise a jour de la pizza impossible");
-			}
-		});
+		emCreation(em -> queryExec(em, codePizza, "Mise a jour de la pizza impossible", oldPizza -> {
+			Pizza newPizza = pizza;
+			newPizza.setId(oldPizza.getId());
+			em.merge(newPizza);
+		}));
 	}
 
 	@Override
 	public void delete(String codePizza) {
-		execute(em -> {
-			TypedQuery<Pizza> query = em.createQuery("SELECT p FROM Pizza p WHERE code LIKE :code", Pizza.class);
-			query.setParameter("code", codePizza);
-			Pizza oldPizza = query.getSingleResult();
-			if (oldPizza != null) {
-				em.remove(oldPizza);
-			} else {
-				throw new StockageException("Suppression de la pizza impossible");
-			}
-		});
+		emCreation(
+				em -> queryExec(em, codePizza, "Suppression de la pizza impossible", oldPizza -> em.remove(oldPizza)));
 	}
 
 }
