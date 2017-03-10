@@ -3,6 +3,12 @@ package fr.pizzeria.ihm;
 import fr.pizzeria.ihm.principal.*;
 import fr.pizzeria.ihm.tools.IhmTools;
 
+/**
+ * Menu principal
+ * 
+ * @author ETY 10
+ *
+ */
 public class MenuPrincipal extends Menu {
 	/**
 	 * Creation du menu principal

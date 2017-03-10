@@ -6,11 +6,23 @@ import java.util.Map.Entry;
 import fr.pizzeria.exception.*;
 import fr.pizzeria.ihm.tools.IhmTools;
 
+/**
+ * Menu generique
+ * 
+ * @author ETY 10
+ *
+ */
 public abstract class Menu {
 	protected String titre;
 	protected Map<Integer, OptionMenu> actions;
 	protected IhmTools ihmTools;
 
+	/**
+	 * Construction du menu
+	 * 
+	 * @param titre
+	 * @param ihmTools
+	 */
 	public Menu(String titre, IhmTools ihmTools) {
 		this.titre = titre;
 		this.ihmTools = ihmTools;

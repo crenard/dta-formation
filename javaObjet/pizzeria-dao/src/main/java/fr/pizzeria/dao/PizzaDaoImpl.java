@@ -16,6 +16,9 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 
 	private List<Pizza> pizzas = new ArrayList<>();
 
+	/**
+	 * Constructeur du dao qui peuple la base memoire de pizzas
+	 */
 	public PizzaDaoImpl() {
 		pizzas.add(new Pizza("PEP", "Peperoni", 12.50, CategoriePizza.VIANDE));
 		pizzas.add(new Pizza("MAR", "Margherita", 14.00, CategoriePizza.VIANDE));

@@ -4,6 +4,12 @@ import fr.pizzeria.model.Client;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
+/**
+ * Menu item pour ajouter des clients
+ * 
+ * @author ETY 10
+ *
+ */
 public class OptionAddClient extends OptionMenu {
 	/**
 	 * Creation du menu item pour ajouter des clients

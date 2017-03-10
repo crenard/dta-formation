@@ -14,7 +14,9 @@ import fr.pizzeria.model.*;
  *
  */
 public class PizzaDaoJDBC implements IDao<Pizza> {
-
+	/**
+	 * Constructeur du dao qui charge le driver de BDD
+	 */
 	public PizzaDaoJDBC() {
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("jdbc");
 		try {
@@ -112,9 +114,6 @@ public class PizzaDaoJDBC implements IDao<Pizza> {
 					request.setString(2, pizza.getNom());
 					request.setDouble(3, pizza.getPrix());
 					request.setString(4, pizza.getCategorie().toString());
-					if (request.executeUpdate() == 0) {
-						conn.rollback();
-					}
 				}
 				conn.commit();
 			}

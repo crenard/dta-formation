@@ -3,6 +3,12 @@ package fr.pizzeria.ihm;
 import fr.pizzeria.ihm.client.*;
 import fr.pizzeria.ihm.tools.IhmTools;
 
+/**
+ * Menu de gestion des clients
+ * 
+ * @author ETY 10
+ *
+ */
 public class MenuClient extends Menu {
 
 	/**

@@ -4,6 +4,12 @@ import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
+/**
+ * Menu item pour ajouter des pizzas
+ * 
+ * @author ETY 10
+ *
+ */
 public class OptionAddPizza extends OptionMenu {
 	/**
 	 * Creation du menu item pour ajouter des pizzas

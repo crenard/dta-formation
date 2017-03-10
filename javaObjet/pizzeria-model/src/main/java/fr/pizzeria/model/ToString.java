@@ -11,5 +11,10 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface ToString {
+	/**
+	 * Predicat pour changer l'element en uppercase
+	 * 
+	 * @return
+	 */
 	boolean uppercase() default false;
 }

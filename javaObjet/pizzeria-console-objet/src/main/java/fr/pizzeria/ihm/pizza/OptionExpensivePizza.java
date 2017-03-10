@@ -6,6 +6,12 @@ import fr.pizzeria.model.*;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
+/**
+ * Menu item pour obtenir la pizza la plus chere
+ * 
+ * @author ETY 10
+ *
+ */
 public class OptionExpensivePizza extends OptionMenu {
 	/**
 	 * Creation du menu item pour obtenir la pizza la plus chere

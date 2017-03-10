@@ -18,6 +18,13 @@ public class Client implements Comparable<Client> {
 	private String prenom;
 	private double solde;
 
+	/**
+	 * Creation d'un nouveau client avec un solde nul
+	 * 
+	 * @param id
+	 * @param prenom
+	 * @param nom
+	 */
 	public Client(int id, String prenom, String nom) {
 		this.id = id;
 		this.nom = nom;
@@ -25,22 +32,11 @@ public class Client implements Comparable<Client> {
 		this.solde = 0.0;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public double getSolde() {
-		return solde;
-	}
-
+	/**
+	 * Ajoute un montant au solde si le total est inferieur a 5000
+	 * 
+	 * @param montant
+	 */
 	public void crediterCompte(double montant) {
 		double tempSolde = solde + montant;
 		if (tempSolde > 5000.0) {
@@ -50,6 +46,11 @@ public class Client implements Comparable<Client> {
 		}
 	}
 
+	/**
+	 * Retire un montant au solde si le total est positif
+	 * 
+	 * @param montant
+	 */
 	public void debiterCompte(double montant) {
 		double tempSolde = solde - montant;
 		if (tempSolde < 0.0) {
@@ -61,13 +62,12 @@ public class Client implements Comparable<Client> {
 
 	@Override
 	public String toString() {
-		return id + " -> " + prenom + " " + nom + " (" + solde + " �)";
+		return id + " -> " + prenom + " " + nom + " (" + solde + " €)";
 	}
 
 	@Override
 	public int compareTo(Client client) {
-		Integer cli1 = new Integer(this.id), cli2 = new Integer(client.getId());
-		return cli1.compareTo(cli2);
+		return new Integer(this.id).compareTo(new Integer(client.getId()));
 	}
 
 	@Override
@@ -86,4 +86,21 @@ public class Client implements Comparable<Client> {
 		Client other = (Client) obj;
 		return new EqualsBuilder().append(id, other.id).isEquals();
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public double getSolde() {
+		return solde;
+	}
+
 }

@@ -7,12 +7,26 @@ import fr.pizzeria.ihm.*;
 import fr.pizzeria.ihm.tools.IhmTools;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * Main class de gestion d'une pizzeria
+ * 
+ * @author ETY 10
+ *
+ */
 public class PizzeriaAdminConsoleApp {
 
 	private PizzeriaAdminConsoleApp() {
 		throw new IllegalAccessError("Utility class");
 	}
 
+	/**
+	 * Point d'entree du programme
+	 * 
+	 * @param args
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 * @throws ClassNotFoundException
+	 */
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException {

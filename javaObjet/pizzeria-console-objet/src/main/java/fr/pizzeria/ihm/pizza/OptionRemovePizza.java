@@ -4,6 +4,12 @@ import fr.pizzeria.exception.*;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
+/**
+ * Menu item pour supprimer des pizzas
+ * 
+ * @author ETY 10
+ *
+ */
 public class OptionRemovePizza extends OptionMenu {
 	/**
 	 * Creation du menu item pour supprimer des pizzas

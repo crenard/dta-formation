@@ -6,6 +6,12 @@ import fr.pizzeria.model.*;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
+/**
+ * Menu item pour lister les pizzas par categories
+ * 
+ * @author ETY 10
+ *
+ */
 public class OptionListeCategorie extends OptionMenu {
 	/**
 	 * Creation du menu item pour lister les pizzas par categories

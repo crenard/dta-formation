@@ -5,6 +5,12 @@ import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
+/**
+ * Menu item pour importer des pizzas depuis une source
+ * 
+ * @author ETY 10
+ *
+ */
 public class OptionImportBDD extends OptionMenu {
 	/**
 	 * Creation du menu item pour importer des pizzas depuis une source

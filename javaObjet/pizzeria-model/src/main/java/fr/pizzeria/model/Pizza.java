@@ -21,6 +21,14 @@ public class Pizza implements Comparable<Pizza> {
 	private double prix;
 	private CategoriePizza categorie;
 
+	/**
+	 * Creation d'une nouvelle pizza
+	 * 
+	 * @param code
+	 * @param nom
+	 * @param prix
+	 * @param category
+	 */
 	public Pizza(String code, String nom, double prix, CategoriePizza category) {
 		this.code = code;
 		this.nom = nom;
