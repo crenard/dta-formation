@@ -1,8 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
-    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<artifactId>cyrille-pizzeria-console-objet</artifactId>
 	<dependencies>
@@ -14,29 +14,37 @@
 			<groupId>dta</groupId>
 			<artifactId>cyrille-pizzeria-model</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+		</dependency>
 	</dependencies>
-	
-	<build>    
+
+	<build>
 		<resources>
-      		<resource>
-       			<directory>src/main/resources</directory>
-       			<filtering>true</filtering>
-      		</resource>
-    	</resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
-	   			<artifactId>maven-shade-plugin</artifactId>
-	   			<configuration>
-	    		</configuration>
-	     		<executions>
-	       			<execution>
-	         			<phase>package</phase>
-	         			<goals>
-	           				<goal>shade</goal>
-	         			</goals>
-	       			</execution>
-	     		</executions>
-   			</plugin>
+				<artifactId>maven-shade-plugin</artifactId>
+				<configuration>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<profiles>
@@ -46,7 +54,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<daoImpl>PizzaDaoJDBC</daoImpl>
+				<daoImpl>PizzaDaoJpa</daoImpl>
 			</properties>
 		</profile>
 		<profile>
@@ -60,6 +68,6 @@
 		<groupId>dta</groupId>
 		<artifactId>cyrille-pizzeria</artifactId>
 		<version>1.0</version>
-		<relativePath>../</relativePath>		
+		<relativePath>../</relativePath>
 	</parent>
 </project>

@@ -1,6 +1,7 @@
 package fr.pizzeria.console;
 
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 
 import fr.pizzeria.dao.*;
 import fr.pizzeria.ihm.*;
@@ -30,7 +31,7 @@ public class PizzeriaAdminConsoleApp {
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-
+		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("application");
 
 		IDao<Pizza> daoImplInstance = (IDao<Pizza>) Class.forName(resourceBundle.getString("daoImpl")).newInstance();

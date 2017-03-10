@@ -2,6 +2,8 @@ package fr.pizzeria.model;
 
 import java.lang.reflect.Field;
 
+import javax.persistence.*;
+
 import org.apache.commons.lang3.builder.*;
 
 import fr.pizzeria.exception.StockageException;
@@ -12,14 +14,36 @@ import fr.pizzeria.exception.StockageException;
  * @author ETY 10
  *
  */
+@Entity
+@Table(name = "pizza")
 public class Pizza implements Comparable<Pizza> {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	@ToString(uppercase = true)
+	@Column(name = "code", length = 3, nullable = false, unique = true)
 	private String code;
 	@ToString
+	@Column(name = "description", length = 30)
 	private String nom;
 	@ToString
+	@Column(name = "prix")
 	private double prix;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "categorie", nullable = false)
 	private CategoriePizza categorie;
+
+	/**
+	 * Creation d'une nouvelle pizza
+	 * 
+	 */
+	public Pizza() {
+		this.code = "GRE";
+		this.nom = null;
+		this.prix = 0;
+		this.categorie = CategoriePizza.VIANDE;
+
+	}
 
 	/**
 	 * Creation d'une nouvelle pizza
@@ -99,6 +123,30 @@ public class Pizza implements Comparable<Pizza> {
 
 	public CategoriePizza getCategorie() {
 		return categorie;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
+
+	public void setCategorie(CategoriePizza categorie) {
+		this.categorie = categorie;
 	}
 
 }
