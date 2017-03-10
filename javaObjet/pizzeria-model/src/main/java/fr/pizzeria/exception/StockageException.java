@@ -1,5 +1,11 @@
 package fr.pizzeria.exception;
 
+/**
+ * Exception liee au stockage
+ * 
+ * @author ETY 10
+ *
+ */
 @SuppressWarnings("serial")
 public class StockageException extends RuntimeException {
 	/**
@@ -15,8 +21,8 @@ public class StockageException extends RuntimeException {
 	 * 
 	 * @param message
 	 */
-	public StockageException(String string) {
-		super(string);
+	public StockageException(String message) {
+		super(message);
 	}
 
 	/**

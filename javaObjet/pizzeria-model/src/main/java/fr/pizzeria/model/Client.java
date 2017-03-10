@@ -67,7 +67,7 @@ public class Client implements Comparable<Client> {
 
 	@Override
 	public int compareTo(Client client) {
-		return new Integer(this.id).compareTo(new Integer(client.getId()));
+		return id - client.getId();
 	}
 
 	@Override
