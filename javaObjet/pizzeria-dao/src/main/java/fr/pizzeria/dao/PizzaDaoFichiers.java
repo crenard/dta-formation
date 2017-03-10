@@ -53,12 +53,5 @@ public class PizzaDaoFichiers implements IDao<Pizza> {
 		} catch (IOException e) {
 			throw new DeleteException(e);
 		}
-
-	}
-
-	@Override
-	public void importBDD() {
-		System.out.println(
-				"Invalide en mode fichier, veuillez configurer l’application avec une implementation base de donnees");
 	}
 }

@@ -67,10 +67,4 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 			throw new DeleteException();
 		}
 	}
-
-	@Override
-	public void importBDD() {
-		System.out.println(
-				"Invalide en mode memoire, veuillez configurer l’application avec une implementation base de donnees");
-	}
 }
