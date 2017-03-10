@@ -15,6 +15,9 @@ import fr.pizzeria.exception.StockageException;
  *
  */
 @Entity
+@NamedQueries({ @NamedQuery(name = "Pizza.findAll", query = "SELECT p FROM Pizza p"),
+		@NamedQuery(name = "Pizza.find", query = "SELECT p FROM Pizza p WHERE code LIKE :code") })
+
 @Table(name = "pizza")
 public class Pizza implements Comparable<Pizza> {
 	@Id

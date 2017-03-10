@@ -1,7 +1,5 @@
 package fr.pizzeria.dao;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.function.*;
 
@@ -20,7 +18,7 @@ public class PizzaDaoJpa implements IDao<Pizza> {
 
 	@Override
 	public List<Pizza> findAll() {
-		return emFactory.createEntityManager().createQuery("SELECT p FROM Pizza p", Pizza.class).getResultList();
+		return emFactory.createEntityManager().createNamedQuery("Pizza.findAll", Pizza.class).getResultList();
 	}
 
 	private void emCreation(Consumer<EntityManager> exec) {
@@ -38,9 +36,8 @@ public class PizzaDaoJpa implements IDao<Pizza> {
 	}
 
 	private void queryExec(EntityManager em, String codePizza, String exceptionMsg, Consumer<Pizza> exec) {
-		TypedQuery<Pizza> query = em.createQuery("SELECT p FROM Pizza p WHERE code LIKE :code", Pizza.class);
-		query.setParameter("code", codePizza);
-		Pizza oldPizza = query.getSingleResult();
+		Pizza oldPizza = em.createNamedQuery("Pizza.find", Pizza.class).setParameter("code", codePizza)
+				.getSingleResult();
 		if (oldPizza != null) {
 			exec.accept(oldPizza);
 		} else {
