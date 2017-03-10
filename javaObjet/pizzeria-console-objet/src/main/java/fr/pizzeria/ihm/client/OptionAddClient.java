@@ -5,7 +5,11 @@ import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
 public class OptionAddClient extends OptionMenu {
-
+	/**
+	 * Creation du menu item pour ajouter des clients
+	 * 
+	 * @param ihmTools
+	 */
 	public OptionAddClient(IhmTools ihmTools) {
 		super(ihmTools);
 	}

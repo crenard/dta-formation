@@ -5,7 +5,11 @@ import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
 public class OptionDebitClient extends OptionMenu {
-
+	/**
+	 * Creation du menu item pour debiter des clients
+	 * 
+	 * @param ihmTools
+	 */
 	public OptionDebitClient(IhmTools ihmTools) {
 		super(ihmTools);
 	}

@@ -7,7 +7,11 @@ import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
 public class OptionExpensivePizza extends OptionMenu {
-
+	/**
+	 * Creation du menu item pour obtenir la pizza la plus chere
+	 * 
+	 * @param ihmTools
+	 */
 	public OptionExpensivePizza(IhmTools ihmTools) {
 		super(ihmTools);
 	}

@@ -17,6 +17,9 @@ public abstract class Menu {
 		actions = new HashMap<>();
 	}
 
+	/**
+	 * Affichage du menu
+	 */
 	public void afficher() {
 		System.out.println("\n" + titre);
 		System.out.println("Veuillez choisir une action :");
@@ -26,6 +29,9 @@ public abstract class Menu {
 		System.out.println(actions.size() + 1 + " : Quitter");
 	}
 
+	/**
+	 * Execution du menu
+	 */
 	public void executer() {
 		int choix = 0;
 		while (choix != actions.size() + 1) {
@@ -34,7 +40,7 @@ public abstract class Menu {
 			ihmTools.getSc().nextLine();
 
 			while (choix > actions.size() + 1) {
-				System.out.println("\n!!! Entrez une valeur autoris�e !!!\n");
+				System.out.println("\n!!! Entrez une valeur autorisee !!!\n");
 				afficher();
 				choix = ihmTools.getSc().nextInt();
 				ihmTools.getSc().nextLine();

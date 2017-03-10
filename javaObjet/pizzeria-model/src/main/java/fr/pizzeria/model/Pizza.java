@@ -6,6 +6,12 @@ import org.apache.commons.lang3.builder.*;
 
 import fr.pizzeria.exception.StockageException;
 
+/**
+ * Modele de gestion de pizzas
+ * 
+ * @author ETY 10
+ *
+ */
 public class Pizza implements Comparable<Pizza> {
 	@ToString(uppercase = true)
 	private String code;
@@ -20,22 +26,6 @@ public class Pizza implements Comparable<Pizza> {
 		this.nom = nom;
 		this.prix = prix;
 		this.categorie = category;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public double getPrix() {
-		return prix;
-	}
-
-	public CategoriePizza getCategorie() {
-		return categorie;
 	}
 
 	@Override
@@ -85,6 +75,22 @@ public class Pizza implements Comparable<Pizza> {
 			return false;
 		Pizza other = (Pizza) obj;
 		return new EqualsBuilder().append(code, other.code).isEquals();
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public double getPrix() {
+		return prix;
+	}
+
+	public CategoriePizza getCategorie() {
+		return categorie;
 	}
 
 }

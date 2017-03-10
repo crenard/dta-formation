@@ -7,6 +7,12 @@ import org.apache.commons.collections4.ListUtils;
 import fr.pizzeria.exception.*;
 import fr.pizzeria.model.*;
 
+/**
+ * Implementation BDD du stockage des pizzas
+ * 
+ * @author ETY 10
+ *
+ */
 public class PizzaDaoJDBC implements IDao<Pizza> {
 
 	public PizzaDaoJDBC() {
@@ -47,7 +53,7 @@ public class PizzaDaoJDBC implements IDao<Pizza> {
 	}
 
 	@FunctionalInterface
-	interface Exec {
+	private interface Exec {
 		void execute(PreparedStatement request) throws SQLException;
 	}
 
@@ -94,9 +100,8 @@ public class PizzaDaoJDBC implements IDao<Pizza> {
 
 	@Override
 	public void importBDD(IDao<Pizza> daoSource) {
-		List<Pizza> list = daoSource.findAll();
+		List<List<Pizza>> parts = ListUtils.partition(daoSource.findAll(), 3);
 
-		List<List<Pizza>> parts = ListUtils.partition(list, 3);
 		try (Connection conn = connect();
 				PreparedStatement request = conn
 						.prepareStatement("INSERT INTO pizza (code, description, prix, categorie) VALUES (?,?,?,?)")) {

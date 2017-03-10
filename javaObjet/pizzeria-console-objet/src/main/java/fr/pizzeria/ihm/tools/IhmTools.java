@@ -12,6 +12,12 @@ public class IhmTools {
 	private IDao<Pizza> daoSource;
 	private IClientDao daoClient;
 
+	/**
+	 * Creation de l'outil pour aider l'ihm
+	 * 
+	 * @param dao
+	 * @param source
+	 */
 	public IhmTools(IDao<Pizza> dao, IDao<Pizza> source) {
 		this.daoPizza = dao;
 		this.daoClient = new ClientDaoImpl();

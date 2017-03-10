@@ -4,7 +4,12 @@ import fr.pizzeria.ihm.principal.*;
 import fr.pizzeria.ihm.tools.IhmTools;
 
 public class MenuPrincipal extends Menu {
-
+	/**
+	 * Creation du menu principal
+	 * 
+	 * @param titre
+	 * @param ihmTools
+	 */
 	public MenuPrincipal(String titre, IhmTools ihmTools) {
 		super(titre, ihmTools);
 		actions.put(1, new OptionPizza(ihmTools));

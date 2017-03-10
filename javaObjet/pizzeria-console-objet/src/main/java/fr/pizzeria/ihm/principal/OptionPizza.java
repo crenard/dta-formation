@@ -6,7 +6,11 @@ import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
 public class OptionPizza extends OptionMenu {
-
+	/**
+	 * Creation du menu pour la gestion des pizzas
+	 * 
+	 * @param ihmTools
+	 */
 	public OptionPizza(IhmTools ihmTools) {
 		super(ihmTools);
 	}

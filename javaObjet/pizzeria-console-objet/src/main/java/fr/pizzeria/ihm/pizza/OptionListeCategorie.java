@@ -7,7 +7,11 @@ import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
 public class OptionListeCategorie extends OptionMenu {
-
+	/**
+	 * Creation du menu item pour lister les pizzas par categories
+	 * 
+	 * @param ihmTools
+	 */
 	public OptionListeCategorie(IhmTools ihmTools) {
 		super(ihmTools);
 	}

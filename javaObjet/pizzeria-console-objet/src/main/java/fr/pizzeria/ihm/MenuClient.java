@@ -5,6 +5,12 @@ import fr.pizzeria.ihm.tools.IhmTools;
 
 public class MenuClient extends Menu {
 
+	/**
+	 * Creation du menu de gestion des clients
+	 * 
+	 * @param titre
+	 * @param ihmTools
+	 */
 	public MenuClient(String titre, IhmTools ihmTools) {
 		super(titre, ihmTools);
 		actions.put(1, new OptionListeClients(ihmTools));

@@ -5,10 +5,19 @@ import java.util.*;
 import fr.pizzeria.exception.*;
 import fr.pizzeria.model.Client;
 
+/**
+ * Implementation memoire du stockage des clients
+ * 
+ * @author ETY 10
+ *
+ */
 public class ClientDaoImpl implements IClientDao {
 
 	private List<Client> clients = new ArrayList<>();
 
+	/**
+	 * Creation du dao client et peuplement de la base memoire
+	 */
 	public ClientDaoImpl() {
 		super();
 		clients.add(new Client(1, "Marcel", "Gris"));

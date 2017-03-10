@@ -6,7 +6,11 @@ import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
 public class OptionImportBDD extends OptionMenu {
-
+	/**
+	 * Creation du menu item pour importer des pizzas depuis une source
+	 * 
+	 * @param ihmTools
+	 */
 	public OptionImportBDD(IhmTools ihmTools) {
 		super(ihmTools);
 	}

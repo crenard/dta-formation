@@ -6,6 +6,11 @@ public abstract class OptionMenu {
 
 	protected IhmTools ihmTools;
 
+	/**
+	 * Creation du menu item
+	 * 
+	 * @param ihmTools
+	 */
 	public OptionMenu(IhmTools ihmTools) {
 		this.ihmTools = ihmTools;
 	}

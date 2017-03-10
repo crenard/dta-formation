@@ -6,6 +6,12 @@ import fr.pizzeria.exception.*;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * Implementation memoire du stockage des pizzas
+ * 
+ * @author ETY 10
+ *
+ */
 public class PizzaDaoImpl implements IDao<Pizza> {
 
 	private List<Pizza> pizzas = new ArrayList<>();

@@ -6,6 +6,12 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import fr.pizzeria.exception.CreditException;
 import fr.pizzeria.exception.DebitException;
 
+/**
+ * Modele de gestion de clients
+ * 
+ * @author ETY 10
+ *
+ */
 public class Client implements Comparable<Client> {
 	private int id;
 	private String nom;

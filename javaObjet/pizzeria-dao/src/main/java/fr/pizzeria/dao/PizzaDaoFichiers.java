@@ -7,6 +7,12 @@ import java.util.*;
 import fr.pizzeria.exception.*;
 import fr.pizzeria.model.*;
 
+/**
+ * Implementation fichier du stockage des pizzas
+ * 
+ * @author ETY 10
+ *
+ */
 public class PizzaDaoFichiers implements IDao<Pizza> {
 
 	@Override
