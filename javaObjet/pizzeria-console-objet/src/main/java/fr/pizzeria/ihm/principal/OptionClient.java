@@ -26,7 +26,7 @@ public class OptionClient extends OptionMenu {
 
 	@Override
 	public void execute() {
-		Menu menuClient = new MenuClient("**** Administration des clients ****", ihmTools);
+		Menu menuClient = new MenuClient("**** Pizzeria Client ****", ihmTools);
 		menuClient.executer();
 	}
 

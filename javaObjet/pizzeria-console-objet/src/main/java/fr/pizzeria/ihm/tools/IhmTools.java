@@ -2,6 +2,9 @@ package fr.pizzeria.ihm.tools;
 
 import java.util.Scanner;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import fr.pizzeria.dao.*;
 import fr.pizzeria.model.*;
 
@@ -16,6 +19,7 @@ public class IhmTools {
 	private IDao<Pizza> daoPizza;
 	private IDao<Pizza> daoSource;
 	private IDao<Client> daoClient;
+	private IDao<Commande> daoCommande;
 
 	/**
 	 * Creation de l'outil pour aider l'ihm
@@ -23,9 +27,11 @@ public class IhmTools {
 	 * @param dao
 	 * @param source
 	 */
-	public IhmTools(IDao<Pizza> dao, IDao<Pizza> source) {
-		this.daoPizza = dao;
-		this.daoClient = new ClientDaoJpa();
+	public IhmTools(IDao<Pizza> source) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pizzeria-console-objet");
+		this.daoPizza = new DaoJpa<Pizza>(Pizza.class, emf);
+		this.daoClient = new DaoJpa<Client>(Client.class, emf);
+		this.daoCommande = new DaoJpa<Commande>(Commande.class, emf);
 		this.daoSource = source;
 	}
 
@@ -77,6 +83,10 @@ public class IhmTools {
 
 	public IDao<Pizza> getDaoSource() {
 		return daoSource;
+	}
+
+	public IDao<Commande> getDaoCommande() {
+		return daoCommande;
 	}
 
 	public Scanner getSc() {

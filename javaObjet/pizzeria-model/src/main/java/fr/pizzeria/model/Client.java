@@ -9,7 +9,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 @NamedQueries({ @NamedQuery(name = "Client.findAll", query = "SELECT c FROM Client c"),
 		@NamedQuery(name = "Client.find", query = "SELECT c FROM Client c WHERE email LIKE :email") })
 @Table(name = "client")
-public class Client extends Personne {
+public class Client extends Personne implements GenericData {
 
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;

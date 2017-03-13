@@ -19,7 +19,7 @@ import fr.pizzeria.exception.StockageException;
 		@NamedQuery(name = "Pizza.find", query = "SELECT p FROM Pizza p WHERE code LIKE :code") })
 
 @Table(name = "pizza")
-public class Pizza implements Comparable<Pizza> {
+public class Pizza implements Comparable<Pizza>, GenericData {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

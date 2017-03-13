@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "commande")
-public class Commande {
+public class Commande implements GenericData {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

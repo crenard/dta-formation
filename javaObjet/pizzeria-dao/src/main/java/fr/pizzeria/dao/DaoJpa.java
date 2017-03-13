@@ -6,20 +6,23 @@ import java.util.function.Consumer;
 import javax.persistence.*;
 
 import fr.pizzeria.exception.StockageException;
-import fr.pizzeria.model.Client;
+import fr.pizzeria.model.GenericData;
 
-public class ClientDaoJpa implements IDao<Client> {
+public class DaoJpa<D extends GenericData> implements IDao<D> {
 
 	private EntityManagerFactory emFactory;
 
-	public ClientDaoJpa() {
-		emFactory = Persistence.createEntityManagerFactory("pizzeria-console-objet");
+	private Class<D> classe;
+
+	public DaoJpa(Class<D> classe, EntityManagerFactory emFactory) {
+		this.emFactory = emFactory;
+		this.classe = classe;
 	}
 
 	@Override
-	public List<Client> findAll() {
+	public List<D> findAll() {
 		EntityManager em = emFactory.createEntityManager();
-		List<Client> dataList = em.createNamedQuery("Client.findAll", Client.class).getResultList();
+		List<D> dataList = em.createNamedQuery(classe.getSimpleName() + ".findAll", classe).getResultList();
 		em.close();
 		return dataList;
 	}
@@ -34,12 +37,13 @@ public class ClientDaoJpa implements IDao<Client> {
 	}
 
 	@Override
-	public void save(Client newData) {
+	public void save(D newData) {
 		emCreation(em -> em.persist(newData));
 	}
 
-	private void queryExec(EntityManager em, String code, String exceptionMsg, Consumer<Client> exec) {
-		Client oldData = em.createNamedQuery("Client.find", Client.class).setParameter("code", code).getSingleResult();
+	private void queryExec(EntityManager em, String code, String exceptionMsg, Consumer<D> exec) {
+		D oldData = em.createNamedQuery(classe.getSimpleName() + ".find", classe).setParameter("code", code)
+				.getSingleResult();
 		if (oldData != null) {
 			exec.accept(oldData);
 		} else {
@@ -48,9 +52,9 @@ public class ClientDaoJpa implements IDao<Client> {
 	}
 
 	@Override
-	public void update(String code, Client data) {
+	public void update(String code, D data) {
 		emCreation(em -> queryExec(em, code, "Mise a jour impossible", oldData -> {
-			Client newData = data;
+			D newData = data;
 			newData.setId(oldData.getId());
 			em.merge(newData);
 		}));

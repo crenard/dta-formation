@@ -47,23 +47,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	<profiles>
-		<profile>
-			<id>dev</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<daoImpl>PizzaDaoJpa</daoImpl>
-			</properties>
-		</profile>
-		<profile>
-			<id>prod</id>
-			<properties>
-				<daoImpl>PizzaDaoFichiers</daoImpl>
-			</properties>
-		</profile>
-	</profiles>
 	<parent>
 		<groupId>dta</groupId>
 		<artifactId>cyrille-pizzeria</artifactId>

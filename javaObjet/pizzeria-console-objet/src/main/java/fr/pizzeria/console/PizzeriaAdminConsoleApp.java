@@ -34,9 +34,8 @@ public class PizzeriaAdminConsoleApp {
 		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("application");
 
-		IDao<Pizza> daoImplInstance = (IDao<Pizza>) Class.forName(resourceBundle.getString("daoImpl")).newInstance();
 		IDao<Pizza> daoSourceImports = (IDao<Pizza>) Class.forName(resourceBundle.getString("daoSource")).newInstance();
-		IhmTools ihmTools = new IhmTools(daoImplInstance, daoSourceImports);
+		IhmTools ihmTools = new IhmTools(daoSourceImports);
 
 		Menu menu = new MenuPrincipal("**** Pizzeria Administration ****", ihmTools);
 		menu.executer();
