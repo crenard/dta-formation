@@ -1,25 +1,25 @@
 package fr.pizzeria.dao;
 
 import java.util.List;
-import java.util.function.*;
+import java.util.function.Consumer;
 
 import javax.persistence.*;
 
 import fr.pizzeria.exception.StockageException;
-import fr.pizzeria.model.Pizza;
+import fr.pizzeria.model.Client;
 
-public class PizzaDaoJpa implements IDao<Pizza> {
+public class ClientDaoJpa implements IDao<Client> {
 
 	private EntityManagerFactory emFactory;
 
-	public PizzaDaoJpa() {
+	public ClientDaoJpa() {
 		emFactory = Persistence.createEntityManagerFactory("pizzeria-console-objet");
 	}
 
 	@Override
-	public List<Pizza> findAll() {
+	public List<Client> findAll() {
 		EntityManager em = emFactory.createEntityManager();
-		List<Pizza> dataList = em.createNamedQuery("Pizza.findAll", Pizza.class).getResultList();
+		List<Client> dataList = em.createNamedQuery("Client.findAll", Client.class).getResultList();
 		em.close();
 		return dataList;
 	}
@@ -34,12 +34,12 @@ public class PizzaDaoJpa implements IDao<Pizza> {
 	}
 
 	@Override
-	public void save(Pizza newData) {
+	public void save(Client newData) {
 		emCreation(em -> em.persist(newData));
 	}
 
-	private void queryExec(EntityManager em, String code, String exceptionMsg, Consumer<Pizza> exec) {
-		Pizza oldData = em.createNamedQuery("Pizza.find", Pizza.class).setParameter("code", code).getSingleResult();
+	private void queryExec(EntityManager em, String code, String exceptionMsg, Consumer<Client> exec) {
+		Client oldData = em.createNamedQuery("Client.find", Client.class).setParameter("code", code).getSingleResult();
 		if (oldData != null) {
 			exec.accept(oldData);
 		} else {
@@ -48,9 +48,9 @@ public class PizzaDaoJpa implements IDao<Pizza> {
 	}
 
 	@Override
-	public void update(String code, Pizza data) {
+	public void update(String code, Client data) {
 		emCreation(em -> queryExec(em, code, "Mise a jour impossible", oldData -> {
-			Pizza newData = data;
+			Client newData = data;
 			newData.setId(oldData.getId());
 			em.merge(newData);
 		}));

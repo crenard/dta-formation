@@ -3,8 +3,7 @@ package fr.pizzeria.ihm.tools;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.*;
-import fr.pizzeria.model.CategoriePizza;
-import fr.pizzeria.model.Pizza;
+import fr.pizzeria.model.*;
 
 /**
  * Outil pour aider l'ihm
@@ -16,7 +15,7 @@ public class IhmTools {
 	private Scanner sc = new Scanner(System.in);
 	private IDao<Pizza> daoPizza;
 	private IDao<Pizza> daoSource;
-	private IClientDao daoClient;
+	private IDao<Client> daoClient;
 
 	/**
 	 * Creation de l'outil pour aider l'ihm
@@ -26,7 +25,7 @@ public class IhmTools {
 	 */
 	public IhmTools(IDao<Pizza> dao, IDao<Pizza> source) {
 		this.daoPizza = dao;
-		this.daoClient = new ClientDaoImpl();
+		this.daoClient = new ClientDaoJpa();
 		this.daoSource = source;
 	}
 
@@ -58,11 +57,21 @@ public class IhmTools {
 		return new Pizza(code, nom, prix, category);
 	}
 
+	public Client saisirClient() {
+		System.out.println("Veuillez saisir l'email");
+		String mail = sc.nextLine();
+
+		System.out.println("Veuillez saisir le mot de passe");
+		String password = sc.nextLine();
+
+		return new Client(null, null, mail, password);
+	}
+
 	public IDao<Pizza> getDaoPizza() {
 		return daoPizza;
 	}
 
-	public IClientDao getDaoClient() {
+	public IDao<Client> getDaoClient() {
 		return daoClient;
 	}
 

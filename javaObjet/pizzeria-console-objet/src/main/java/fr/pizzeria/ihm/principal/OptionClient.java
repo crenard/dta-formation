@@ -1,8 +1,6 @@
 package fr.pizzeria.ihm.principal;
 
-import fr.pizzeria.ihm.Menu;
-import fr.pizzeria.ihm.MenuClient;
-import fr.pizzeria.ihm.OptionMenu;
+import fr.pizzeria.ihm.*;
 import fr.pizzeria.ihm.tools.IhmTools;
 
 /**

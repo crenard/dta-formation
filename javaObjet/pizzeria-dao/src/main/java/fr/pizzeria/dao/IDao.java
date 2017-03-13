@@ -27,17 +27,17 @@ public interface IDao<T> {
 	/**
 	 * Modifier un element existant
 	 * 
-	 * @param codePizza
+	 * @param code
 	 * @param t
 	 */
-	void update(String codePizza, T t);
+	void update(String code, T t);
 
 	/**
 	 * Supprimer un element existant
 	 * 
-	 * @param codePizza
+	 * @param code
 	 */
-	void delete(String codePizza);
+	void delete(String code);
 
 	/**
 	 * Importer en BDD des elements depuis une source
