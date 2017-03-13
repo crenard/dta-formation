@@ -18,7 +18,10 @@ public class PizzaDaoJpa implements IDao<Pizza> {
 
 	@Override
 	public List<Pizza> findAll() {
-		return emFactory.createEntityManager().createNamedQuery("Pizza.findAll", Pizza.class).getResultList();
+		EntityManager em = emFactory.createEntityManager();
+		List<Pizza> pizzas = em.createNamedQuery("Pizza.findAll", Pizza.class).getResultList();
+		em.close();
+		return pizzas;
 	}
 
 	private void emCreation(Consumer<EntityManager> exec) {

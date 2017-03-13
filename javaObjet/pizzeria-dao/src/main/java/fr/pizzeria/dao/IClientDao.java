@@ -2,7 +2,7 @@ package fr.pizzeria.dao;
 
 import java.util.*;
 
-import fr.pizzeria.model.Client;
+import fr.pizzeria.model.ClientAdmin;
 
 /**
  * Interface pour la gestion des clients
@@ -17,14 +17,14 @@ public interface IClientDao {
 	 * 
 	 * @return
 	 */
-	List<Client> findAll();
+	List<ClientAdmin> findAll();
 
 	/**
 	 * Ajouter un client
 	 * 
 	 * @param c
 	 */
-	void newClient(Client c);
+	void newClient(ClientAdmin c);
 
 	/**
 	 * Crediter un client d'une somme

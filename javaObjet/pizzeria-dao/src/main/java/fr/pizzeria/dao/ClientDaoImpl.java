@@ -3,7 +3,7 @@ package fr.pizzeria.dao;
 import java.util.*;
 
 import fr.pizzeria.exception.*;
-import fr.pizzeria.model.Client;
+import fr.pizzeria.model.ClientAdmin;
 
 /**
  * Implementation memoire du stockage des clients
@@ -13,33 +13,33 @@ import fr.pizzeria.model.Client;
  */
 public class ClientDaoImpl implements IClientDao {
 
-	private List<Client> clients = new ArrayList<>();
+	private List<ClientAdmin> clients = new ArrayList<>();
 
 	/**
 	 * Creation du dao client et peuplement de la base memoire
 	 */
 	public ClientDaoImpl() {
 		super();
-		clients.add(new Client(1, "Marcel", "Gris"));
-		clients.add(new Client(2, "Francis", "Rapiere"));
-		clients.add(new Client(3, "Rosa", "Spark"));
-		clients.add(new Client(4, "Richard", "Rahl"));
+		clients.add(new ClientAdmin(1, "Marcel", "Gris"));
+		clients.add(new ClientAdmin(2, "Francis", "Rapiere"));
+		clients.add(new ClientAdmin(3, "Rosa", "Spark"));
+		clients.add(new ClientAdmin(4, "Richard", "Rahl"));
 	}
 
 	@Override
-	public List<Client> findAll() {
+	public List<ClientAdmin> findAll() {
 		return clients;
 	}
 
 	@Override
-	public void newClient(Client client) {
+	public void newClient(ClientAdmin client) {
 		clients.add(client);
 		Collections.sort(clients);
 	}
 
 	@Override
 	public void crediter(int clientId, double ajout) {
-		Optional<Client> optClient = clients.stream().filter(c -> c.getId() == clientId).findFirst();
+		Optional<ClientAdmin> optClient = clients.stream().filter(c -> c.getId() == clientId).findFirst();
 		if (optClient.isPresent()) {
 			optClient.get().crediterCompte(ajout);
 		} else {
@@ -49,7 +49,7 @@ public class ClientDaoImpl implements IClientDao {
 
 	@Override
 	public void debiter(int clientId, double retrait) {
-		Optional<Client> optClient = clients.stream().filter(c -> c.getId() == clientId).findFirst();
+		Optional<ClientAdmin> optClient = clients.stream().filter(c -> c.getId() == clientId).findFirst();
 		if (optClient.isPresent()) {
 			optClient.get().debiterCompte(retrait);
 		} else {
