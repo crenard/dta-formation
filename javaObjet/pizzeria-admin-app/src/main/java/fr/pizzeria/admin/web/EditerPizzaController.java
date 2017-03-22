@@ -17,7 +17,6 @@ import fr.pizzeria.model.Pizza;
  * Servlet implementation class EditerPizzaController
  */
 public class EditerPizzaController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
 	private PizzaDaoImpl daoPizza;
 	private String oldCode;
@@ -26,13 +25,14 @@ public class EditerPizzaController extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public EditerPizzaController() {
-		this.daoPizza = ServletTools.daoPizza;
+		this.daoPizza = ServletTools.DAO_PIZZA;
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		oldCode = request.getParameter("code");
@@ -47,6 +47,7 @@ public class EditerPizzaController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		daoPizza.update(oldCode, new Pizza(req.getParameter("code"), req.getParameter("nom"),
 				Double.parseDouble(req.getParameter("prix")), CategoriePizza.valueOf(req.getParameter("categorie"))));

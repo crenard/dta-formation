@@ -4,5 +4,5 @@ import fr.pizzeria.dao.PizzaDaoImpl;
 
 public class ServletTools {
 
-	public static PizzaDaoImpl daoPizza = new PizzaDaoImpl();
+	public static final PizzaDaoImpl DAO_PIZZA = new PizzaDaoImpl();
 }

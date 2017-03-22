@@ -9,29 +9,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.pizzeria.admin.tools.ServletTools;
-import fr.pizzeria.dao.IDao;
 import fr.pizzeria.dao.PizzaDaoImpl;
-import fr.pizzeria.model.Pizza;
 
 /**
  * Servlet implementation class ListerPizzaController
  */
 public class ListerPizzaController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
-	private IDao<Pizza> daoPizza;
+	private PizzaDaoImpl daoPizza;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public ListerPizzaController() {
-		this.daoPizza = ServletTools.daoPizza;
+		this.daoPizza = ServletTools.DAO_PIZZA;
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -40,15 +38,4 @@ public class ListerPizzaController extends HttpServlet {
 				.getRequestDispatcher("/WEB-INF/views/pizzas/listerPizzas.jsp");
 		dispatcher.forward(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }
