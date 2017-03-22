@@ -9,22 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.pizzeria.admin.tools.ServletTools;
-import fr.pizzeria.dao.IDao;
 import fr.pizzeria.dao.PizzaDaoImpl;
-import fr.pizzeria.model.Pizza;
 
 /**
- * Servlet implementation class ListerPizzaController
+ * Servlet implementation class SupprimerPizzaController
  */
-public class ListerPizzaController extends HttpServlet {
+public class SupprimerPizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private IDao<Pizza> daoPizza;
+	private PizzaDaoImpl daoPizza;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ListerPizzaController() {
+	public SupprimerPizzaController() {
 		this.daoPizza = ServletTools.daoPizza;
 	}
 
@@ -34,10 +32,8 @@ public class ListerPizzaController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		request.setAttribute("liste", daoPizza.findAll());
-		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/WEB-INF/views/pizzas/listerPizzas.jsp");
+		daoPizza.delete(request.getParameter("code"));
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/pizzas/list");
 		dispatcher.forward(request, response);
 	}
 

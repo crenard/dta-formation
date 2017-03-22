@@ -9,22 +9,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.pizzeria.admin.tools.ServletTools;
-import fr.pizzeria.dao.IDao;
 import fr.pizzeria.dao.PizzaDaoImpl;
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 /**
- * Servlet implementation class ListerPizzaController
+ * Servlet implementation class EditerPizzaController
  */
-public class ListerPizzaController extends HttpServlet {
+public class EditerPizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private IDao<Pizza> daoPizza;
+	private PizzaDaoImpl daoPizza;
+	private String oldCode;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ListerPizzaController() {
+	public EditerPizzaController() {
 		this.daoPizza = ServletTools.daoPizza;
 	}
 
@@ -34,10 +35,11 @@ public class ListerPizzaController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		request.setAttribute("liste", daoPizza.findAll());
+		oldCode = request.getParameter("code");
+		Pizza pizza = daoPizza.find(oldCode);
+		request.setAttribute("pizza", pizza);
 		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/WEB-INF/views/pizzas/listerPizzas.jsp");
+				.getRequestDispatcher("/WEB-INF/views/pizzas/editerPizza.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -45,10 +47,10 @@ public class ListerPizzaController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		daoPizza.update(oldCode, new Pizza(req.getParameter("code"), req.getParameter("nom"),
+				Double.parseDouble(req.getParameter("prix")), CategoriePizza.valueOf(req.getParameter("categorie"))));
+		resp.sendRedirect(req.getContextPath() + "/pizzas/list");
 	}
 
 }

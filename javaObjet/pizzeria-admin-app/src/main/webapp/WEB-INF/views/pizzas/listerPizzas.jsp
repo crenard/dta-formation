@@ -8,7 +8,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<%@ page import="java.util.List,fr.pizzeria.model.Pizza"%>
@@ -32,11 +32,22 @@
 				<td><%=pizza.getNom()%></td>
 				<td><%=pizza.getPrix()%></td>
 				<td><%=pizza.getCategorie().toString()%></td>
+				<td><a href=<%="edit?code=" + pizza.getCode()%>><button
+							type="button" class="btn btn-primary glyphicon glyphicon-pencil">
+							Editer</button></a>
+				<td><a href=<%="suppr?code=" + pizza.getCode()%>><button
+							type="button" class="btn btn-danger glyphicon glyphicon-remove">
+							Supprimer</button></a>
 			<tr>
 				<%
 					}
 				%>
 			
+			<tr>
+				<td colspan="5">
+				<td><a href="new"><button type="button"
+							class="btn btn-success glyphicon glyphicon-star">
+							Nouveau</button></a>
 		</table>
 	</div>
 </body>

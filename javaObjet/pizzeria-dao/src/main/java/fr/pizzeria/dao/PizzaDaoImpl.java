@@ -46,6 +46,15 @@ public class PizzaDaoImpl implements IDao<Pizza> {
 		}
 	}
 
+	public Pizza find(String code) {
+		for (Pizza pizza : pizzas) {
+			if (code.equalsIgnoreCase(pizza.getCode())) {
+				return pizza;
+			}
+		}
+		return null;
+	}
+
 	private int findPizza(String code) {
 		for (Pizza pizza : pizzas) {
 			if (code.equalsIgnoreCase(pizza.getCode())) {
