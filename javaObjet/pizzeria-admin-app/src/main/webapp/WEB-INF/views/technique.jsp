@@ -12,8 +12,64 @@
 <body>
 	<div class="container">
 		<h1 class="jumbotron">Technique</h1>
-		Nombre de sessions ouvertes : ${applicationScope.sessionCount} <br>
-		<br> <a href="pizzas/list"><button type="button"
+		<div>
+			<h1>Nombre de sessions ouvertes :
+				${applicationScope.sessionCount}</h1>
+		</div>
+		<div>
+			Pizzas ajoutees :
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th align="left">Code</th>
+						<th align="left">Description</th>
+						<th align="left">Prix</th>
+						<th align="left">Categorie</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="pizza" items="${stats.creerPizzas}">
+						<tr>
+							<td>${pizza.pizza.code}</td>
+							<td>${pizza.pizza.nom}</td>
+							<td>${pizza.pizza.prix}</td>
+							<td>${pizza.pizza.categorie}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			Pizzas modifiees :
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th align="left">Code</th>
+						<th align="left">Description</th>
+						<th align="left">Prix</th>
+						<th align="left">Categorie</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="pizza" items="${stats.modifierPizzas}">
+						<tr>
+							<td>${pizza.pizza.code}</td>
+							<td>${pizza.pizza.nom}</td>
+							<td>${pizza.pizza.prix}</td>
+							<td>${pizza.pizza.categorie}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+
+			Pizzas supprimees :
+			<table class="table table-striped">
+				<c:forEach var="pizza" items="${stats.supprimerPizzas}">
+					<tr>
+						<td>${pizza.code}</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+		<a href="pizzas/list"><button type="button"
 				class="btn btn-primary">Retour</button></a>
 
 	</div>

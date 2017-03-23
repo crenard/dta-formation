@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = { "/pizzas", "/technique" })
+@WebFilter(urlPatterns = { "/pizzas/*", "/technique" })
 public class AuthentificationFilter implements Filter {
 
 	private FilterConfig config = null;
@@ -33,11 +33,15 @@ public class AuthentificationFilter implements Filter {
 		HttpSession session = reqHttp.getSession();
 		Object login = session.getAttribute("login");
 		Object password = session.getAttribute("password");
-		if (login != null && password != null && "admin@pizzeria.fr".equalsIgnoreCase(login.toString())
-				&& "admin".equalsIgnoreCase(password.toString())) {
-			chain.doFilter(request, response);
-		} else {
+		if (login == null || password == null) {
+			session.setAttribute("errorMsg", "Veuillez vous identifier");
 			((HttpServletResponse) response).sendRedirect(reqHttp.getContextPath() + "/login");
+		} else if (!"admin@pizzeria.fr".equalsIgnoreCase(login.toString())
+				|| !"admin".equalsIgnoreCase(password.toString())) {
+			session.setAttribute("errorMsg", "Login ou mot de passe incorrect");
+			((HttpServletResponse) response).sendRedirect(reqHttp.getContextPath() + "/login");
+		} else {
+			chain.doFilter(request, response);
 		}
 	}
 

@@ -43,6 +43,10 @@
 				</div>
 			</fieldset>
 		</form>
+
+				<c:if test="${not empty sessionScope.errorMsg}">
+					<div class="alert alert-danger">${sessionScope.errorMsg}</div>
+				</c:if>
 	</div>
 </body>
 <script
