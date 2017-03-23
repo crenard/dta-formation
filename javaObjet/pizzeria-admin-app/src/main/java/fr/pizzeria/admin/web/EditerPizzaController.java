@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,9 +14,7 @@ import fr.pizzeria.dao.PizzaDaoImpl;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-/**
- * Servlet implementation class EditerPizzaController
- */
+@WebServlet("/pizzas/edit")
 public class EditerPizzaController extends HttpServlet {
 
 	private PizzaDaoImpl daoPizza;

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.List,fr.pizzeria.model.Pizza"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -10,15 +12,13 @@
 
 </head>
 <body>
-	<%@ page import="java.util.List,fr.pizzeria.model.Pizza"%>
 	<div class="container">
-		<form class="form-horizontal" method="post"
-			action=<%=request.getContextPath() + "/pizzas/edit"%>>
+		<form class="form-horizontal" method="post">
 
 			<fieldset>
 
 				<!-- Form Name -->
-				<legend>Editez votre pizza</legend>
+				<legend class="jumbotron">Editez votre pizza</legend>
 
 				<!-- Text input-->
 				<div class="form-group">
@@ -26,8 +26,7 @@
 						code</label>
 					<div class="col-md-4">
 						<input id="textinput" name="code" class="form-control input-md"
-							type="text"
-							value=<%=((Pizza) request.getAttribute("pizza")).getCode()%>>
+							type="text" value="${pizza.code}" required>
 
 					</div>
 				</div>
@@ -37,8 +36,7 @@
 					<label class="col-md-4 control-label" for="textinput">Description</label>
 					<div class="col-md-4">
 						<input id="textinput" name="nom" class="form-control input-md"
-							type="text"
-							value="<%=((Pizza) request.getAttribute("pizza")).getNom()%>">
+							type="text" value="${pizza.nom}" required>
 
 					</div>
 				</div>
@@ -48,8 +46,7 @@
 					<label class="col-md-4 control-label" for="textinput">Prix</label>
 					<div class="col-md-4">
 						<input id="textinput" name="prix" class="form-control input-md"
-							type="text"
-							value=<%=((Pizza) request.getAttribute("pizza")).getPrix()%>>
+							type="text" value="${pizza.prix}" required>
 
 					</div>
 				</div>
@@ -58,22 +55,19 @@
 					<label class="col-md-4 control-label" for="selectbasic">Categorie</label>
 					<div class="col-md-4">
 						<select id="selectbasic" name="categorie" class="form-control">
-							<%
-								String categorie = ((Pizza) request.getAttribute("pizza")).getCategorie().toString();
-							%>
-							<option <%=(categorie == "VIANDE") ? "selected" : ""%>
-								value="VIANDE">VIANDE</option>
-							<option <%=(categorie == "POISSON") ? "selected" : ""%>
+							<c:set var="categorie" scope="request" value="${pizza.categorie}"></c:set>
+							<option ${categorie == 'VIANDE' ? 'selected' : ''} value="VIANDE">VIANDE</option>
+							<option ${categorie == 'POISSON' ? 'selected' : ''}
 								value="POISSON">POISSON</option>
-							<option <%=(categorie == "VEGETARIEN") ? "selected" : ""%>
+							<option ${categorie == 'VEGETARIEN' ? 'selected' : ''}
 								value="VEGETARIEN">VEGETARIEN</option>
 						</select>
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group col-md-4 pull-right">
 					<button type="submit"
-						class="btn btn-success glyphicon glyphicon-ok">Valider</button>
+						class="btn btn-success">Valider <span class="glyphicon glyphicon-ok"></span></button>
 				</div>
 			</fieldset>
 		</form>
