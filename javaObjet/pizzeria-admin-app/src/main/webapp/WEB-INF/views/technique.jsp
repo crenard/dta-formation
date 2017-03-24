@@ -13,61 +13,88 @@
 	<div class="container">
 		<h1 class="jumbotron">Technique</h1>
 		<div>
-			<h1>Nombre de sessions ouvertes :
-				${applicationScope.sessionCount}</h1>
+			<h3>
+				Nombre de sessions ouvertes <span class="badge">${applicationScope.sessionCount}</span>
+			</h3>
 		</div>
 		<div>
-			Pizzas ajoutees :
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th align="left">Code</th>
-						<th align="left">Description</th>
-						<th align="left">Prix</th>
-						<th align="left">Categorie</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="pizza" items="${stats.creerPizzas}">
-						<tr>
-							<td>${pizza.pizza.code}</td>
-							<td>${pizza.pizza.nom}</td>
-							<td>${pizza.pizza.prix}</td>
-							<td>${pizza.pizza.categorie}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			Pizzas modifiees :
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th align="left">Code</th>
-						<th align="left">Description</th>
-						<th align="left">Prix</th>
-						<th align="left">Categorie</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="pizza" items="${stats.modifierPizzas}">
-						<tr>
-							<td>${pizza.pizza.code}</td>
-							<td>${pizza.pizza.nom}</td>
-							<td>${pizza.pizza.prix}</td>
-							<td>${pizza.pizza.categorie}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+			<div class="panel panel-primary">
+				<div class="panel-heading">Pizzas ajoutees :</div>
+				<div class="panel-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th align="left">Heure de creation</th>
+								<th align="left">Code</th>
+								<th align="left">Description</th>
+								<th align="left">Prix</th>
+								<th align="left">Categorie</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="pizza" items="${stats.creerPizzas}">
+								<tr>
+									<td class="col-md-3">${pizza.date}</td>
+									<td class="col-md-3">${pizza.pizza.code}</td>
+									<td>${pizza.pizza.nom}</td>
+									<td>${pizza.pizza.prix}</td>
+									<td>${pizza.pizza.categorie}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
 
-			Pizzas supprimees :
-			<table class="table table-striped">
-				<c:forEach var="pizza" items="${stats.supprimerPizzas}">
-					<tr>
-						<td>${pizza.code}</td>
-					</tr>
-				</c:forEach>
-			</table>
+			<div class="panel panel-primary">
+				<div class="panel-heading">Pizzas modifiees :</div>
+				<div class="panel-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th align="left">Heure de modification</th>
+								<th align="left">Code</th>
+								<th align="left">Description</th>
+								<th align="left">Prix</th>
+								<th align="left">Categorie</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="pizza" items="${stats.modifierPizzas}">
+								<tr>
+									<td class="col-md-3">${pizza.date}</td>
+									<td class="col-md-3">${pizza.pizza.code}</td>
+									<td>${pizza.pizza.nom}</td>
+									<td>${pizza.pizza.prix}</td>
+									<td>${pizza.pizza.categorie}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="panel panel-primary">
+				<div class="panel-heading">Pizzas supprimees :</div>
+				<div class="panel-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th align="left">Heure de suppression</th>
+								<th align="left">Code</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="pizza" items="${stats.supprimerPizzas}">
+								<tr>
+									<td class="col-md-3">${pizza.date}</td>
+									<td class="col-md-3">${pizza.code}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
 		<a href="pizzas/list"><button type="button"
 				class="btn btn-primary">Retour</button></a>
