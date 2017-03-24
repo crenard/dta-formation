@@ -17,7 +17,6 @@ import fr.pizzeria.exception.StockageException;
 @Entity
 @NamedQueries({ @NamedQuery(name = "Pizza.findAll", query = "SELECT p FROM Pizza p"),
 		@NamedQuery(name = "Pizza.find", query = "SELECT p FROM Pizza p WHERE code LIKE :code") })
-
 @Table(name = "pizza")
 public class Pizza implements Comparable<Pizza>, GenericData {
 	@Id
@@ -35,6 +34,8 @@ public class Pizza implements Comparable<Pizza>, GenericData {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "categorie", nullable = false)
 	private CategoriePizza categorie;
+	@Column(name = "url_image")
+	private String url_image;
 
 	/**
 	 * Creation d'une nouvelle pizza
@@ -150,6 +151,14 @@ public class Pizza implements Comparable<Pizza>, GenericData {
 
 	public void setCategorie(CategoriePizza categorie) {
 		this.categorie = categorie;
+	}
+
+	public String getUrl_image() {
+		return url_image;
+	}
+
+	public void setUrl_image(String url_image) {
+		this.url_image = url_image;
 	}
 
 }

@@ -37,7 +37,7 @@
 						<td>${pizza.prix}</td>
 						<td>${pizza.categorie}</td>
 						<td><a href="edit?code=${pizza.code}"><button
-									type="button" class="btn btn-primary btn-block">
+									type="button" class="btn btn-info btn-block">
 									Editer <span class="glyphicon glyphicon-pencil"></span>
 								</button></a></td>
 						<td><a href="suppr?code=${pizza.code}"><button

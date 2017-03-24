@@ -18,7 +18,7 @@
 			</h3>
 		</div>
 		<div>
-			<div class="panel panel-primary">
+			<div class="panel panel-success">
 				<div class="panel-heading">Pizzas ajoutees :</div>
 				<div class="panel-body">
 					<table class="table table-striped">
@@ -46,7 +46,7 @@
 				</div>
 			</div>
 
-			<div class="panel panel-primary">
+			<div class="panel panel-info">
 				<div class="panel-heading">Pizzas modifiees :</div>
 				<div class="panel-body">
 					<table class="table table-striped">
@@ -74,7 +74,7 @@
 				</div>
 			</div>
 
-			<div class="panel panel-primary">
+			<div class="panel panel-danger">
 				<div class="panel-heading">Pizzas supprimees :</div>
 				<div class="panel-body">
 					<table class="table table-striped">

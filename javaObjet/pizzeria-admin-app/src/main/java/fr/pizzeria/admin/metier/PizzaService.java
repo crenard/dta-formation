@@ -9,13 +9,12 @@ import javax.inject.Inject;
 import fr.pizzeria.admin.event.CreerPizzaEvent;
 import fr.pizzeria.admin.event.ModifierPizzaEvent;
 import fr.pizzeria.admin.event.SupprimerPizzaEvent;
-import fr.pizzeria.dao.IDao;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaService {
 
 	@Inject
-	private IDao<Pizza> daoPizza;
+	private PizzaServiceEJB ejbPizza;
 
 	@Inject
 	Event<CreerPizzaEvent> creerPizzaEvent;
@@ -27,11 +26,11 @@ public class PizzaService {
 	Event<SupprimerPizzaEvent> supprimerPizzaEvent;
 
 	public List<Pizza> findAll() {
-		return daoPizza.findAll();
+		return ejbPizza.findAll();
 	}
 
 	public void save(Pizza t) {
-		daoPizza.save(t);
+		ejbPizza.save(t);
 		CreerPizzaEvent event = new CreerPizzaEvent();
 		event.setDate(LocalTime.now());
 		event.setPizza(t);
@@ -39,7 +38,7 @@ public class PizzaService {
 	}
 
 	public void update(String code, Pizza t) {
-		daoPizza.update(code, t);
+		ejbPizza.update(code, t);
 		ModifierPizzaEvent event = new ModifierPizzaEvent();
 		event.setDate(LocalTime.now());
 		event.setPizza(t);
@@ -47,7 +46,7 @@ public class PizzaService {
 	}
 
 	public void delete(String code) {
-		daoPizza.delete(code);
+		ejbPizza.delete(code);
 		SupprimerPizzaEvent event = new SupprimerPizzaEvent();
 		event.setDate(LocalTime.now());
 		event.setCode(code);
@@ -55,7 +54,7 @@ public class PizzaService {
 	}
 
 	public Pizza find(String code) {
-		return daoPizza.find(code);
+		return ejbPizza.find(code);
 	}
 
 }
