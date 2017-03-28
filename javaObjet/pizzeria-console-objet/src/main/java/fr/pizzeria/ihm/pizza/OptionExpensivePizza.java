@@ -2,9 +2,9 @@ package fr.pizzeria.ihm.pizza;
 
 import java.util.Comparator;
 
-import fr.pizzeria.model.*;
+import fr.pizzeria.dao.IDao;
 import fr.pizzeria.ihm.OptionMenu;
-import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.model.Pizza;
 
 /**
  * Menu item pour obtenir la pizza la plus chere
@@ -13,14 +13,8 @@ import fr.pizzeria.ihm.tools.IhmTools;
  *
  */
 public class OptionExpensivePizza extends OptionMenu {
-	/**
-	 * Creation du menu item pour obtenir la pizza la plus chere
-	 * 
-	 * @param ihmTools
-	 */
-	public OptionExpensivePizza(IhmTools ihmTools) {
-		super(ihmTools);
-	}
+
+	private IDao<Pizza> daoPizza;
 
 	@Override
 	public String getLibelle() {
@@ -29,8 +23,11 @@ public class OptionExpensivePizza extends OptionMenu {
 
 	@Override
 	public void execute() {
-		ihmTools.getDaoPizza().findAll().stream().max(Comparator.comparingDouble(Pizza::getPrix))
-				.ifPresent(System.out::println);
+		daoPizza.findAll().stream().max(Comparator.comparingDouble(Pizza::getPrix)).ifPresent(System.out::println);
+	}
+
+	public void setDaoPizza(IDao<Pizza> daoPizza) {
+		this.daoPizza = daoPizza;
 	}
 
 }

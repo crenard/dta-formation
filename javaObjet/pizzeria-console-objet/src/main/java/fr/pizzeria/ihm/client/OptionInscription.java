@@ -1,14 +1,14 @@
 package fr.pizzeria.ihm.client;
 
+import fr.pizzeria.dao.IDao;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 import fr.pizzeria.model.Client;
 
 public class OptionInscription extends OptionMenu {
 
-	public OptionInscription(IhmTools ihmTools) {
-		super(ihmTools);
-	}
+	private IhmTools ihmTools;
+	private IDao<Client> daoClient;
 
 	@Override
 	public String getLibelle() {
@@ -19,16 +19,24 @@ public class OptionInscription extends OptionMenu {
 	public void execute() {
 
 		System.out.println("Veuillez saisir le prenom");
-		String prenom = ihmTools.getSc().nextLine();
+		String prenom = sc.nextLine();
 
 		System.out.println("Veuillez saisir le nom");
-		String nom = ihmTools.getSc().nextLine();
+		String nom = sc.nextLine();
 
 		Client newClient = ihmTools.saisirClient();
 		newClient.setNom(nom);
 		newClient.setPrenom(prenom);
-		ihmTools.getDaoClient().save(newClient);
+		daoClient.save(newClient);
 
+	}
+
+	public void setIhmTools(IhmTools ihmTools) {
+		this.ihmTools = ihmTools;
+	}
+
+	public void setDaoClient(IDao<Client> daoClient) {
+		this.daoClient = daoClient;
 	}
 
 }

@@ -1,8 +1,9 @@
 package fr.pizzeria.ihm.pizza;
 
+import fr.pizzeria.dao.IDao;
 import fr.pizzeria.exception.ConnectionException;
 import fr.pizzeria.ihm.OptionMenu;
-import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.model.Pizza;
 
 /**
  * Menu item pour lister les pizzas
@@ -11,14 +12,8 @@ import fr.pizzeria.ihm.tools.IhmTools;
  *
  */
 public class OptionListePizzas extends OptionMenu {
-	/**
-	 * Creation du menu item pour lister les pizzas
-	 * 
-	 * @param ihmTools
-	 */
-	public OptionListePizzas(IhmTools ihmTools) {
-		super(ihmTools);
-	}
+
+	private IDao<Pizza> daoPizza;
 
 	@Override
 	public String getLibelle() {
@@ -28,9 +23,14 @@ public class OptionListePizzas extends OptionMenu {
 	@Override
 	public void execute() {
 		try {
-			ihmTools.getDaoPizza().findAll().stream().forEach(System.out::println);
+			daoPizza.findAll().stream().forEach(System.out::println);
 		} catch (ConnectionException e) {
 			throw new ConnectionException("\n!!! Une erreur a ete enregistree : " + e);
 		}
 	}
+
+	public void setDaoPizza(IDao<Pizza> daoPizza) {
+		this.daoPizza = daoPizza;
+	}
+
 }

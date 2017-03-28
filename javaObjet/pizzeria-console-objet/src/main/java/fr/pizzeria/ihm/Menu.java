@@ -1,10 +1,12 @@
 package fr.pizzeria.ihm;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Scanner;
 
-import fr.pizzeria.exception.*;
-import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.exception.SoldeException;
+import fr.pizzeria.exception.StockageException;
 
 /**
  * Menu generique
@@ -15,7 +17,7 @@ import fr.pizzeria.ihm.tools.IhmTools;
 public abstract class Menu {
 	protected String titre;
 	protected Map<Integer, OptionMenu> actions;
-	protected IhmTools ihmTools;
+	protected Scanner sc;
 
 	/**
 	 * Construction du menu
@@ -23,9 +25,8 @@ public abstract class Menu {
 	 * @param titre
 	 * @param ihmTools
 	 */
-	public Menu(String titre, IhmTools ihmTools) {
+	public Menu(String titre) {
 		this.titre = titre;
-		this.ihmTools = ihmTools;
 		actions = new HashMap<>();
 	}
 
@@ -48,14 +49,14 @@ public abstract class Menu {
 		int choix = 0;
 		while (choix != actions.size() + 1) {
 			afficher();
-			choix = ihmTools.getSc().nextInt();
-			ihmTools.getSc().nextLine();
+			choix = sc.nextInt();
+			sc.nextLine();
 
 			while (choix > actions.size() + 1) {
 				System.out.println("\n!!! Entrez une valeur autorisee !!!\n");
 				afficher();
-				choix = ihmTools.getSc().nextInt();
-				ihmTools.getSc().nextLine();
+				choix = sc.nextInt();
+				sc.nextLine();
 			}
 			if (choix != actions.size() + 1) {
 				try {
@@ -66,4 +67,13 @@ public abstract class Menu {
 			}
 		}
 	}
+
+	public void setActions(Map<Integer, OptionMenu> actions) {
+		this.actions = actions;
+	}
+
+	public void setSc(Scanner sc) {
+		this.sc = sc;
+	}
+
 }

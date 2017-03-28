@@ -1,9 +1,10 @@
 package fr.pizzeria.ihm.pizza;
 
+import fr.pizzeria.dao.IDao;
 import fr.pizzeria.exception.ConnectionException;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
-import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.model.Pizza;
 
 /**
  * Menu item pour importer des pizzas depuis une source
@@ -12,14 +13,9 @@ import fr.pizzeria.ihm.tools.IhmTools;
  *
  */
 public class OptionImportBDD extends OptionMenu {
-	/**
-	 * Creation du menu item pour importer des pizzas depuis une source
-	 * 
-	 * @param ihmTools
-	 */
-	public OptionImportBDD(IhmTools ihmTools) {
-		super(ihmTools);
-	}
+
+	private IDao<Pizza> daoPizza;
+	private IDao<Pizza> daoSource;
 
 	@Override
 	public String getLibelle() {
@@ -29,10 +25,18 @@ public class OptionImportBDD extends OptionMenu {
 	@Override
 	public void execute() {
 		try {
-			ihmTools.getDaoPizza().importBDD(ihmTools.getDaoSource());
+			daoPizza.importBDD(daoSource);
 		} catch (StockageException e) {
 			throw new ConnectionException("\n!!! Une erreur a ete enregistree : " + e);
 		}
+	}
+
+	public void setDaoPizza(IDao<Pizza> daoPizza) {
+		this.daoPizza = daoPizza;
+	}
+
+	public void setDaoSource(IDao<Pizza> daoSource) {
+		this.daoSource = daoSource;
 	}
 
 }

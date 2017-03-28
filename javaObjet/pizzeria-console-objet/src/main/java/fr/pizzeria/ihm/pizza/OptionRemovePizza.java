@@ -1,8 +1,9 @@
 package fr.pizzeria.ihm.pizza;
 
-import fr.pizzeria.exception.*;
+import fr.pizzeria.dao.IDao;
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
-import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.model.Pizza;
 
 /**
  * Menu item pour supprimer des pizzas
@@ -11,14 +12,8 @@ import fr.pizzeria.ihm.tools.IhmTools;
  *
  */
 public class OptionRemovePizza extends OptionMenu {
-	/**
-	 * Creation du menu item pour supprimer des pizzas
-	 * 
-	 * @param ihmTools
-	 */
-	public OptionRemovePizza(IhmTools ihmTools) {
-		super(ihmTools);
-	}
+
+	private IDao<Pizza> daoPizza;
 
 	@Override
 	public String getLibelle() {
@@ -28,14 +23,18 @@ public class OptionRemovePizza extends OptionMenu {
 	@Override
 	public void execute() {
 		System.out.println("Veuillez choisir le code de la pizza a supprimer (99 pour abandonner)");
-		String pizzaPick = ihmTools.getSc().nextLine();
+		String pizzaPick = sc.nextLine();
 		if (!"99".equals(pizzaPick)) {
 			try {
-				ihmTools.getDaoPizza().delete(pizzaPick);
+				daoPizza.delete(pizzaPick);
 			} catch (StockageException e) {
 				throw new StockageException("\n!!! Code incorrect, cette pizza n'existe pas", e);
 			}
 		}
+	}
+
+	public void setDaoPizza(IDao<Pizza> daoPizza) {
+		this.daoPizza = daoPizza;
 	}
 
 }

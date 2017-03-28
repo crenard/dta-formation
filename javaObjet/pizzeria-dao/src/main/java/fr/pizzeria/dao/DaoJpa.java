@@ -19,6 +19,10 @@ public class DaoJpa<D extends GenericData> implements IDao<D> {
 		this.classe = classe;
 	}
 
+	public DaoJpa(Class<D> classe) {
+		this.classe = classe;
+	}
+
 	@Override
 	public List<D> findAll() {
 		EntityManager em = emFactory.createEntityManager();
@@ -63,6 +67,10 @@ public class DaoJpa<D extends GenericData> implements IDao<D> {
 	@Override
 	public void delete(String code) {
 		emCreation(em -> queryExec(em, code, "Suppression impossible", oldData -> em.remove(oldData)));
+	}
+
+	public void setEmFactory(EntityManagerFactory emFactory) {
+		this.emFactory = emFactory;
 	}
 
 }

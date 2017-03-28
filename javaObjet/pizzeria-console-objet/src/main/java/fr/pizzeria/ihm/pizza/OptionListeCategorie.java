@@ -2,9 +2,9 @@ package fr.pizzeria.ihm.pizza;
 
 import java.util.stream.Collectors;
 
-import fr.pizzeria.model.*;
+import fr.pizzeria.dao.IDao;
 import fr.pizzeria.ihm.OptionMenu;
-import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.model.Pizza;
 
 /**
  * Menu item pour lister les pizzas par categories
@@ -13,14 +13,8 @@ import fr.pizzeria.ihm.tools.IhmTools;
  *
  */
 public class OptionListeCategorie extends OptionMenu {
-	/**
-	 * Creation du menu item pour lister les pizzas par categories
-	 * 
-	 * @param ihmTools
-	 */
-	public OptionListeCategorie(IhmTools ihmTools) {
-		super(ihmTools);
-	}
+
+	private IDao<Pizza> daoPizza;
 
 	@Override
 	public String getLibelle() {
@@ -29,13 +23,16 @@ public class OptionListeCategorie extends OptionMenu {
 
 	@Override
 	public void execute() {
-		ihmTools.getDaoPizza().findAll().stream().collect(Collectors.groupingBy(Pizza::getCategorie))
-				.forEach((k, v) -> {
-					System.out.println(k);
-					v.stream().forEach(System.out::println);
-					System.out.println();
-				});
+		daoPizza.findAll().stream().collect(Collectors.groupingBy(Pizza::getCategorie)).forEach((k, v) -> {
+			System.out.println(k);
+			v.stream().forEach(System.out::println);
+			System.out.println();
+		});
 
+	}
+
+	public void setDaoPizza(IDao<Pizza> daoPizza) {
+		this.daoPizza = daoPizza;
 	}
 
 }

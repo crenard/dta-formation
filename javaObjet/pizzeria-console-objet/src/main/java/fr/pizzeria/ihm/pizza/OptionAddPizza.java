@@ -1,8 +1,10 @@
 package fr.pizzeria.ihm.pizza;
 
+import fr.pizzeria.dao.IDao;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.model.Pizza;
 
 /**
  * Menu item pour ajouter des pizzas
@@ -11,14 +13,9 @@ import fr.pizzeria.ihm.tools.IhmTools;
  *
  */
 public class OptionAddPizza extends OptionMenu {
-	/**
-	 * Creation du menu item pour ajouter des pizzas
-	 * 
-	 * @param ihmTools
-	 */
-	public OptionAddPizza(IhmTools ihmTools) {
-		super(ihmTools);
-	}
+
+	private IhmTools ihmTools;
+	private IDao<Pizza> daoPizza;
 
 	@Override
 	public String getLibelle() {
@@ -28,11 +25,19 @@ public class OptionAddPizza extends OptionMenu {
 	@Override
 	public void execute() {
 		try {
-			ihmTools.getDaoPizza().save(ihmTools.saisirPizza());
+			daoPizza.save(ihmTools.saisirPizza());
 		} catch (StockageException e) {
 			throw new StockageException("\n!!! Une erreur a ete enregistree : " + e);
 		}
 
+	}
+
+	public void setIhmTools(IhmTools ihmTools) {
+		this.ihmTools = ihmTools;
+	}
+
+	public void setDaoPizza(IDao<Pizza> daoPizza) {
+		this.daoPizza = daoPizza;
 	}
 
 }

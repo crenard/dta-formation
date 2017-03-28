@@ -3,7 +3,6 @@ package fr.pizzeria.ihm.principal;
 import fr.pizzeria.ihm.Menu;
 import fr.pizzeria.ihm.MenuPizza;
 import fr.pizzeria.ihm.OptionMenu;
-import fr.pizzeria.ihm.tools.IhmTools;
 
 /**
  * Menu item pour la gestion des pizzas
@@ -12,14 +11,6 @@ import fr.pizzeria.ihm.tools.IhmTools;
  *
  */
 public class OptionPizza extends OptionMenu {
-	/**
-	 * Creation du menu item pour la gestion des pizzas
-	 * 
-	 * @param ihmTools
-	 */
-	public OptionPizza(IhmTools ihmTools) {
-		super(ihmTools);
-	}
 
 	@Override
 	public String getLibelle() {
@@ -28,7 +19,7 @@ public class OptionPizza extends OptionMenu {
 
 	@Override
 	public void execute() {
-		Menu menuPizza = new MenuPizza("**** Administration des pizzas ****", ihmTools);
+		Menu menuPizza = new MenuPizza("**** Administration des pizzas ****");
 		menuPizza.executer();
 	}
 

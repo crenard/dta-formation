@@ -1,15 +1,13 @@
 package fr.pizzeria.ihm.client;
 
 import fr.pizzeria.ihm.OptionMenu;
-import fr.pizzeria.ihm.tools.IhmTools;
-import fr.pizzeria.model.*;
+import fr.pizzeria.model.Client;
 
 public class OptionCommandePizza extends OptionMenu {
 
 	private Client client;
 
-	public OptionCommandePizza(IhmTools ihmTools, Client client) {
-		super(ihmTools);
+	public OptionCommandePizza(Client client) {
 		this.client = client;
 	}
 
@@ -20,7 +18,7 @@ public class OptionCommandePizza extends OptionMenu {
 
 	@Override
 	public void execute() {
-		System.out.println(client.getNom() + " " + client.getPrenom());
+		// TODO Auto-generated method stub
 
 	}
 

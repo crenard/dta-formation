@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+
+	<import resource="dao-config.xml"/>
+
+
+	<bean id="optionMenuPizza" abstract="true">
+		<property name="sc" ref="scanner"></property>
+		<property name="daoPizza" ref="daoPizza"></property>
+	</bean>
+	
+	<bean id="ihmTools" class="fr.pizzeria.ihm.tools.IhmTools">
+		<property name="sc" ref="scanner"></property>
+	</bean>
+	
+	<bean id="scanner" class="java.util.Scanner">
+		<constructor-arg>
+			<util:constant id="scanner" static-field="java.lang.System.in" />
+		</constructor-arg>
+	</bean>
+	
+	<bean id="menu" abstract="true">
+		<property name="sc" ref="scanner"></property>	
+	</bean>
+	
+	<bean id="menuPrincipal" class="fr.pizzeria.ihm.MenuPrincipal" parent="menu">
+		<constructor-arg value="**** Pizzeria Administration ****"></constructor-arg>
+		<property name="actions">
+			<util:map>
+				<entry key="1" value-ref="pizza"></entry>
+				<entry key="2" value-ref="client"></entry>
+			</util:map>
+		</property>
+	</bean>
+
+	<bean id="menuPizza" class="fr.pizzeria.ihm.MenuPizza" parent="menu">
+		<constructor-arg value="**** Administration des pizzas ****"></constructor-arg>
+		<property name="actions">
+			<util:map>
+				<entry key="1" value-ref="addPizza"></entry>
+				<entry key="2" value-ref="changePizza"></entry>
+				<entry key="3" value-ref="expensivePizza"></entry>
+				<entry key="4" value-ref="importBDD"></entry>
+				<entry key="5" value-ref="listeCategoriePizza"></entry>
+				<entry key="6" value-ref="listePizzas"></entry>
+				<entry key="7" value-ref="removePizza"></entry>
+			</util:map>
+		</property>
+	</bean>
+
+	<bean id="menuClient" class="fr.pizzeria.ihm.MenuClient" parent="menu">
+		<constructor-arg value="**** Pizzeria Client ****"></constructor-arg>
+		<property name="actions">
+			<util:map>
+				<entry key="1" value-ref="connectClient"></entry>
+				<entry key="2" value-ref="inscrireClient"></entry>
+			</util:map>
+		</property>
+	</bean>
+		
+	<bean id="pizza" class="fr.pizzeria.ihm.principal.OptionPizza">
+	</bean>
+	
+	<bean id="client" class="fr.pizzeria.ihm.principal.OptionClient">
+	</bean>
+
+	<bean id="addPizza" class="fr.pizzeria.ihm.pizza.OptionAddPizza" parent="optionMenuPizza">
+		<property name="ihmTools" ref="ihmTools"></property>
+	</bean>
+
+	<bean id="changePizza" class="fr.pizzeria.ihm.pizza.OptionChangePizza" parent="optionMenuPizza">
+		<property name="ihmTools" ref="ihmTools"></property>
+	</bean>
+
+	<bean id="expensivePizza" class="fr.pizzeria.ihm.pizza.OptionExpensivePizza" parent="optionMenuPizza">
+	</bean>
+
+	<bean id="importBDD" class="fr.pizzeria.ihm.pizza.OptionImportBDD" parent="optionMenuPizza">
+		<property name="daoSource" ref="daoSource"></property>
+	</bean>
+
+	<bean id="listeCategoriePizza" class="fr.pizzeria.ihm.pizza.OptionListeCategorie" parent="optionMenuPizza">
+	</bean>
+
+	<bean id="listePizzas" class="fr.pizzeria.ihm.pizza.OptionListePizzas" parent="optionMenuPizza">
+	</bean>
+
+	<bean id="removePizza" class="fr.pizzeria.ihm.pizza.OptionRemovePizza" parent="optionMenuPizza">
+	</bean>
+	
+	<bean id="connectClient" class="fr.pizzeria.ihm.client.OptionConnect">
+		<property name="ihmTools" ref="ihmTools"></property>	
+	</bean>
+	
+	<bean id="inscrireClient" class="fr.pizzeria.ihm.client.OptionInscription">
+		<property name="ihmTools" ref="ihmTools"></property>	
+	</bean>
+	
+</beans>

@@ -1,6 +1,6 @@
 package fr.pizzeria.ihm;
 
-import fr.pizzeria.ihm.tools.IhmTools;
+import java.util.Scanner;
 
 /**
  * Menu item
@@ -10,16 +10,7 @@ import fr.pizzeria.ihm.tools.IhmTools;
  */
 public abstract class OptionMenu {
 
-	protected IhmTools ihmTools;
-
-	/**
-	 * Creation du menu item
-	 * 
-	 * @param ihmTools
-	 */
-	public OptionMenu(IhmTools ihmTools) {
-		this.ihmTools = ihmTools;
-	}
+	protected Scanner sc;
 
 	public abstract String getLibelle();
 
@@ -27,4 +18,9 @@ public abstract class OptionMenu {
 	 * Execute l'action du menu item
 	 */
 	public abstract void execute();
+
+	public void setSc(Scanner sc) {
+		this.sc = sc;
+	}
+
 }

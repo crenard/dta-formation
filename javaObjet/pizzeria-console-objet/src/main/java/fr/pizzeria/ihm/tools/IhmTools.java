@@ -5,8 +5,13 @@ import java.util.Scanner;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import fr.pizzeria.dao.*;
-import fr.pizzeria.model.*;
+import fr.pizzeria.dao.DaoJpa;
+import fr.pizzeria.dao.IDao;
+import fr.pizzeria.dao.PizzaDaoFichiers;
+import fr.pizzeria.model.CategoriePizza;
+import fr.pizzeria.model.Client;
+import fr.pizzeria.model.Commande;
+import fr.pizzeria.model.Pizza;
 
 /**
  * Outil pour aider l'ihm
@@ -15,25 +20,7 @@ import fr.pizzeria.model.*;
  *
  */
 public class IhmTools {
-	private Scanner sc = new Scanner(System.in);
-	private IDao<Pizza> daoPizza;
-	private IDao<Pizza> daoSource;
-	private IDao<Client> daoClient;
-	private IDao<Commande> daoCommande;
-
-	/**
-	 * Creation de l'outil pour aider l'ihm
-	 * 
-	 * @param dao
-	 * @param source
-	 */
-	public IhmTools(IDao<Pizza> source) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pizzeria-console-objet");
-		this.daoPizza = new DaoJpa<Pizza>(Pizza.class, emf);
-		this.daoClient = new DaoJpa<Client>(Client.class, emf);
-		this.daoCommande = new DaoJpa<Commande>(Commande.class, emf);
-		this.daoSource = source;
-	}
+	private Scanner sc;
 
 	/**
 	 * Demander a l'utilisateur la saisie d'une pizza
@@ -56,7 +43,7 @@ public class IhmTools {
 			System.out.println(i + 1 + " : " + categories[i].getLibelle());
 		}
 
-		int choixCategory = getSc().nextInt();
+		int choixCategory = sc.nextInt();
 		sc.nextLine();
 		CategoriePizza category = categories[choixCategory - 1];
 
@@ -73,24 +60,8 @@ public class IhmTools {
 		return new Client(null, null, mail, password);
 	}
 
-	public IDao<Pizza> getDaoPizza() {
-		return daoPizza;
-	}
-
-	public IDao<Client> getDaoClient() {
-		return daoClient;
-	}
-
-	public IDao<Pizza> getDaoSource() {
-		return daoSource;
-	}
-
-	public IDao<Commande> getDaoCommande() {
-		return daoCommande;
-	}
-
-	public Scanner getSc() {
-		return sc;
+	public void setSc(Scanner sc) {
+		this.sc = sc;
 	}
 
 }

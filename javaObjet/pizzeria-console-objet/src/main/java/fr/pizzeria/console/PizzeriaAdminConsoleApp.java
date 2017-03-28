@@ -1,12 +1,11 @@
 package fr.pizzeria.console;
 
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 
-import fr.pizzeria.dao.*;
-import fr.pizzeria.ihm.*;
-import fr.pizzeria.ihm.tools.IhmTools;
-import fr.pizzeria.model.Pizza;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import fr.pizzeria.ihm.Menu;
+import fr.pizzeria.ihm.MenuPrincipal;
 
 /**
  * Main class de gestion d'une pizzeria
@@ -28,19 +27,13 @@ public class PizzeriaAdminConsoleApp {
 	 * @throws IllegalAccessException
 	 * @throws ClassNotFoundException
 	 */
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
-		ResourceBundle resourceBundle = ResourceBundle.getBundle("application");
+		java.util.logging.Logger.getLogger("org").setLevel(Level.SEVERE);
 
-		IDao<Pizza> daoSourceImports = (IDao<Pizza>) Class.forName(resourceBundle.getString("daoSource")).newInstance();
-		IhmTools ihmTools = new IhmTools(daoSourceImports);
-
-		Menu menu = new MenuPrincipal("**** Pizzeria Administration ****", ihmTools);
-		menu.executer();
-
-		System.out.println("\nAu revoir, a bientot !");
-		ihmTools.getSc().close();
+		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-config.xml")) {
+			Menu menu = context.getBean(MenuPrincipal.class);
+			menu.afficher();
+		}
 	}
 }
