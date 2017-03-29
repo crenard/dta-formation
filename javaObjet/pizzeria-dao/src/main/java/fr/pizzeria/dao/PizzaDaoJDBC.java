@@ -80,7 +80,7 @@ public class PizzaDaoJDBC implements IDao<Pizza> {
 
 	@Override
 	public void update(String codePizza, Pizza newPizza) {
-		executeUpdate("UPDATE pizza SET code=?, description=?, prix=?, categorie=? WHERE code = ?", request -> {
+		executeUpdate("UPDATE pizza SET code=?, description=?, prix=?, categorie=? WHERE code LIKE ?", request -> {
 			request.setString(1, newPizza.getCode());
 			request.setString(2, newPizza.getNom());
 			request.setDouble(3, newPizza.getPrix());
@@ -92,7 +92,7 @@ public class PizzaDaoJDBC implements IDao<Pizza> {
 	@Override
 	public void delete(String codePizza) {
 		try (Connection conn = connect();
-				PreparedStatement request = conn.prepareStatement("DELETE FROM pizza WHERE code = ?")) {
+				PreparedStatement request = conn.prepareStatement("DELETE FROM pizza WHERE code LIKE ?")) {
 			request.setString(1, codePizza);
 			request.executeUpdate();
 		} catch (SQLException e) {

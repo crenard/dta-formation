@@ -31,6 +31,7 @@ public class Pizza implements Comparable<Pizza>, GenericData {
 	@ToString
 	@Column(name = "prix")
 	private double prix;
+	@ToString
 	@Enumerated(EnumType.STRING)
 	@Column(name = "categorie", nullable = false)
 	private CategoriePizza categorie;
