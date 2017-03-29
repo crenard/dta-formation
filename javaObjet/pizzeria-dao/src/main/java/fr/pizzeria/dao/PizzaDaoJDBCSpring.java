@@ -14,12 +14,12 @@ import org.springframework.stereotype.Repository;
 import fr.pizzeria.model.*;
 
 @Repository
-public class PizzaDaoJDBCSpring implements IDao<Pizza> {
+public class PizzaDaoJdbcSpring implements IDao<Pizza> {
 
 	private JdbcTemplate jdbcTemplate;
 
 	@Autowired
-	public PizzaDaoJDBCSpring(DataSource datasource) {
+	public PizzaDaoJdbcSpring(DataSource datasource) {
 		this.jdbcTemplate = new JdbcTemplate(datasource);
 	}
 

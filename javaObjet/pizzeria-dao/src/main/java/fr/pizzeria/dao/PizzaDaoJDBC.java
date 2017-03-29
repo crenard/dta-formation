@@ -13,11 +13,11 @@ import fr.pizzeria.model.*;
  * @author ETY 10
  *
  */
-public class PizzaDaoJDBC implements IDao<Pizza> {
+public class PizzaDaoJdbc implements IDao<Pizza> {
 	/**
 	 * Constructeur du dao qui charge le driver de BDD
 	 */
-	public PizzaDaoJDBC() {
+	public PizzaDaoJdbc() {
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("jdbc");
 		try {
 			Class.forName(resourceBundle.getString("driver"));

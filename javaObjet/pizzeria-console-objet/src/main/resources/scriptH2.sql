@@ -1,6 +1,6 @@
 CREATE TABLE `pizza` (
   `id` int(11) auto_increment NOT NULL,
-  `categorie` varchar(255) DEFAULT NULL,
+  `categorie` varchar(255) CHECK `categorie` IN ('VIANDE','VEGETARIEN','POISSON') ,
   `code` varchar(5) NOT NULL,
   `description` varchar(25) DEFAULT NULL,
   `prix` double DEFAULT NULL,

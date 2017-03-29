@@ -18,14 +18,14 @@ import fr.pizzeria.model.Pizza;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = PizzeriaAppSpringConfig.class)
-public class PizzaDaoJDBCSpringTest {
+public class PizzaDaoSpringTest {
 
 	@Autowired
 	@Qualifier("daoPizza")
 	private IDao<Pizza> pizzaDao;
 
 	@Test
-	public void testFindAll() {
+	public void testCrud() {
 		pizzaDao.save(new Pizza("GRE", "Gredue", 12, CategoriePizza.VIANDE));
 		pizzaDao.save(new Pizza("GRA", "Gradouble", 12, CategoriePizza.VEGETARIEN));
 		List<Pizza> listPizzas = pizzaDao.findAll();
