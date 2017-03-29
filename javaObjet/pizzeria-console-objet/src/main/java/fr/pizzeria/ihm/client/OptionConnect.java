@@ -2,6 +2,9 @@ package fr.pizzeria.ihm.client;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.ihm.Menu;
 import fr.pizzeria.ihm.MenuClientConnecte;
@@ -9,6 +12,7 @@ import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 import fr.pizzeria.model.Client;
 
+@Component
 public class OptionConnect extends OptionMenu {
 
 	private IDao<Client> daoClient;
@@ -38,6 +42,7 @@ public class OptionConnect extends OptionMenu {
 		this.daoClient = daoClient;
 	}
 
+	@Autowired
 	public void setIhmTools(IhmTools ihmTools) {
 		this.ihmTools = ihmTools;
 	}

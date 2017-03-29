@@ -2,6 +2,10 @@ package fr.pizzeria.ihm.pizza;
 
 import java.util.Comparator;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.model.Pizza;
@@ -12,6 +16,7 @@ import fr.pizzeria.model.Pizza;
  * @author ETY 10
  *
  */
+@Component
 public class OptionExpensivePizza extends OptionMenu {
 
 	private IDao<Pizza> daoPizza;
@@ -26,6 +31,8 @@ public class OptionExpensivePizza extends OptionMenu {
 		daoPizza.findAll().stream().max(Comparator.comparingDouble(Pizza::getPrix)).ifPresent(System.out::println);
 	}
 
+	@Autowired
+	@Qualifier("daoPizza")
 	public void setDaoPizza(IDao<Pizza> daoPizza) {
 		this.daoPizza = daoPizza;
 	}

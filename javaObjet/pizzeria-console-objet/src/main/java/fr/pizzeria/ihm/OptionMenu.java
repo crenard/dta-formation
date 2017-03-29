@@ -2,6 +2,8 @@ package fr.pizzeria.ihm;
 
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * Menu item
  * 
@@ -10,9 +12,8 @@ import java.util.Scanner;
  */
 public abstract class OptionMenu {
 
+	@Autowired
 	protected Scanner sc;
-
-	public abstract String getLibelle();
 
 	/**
 	 * Execute l'action du menu item
@@ -22,5 +23,7 @@ public abstract class OptionMenu {
 	public void setSc(Scanner sc) {
 		this.sc = sc;
 	}
+
+	public abstract String getLibelle();
 
 }

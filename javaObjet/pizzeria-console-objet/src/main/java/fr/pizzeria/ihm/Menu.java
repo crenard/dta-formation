@@ -1,9 +1,10 @@
 package fr.pizzeria.ihm;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.pizzeria.exception.SoldeException;
 import fr.pizzeria.exception.StockageException;
@@ -17,18 +18,8 @@ import fr.pizzeria.exception.StockageException;
 public abstract class Menu {
 	protected String titre;
 	protected Map<Integer, OptionMenu> actions;
+	@Autowired
 	protected Scanner sc;
-
-	/**
-	 * Construction du menu
-	 * 
-	 * @param titre
-	 * @param ihmTools
-	 */
-	public Menu(String titre) {
-		this.titre = titre;
-		actions = new HashMap<>();
-	}
 
 	/**
 	 * Affichage du menu

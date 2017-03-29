@@ -1,5 +1,9 @@
 package fr.pizzeria.ihm.pizza;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.exception.ConnectionException;
 import fr.pizzeria.ihm.OptionMenu;
@@ -11,6 +15,7 @@ import fr.pizzeria.model.Pizza;
  * @author ETY 10
  *
  */
+@Component
 public class OptionListePizzas extends OptionMenu {
 
 	private IDao<Pizza> daoPizza;
@@ -29,6 +34,8 @@ public class OptionListePizzas extends OptionMenu {
 		}
 	}
 
+	@Autowired
+	@Qualifier("daoPizza")
 	public void setDaoPizza(IDao<Pizza> daoPizza) {
 		this.daoPizza = daoPizza;
 	}

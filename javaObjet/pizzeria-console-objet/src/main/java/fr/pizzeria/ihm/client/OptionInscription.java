@@ -1,10 +1,14 @@
 package fr.pizzeria.ihm.client;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 import fr.pizzeria.model.Client;
 
+@Component
 public class OptionInscription extends OptionMenu {
 
 	private IhmTools ihmTools;
@@ -31,6 +35,7 @@ public class OptionInscription extends OptionMenu {
 
 	}
 
+	@Autowired
 	public void setIhmTools(IhmTools ihmTools) {
 		this.ihmTools = ihmTools;
 	}

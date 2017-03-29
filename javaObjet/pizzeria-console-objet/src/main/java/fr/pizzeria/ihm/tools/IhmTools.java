@@ -2,15 +2,11 @@ package fr.pizzeria.ihm.tools;
 
 import java.util.Scanner;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import fr.pizzeria.dao.DaoJpa;
-import fr.pizzeria.dao.IDao;
-import fr.pizzeria.dao.PizzaDaoFichiers;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Client;
-import fr.pizzeria.model.Commande;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -19,6 +15,7 @@ import fr.pizzeria.model.Pizza;
  * @author ETY 10
  *
  */
+@Component
 public class IhmTools {
 	private Scanner sc;
 
@@ -60,6 +57,7 @@ public class IhmTools {
 		return new Client(null, null, mail, password);
 	}
 
+	@Autowired
 	public void setSc(Scanner sc) {
 		this.sc = sc;
 	}
