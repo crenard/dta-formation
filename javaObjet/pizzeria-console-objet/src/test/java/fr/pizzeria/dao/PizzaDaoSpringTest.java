@@ -22,19 +22,19 @@ public class PizzaDaoSpringTest {
 
 	@Autowired
 	@Qualifier("daoPizza")
-	private IDao<Pizza> pizzaDao;
+	private IDao<Pizza> daoPizza;
 
 	@Test
 	public void testCrud() {
-		pizzaDao.save(new Pizza("GRE", "Gredue", 12, CategoriePizza.VIANDE));
-		pizzaDao.save(new Pizza("GRA", "Gradouble", 12, CategoriePizza.VEGETARIEN));
-		List<Pizza> listPizzas = pizzaDao.findAll();
+		daoPizza.save(new Pizza("GRE", "Gredue", 12, CategoriePizza.VIANDE));
+		daoPizza.save(new Pizza("GRA", "Gradouble", 12, CategoriePizza.VEGETARIEN));
+		List<Pizza> listPizzas = daoPizza.findAll();
 
 		assertTrue(listPizzas.stream().anyMatch(p -> "GRE".equals(p.getCode())));
 		assertTrue(listPizzas.stream().anyMatch(p -> "GRA".equals(p.getCode())));
 
-		pizzaDao.delete("GRE");
-		pizzaDao.delete("GRA");
+		daoPizza.delete("GRE");
+		daoPizza.delete("GRA");
 	}
 
 }
