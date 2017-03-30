@@ -7,14 +7,10 @@
 		<class>fr.pizzeria.model.Commande</class>
 		<class>fr.pizzeria.model.Livreur</class>
 		<properties>
-			<!--<property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/pizzeria"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/pizzeria"/>
 			<property name="javax.persistence.jdbc.user" value="user1"/>
 			<property name="javax.persistence.jdbc.password" value="pizzeria"/>
-			<property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>  -->
-			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test"/>
-			<property name="javax.persistence.jdbc.user" value="root"/>
-			<property name="javax.persistence.jdbc.password" value=""/>
-			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+			<property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
 			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 		</properties>
 	</persistence-unit>
