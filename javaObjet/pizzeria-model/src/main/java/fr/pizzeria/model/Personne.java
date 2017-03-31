@@ -4,10 +4,10 @@ import javax.persistence.*;
 
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Personne implements GenericData {
+public abstract class Personne {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected int id;
+	protected Integer id;
 
 	@Column(name = "nom", nullable = false)
 	protected String nom;
@@ -23,11 +23,11 @@ public abstract class Personne implements GenericData {
 		this.prenom = prenom;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

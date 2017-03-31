@@ -17,7 +17,7 @@ public class PizzaDaoJpaSpringData implements IDao<Pizza> {
 	}
 
 	public Pizza find(String code) {
-		return pizzaRepository.findByCode(code);
+		return pizzaRepository.findByCodeLike(code);
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class PizzaDaoJpaSpringData implements IDao<Pizza> {
 
 	@Override
 	public void delete(String code) {
-		pizzaRepository.deleteByCode(code);
+		pizzaRepository.deleteByCodeLike(code);
 	}
 
 }

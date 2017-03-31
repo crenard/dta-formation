@@ -1,17 +1,16 @@
 package fr.pizzeria.model;
 
 import java.time.LocalDateTime;
-import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "commande")
-public class Commande implements GenericData {
+public class Commande {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 
 	@Column(name = "numero", nullable = false, unique = true)
 	private int numero;
@@ -30,18 +29,21 @@ public class Commande implements GenericData {
 	@JoinColumn(name = "client_id")
 	private Client client;
 
-	@ManyToMany
-	@JoinTable(name = "commande_pizza", joinColumns = @JoinColumn(name = "commande_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "pizza_id", referencedColumnName = "id"))
-	private Set<Pizza> pizzas;
+	// @ManyToMany
+	// @JoinTable(name = "commande_pizza", joinColumns = @JoinColumn(name =
+	// "commande_id", referencedColumnName = "id"), inverseJoinColumns =
+	// @JoinColumn(name = "pizza_id", referencedColumnName = "id"))
+	// @Transient
+	// private Set<Pizza> pizzas;
 
 	public Commande() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -85,12 +87,12 @@ public class Commande implements GenericData {
 		this.client = client;
 	}
 
-	public Set<Pizza> getPizzas() {
-		return pizzas;
-	}
-
-	public void setPizzas(Set<Pizza> pizzas) {
-		this.pizzas = pizzas;
-	}
+	// public Set<Pizza> getPizzas() {
+	// return pizzas;
+	// }
+	//
+	// public void setPizzas(Set<Pizza> pizzas) {
+	// this.pizzas = pizzas;
+	// }
 
 }

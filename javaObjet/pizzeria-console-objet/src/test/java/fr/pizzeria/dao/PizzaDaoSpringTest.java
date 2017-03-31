@@ -3,6 +3,7 @@ package fr.pizzeria.dao;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,17 +25,23 @@ public class PizzaDaoSpringTest {
 	@Qualifier("daoPizza")
 	private IDao<Pizza> daoPizza;
 
+	@Autowired
+	private IPerformanceRepository repo;
+
 	@Test
 	public void testCrud() {
-		daoPizza.save(new Pizza("GRE", "Gredue", 12, CategoriePizza.VIANDE));
+		daoPizza.save(new Pizza("", "Gredue", 12, CategoriePizza.VIANDE));
 		daoPizza.save(new Pizza("GRA", "Gradouble", 12, CategoriePizza.VEGETARIEN));
-		List<Pizza> listPizzas = daoPizza.findAll();
 
+		List<Pizza> listPizzas = daoPizza.findAll();
+		System.out.println(listPizzas);
 		assertTrue(listPizzas.stream().anyMatch(p -> "GRE".equals(p.getCode())));
 		assertTrue(listPizzas.stream().anyMatch(p -> "GRA".equals(p.getCode())));
 
 		daoPizza.delete("GRE");
 		daoPizza.delete("GRA");
+
+		System.out.println(repo.findAll().stream().map(p -> p.getExecTime()).collect(Collectors.toList()));
 	}
 
 }

@@ -6,14 +6,14 @@ import fr.pizzeria.model.Pizza;
 
 public interface IPizzaRepository extends JpaRepository<Pizza, String> {
 
-	Pizza findByCode(String code);
+	Pizza findByCodeLike(String code);
 
-	default void deleteByCode(String code) {
-		delete(findByCode(code));
+	default void deleteByCodeLike(String code) {
+		delete(findByCodeLike(code));
 	}
 
 	default void updateByCode(String code, Pizza pizza) {
-		deleteByCode(code);
+		deleteByCodeLike(code);
 		save(pizza);
 	}
 }

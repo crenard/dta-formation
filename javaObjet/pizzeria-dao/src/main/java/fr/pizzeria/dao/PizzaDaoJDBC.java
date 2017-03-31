@@ -4,8 +4,10 @@ import java.sql.*;
 import java.util.*;
 import org.apache.commons.collections4.ListUtils;
 
+import fr.pizzeria.dao.*;
 import fr.pizzeria.exception.*;
-import fr.pizzeria.model.*;
+import fr.pizzeria.model.CategoriePizza;
+import fr.pizzeria.model.Pizza;
 
 /**
  * Implementation BDD du stockage des pizzas

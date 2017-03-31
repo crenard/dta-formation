@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "livreur")
-public class Livreur extends Personne implements GenericData {
+public class Livreur extends Personne {
 
 	public Livreur() {
 	}

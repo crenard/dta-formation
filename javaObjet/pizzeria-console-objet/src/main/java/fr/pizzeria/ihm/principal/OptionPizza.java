@@ -5,7 +5,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import fr.pizzeria.ihm.Menu;
-import fr.pizzeria.ihm.MenuClient;
 import fr.pizzeria.ihm.MenuPizza;
 import fr.pizzeria.ihm.OptionMenu;
 

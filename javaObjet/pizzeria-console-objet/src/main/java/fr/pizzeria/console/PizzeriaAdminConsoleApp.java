@@ -3,7 +3,6 @@ package fr.pizzeria.console;
 import java.util.logging.Level;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import fr.pizzeria.ihm.Menu;
 import fr.pizzeria.ihm.MenuPrincipal;

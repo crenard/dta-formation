@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
 
+import fr.pizzeria.dao.*;
 import fr.pizzeria.exception.*;
-import fr.pizzeria.model.*;
+import fr.pizzeria.model.CategoriePizza;
+import fr.pizzeria.model.Pizza;
 
 /**
  * Implementation fichier du stockage des pizzas

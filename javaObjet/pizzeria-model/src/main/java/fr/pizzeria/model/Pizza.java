@@ -18,10 +18,10 @@ import fr.pizzeria.exception.StockageException;
 @NamedQueries({ @NamedQuery(name = "Pizza.findAll", query = "SELECT p FROM Pizza p"),
 		@NamedQuery(name = "Pizza.find", query = "SELECT p FROM Pizza p WHERE code LIKE :code") })
 @Table(name = "pizza")
-public class Pizza implements Comparable<Pizza>, GenericData {
+public class Pizza implements Comparable<Pizza> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	@ToString(uppercase = true)
 	@Column(name = "code", length = 3, nullable = false, unique = true)
 	private String code;
@@ -130,11 +130,11 @@ public class Pizza implements Comparable<Pizza>, GenericData {
 		return categorie;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
