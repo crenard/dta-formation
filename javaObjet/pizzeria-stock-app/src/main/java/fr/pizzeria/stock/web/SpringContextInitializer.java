@@ -1,5 +1,6 @@
 package fr.pizzeria.stock.web;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletContext;
@@ -17,8 +18,7 @@ public class SpringContextInitializer implements WebApplicationInitializer {
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-		// LOG.log(Level.INFO, "demarrage du serveur");
-		System.out.println("Le server demarre");
+		LOG.log(Level.INFO, "demarrage du serveur");
 		AnnotationConfigWebApplicationContext webContext = new AnnotationConfigWebApplicationContext();
 		webContext.register(PizzeriaSpringConfig.class);
 

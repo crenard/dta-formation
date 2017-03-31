@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1 class="jumbotron">Liste des pizzas</h1>
+		<h1 class="jumbotron">Liste des ingredients</h1>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -23,11 +23,19 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="ingredient" items="${ingredients}">
+				<c:forEach var="ingredient" items="${liste}">
 					<tr>
 						<td>${ingredient.nom}</td>
 						<td>${ingredient.prix}</td>
 						<td>${ingredient.quantite}</td>
+						<td><a href="ingredients/edit/${ingredient.id}"><button
+									type="button" class="btn btn-info btn-block">
+									Editer <span class="glyphicon glyphicon-pencil"></span>
+								</button></a></td>
+						<td><a href="ingredients/suppr/${ingredient.id}"><button
+									type="button" class="btn btn-danger btn-block">
+									Supprimer <span class="glyphicon glyphicon-remove"></span>
+								</button></a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
