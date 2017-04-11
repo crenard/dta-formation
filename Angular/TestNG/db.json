@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Thomas",
+      "age": 10
+    },
+    {
+      "id": 2,
+      "name": "Nicola",
+      "age": 15,
+      "bio": "rvgpgpgrrtprtg"
+    },
+    {
+      "name": "John",
+      "age": 42,
+      "bio": "ierjgoijgtrjgborb",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "name": "Bruno",
+      "age": 19,
+      "bio": "er,fmkvdkmrùvfe"
+    },
+    {
+      "name": "Jackie",
+      "age": 56,
+      "bio": "lkdfhvogeojfvj",
+      "id": 6
+    },
+    {
+      "bio": "fhbrhbrythnnnynt",
+      "name": "Francis",
+      "age": 53,
+      "id": 7
+    }
+  ]
+}

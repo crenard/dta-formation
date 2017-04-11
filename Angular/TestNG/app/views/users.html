@@ -1,0 +1,39 @@
+<label>Rechercher</label>
+<br>
+<input type="text" ng-model="query" class="form-control">
+<br><br>
+
+<table class="table table-striped">
+    <h1>Liste</h1>
+    <thead>
+        <tr>
+            <th>
+                <button class="btn btn-default" ng-click="uctrl.sortBy('name'); reverse=!reverse">Nom</button>
+            </th>
+            <th>
+                <button class="btn btn-default" ng-click="uctrl.sortBy('age'); reverse=!reverse">Age</button>
+            </th>
+            <th>
+                <a class="btn btn-success" ng-href="/user">Ajouter utilisateur</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="user in uctrl.users | filter:query | orderBy:uctrl.sorter:reverse | limitTo:uctrl.quantity track by $index"
+            >
+            <td>{{ user.name }}</td>
+            <td>{{ user.age }}</td>
+            <td><a ng-href="/user/{{ user.id }}"><span class="glyphicon glyphicon-edit"></span></a></td>
+            <td><button type="button" class="close" ng-click="uctrl.deleteUser(user)">&times</button></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">
+                <button class="btn btn-default" ng-click="uctrl.limitQty(1)">Afficher 1 user</button>
+                <button class="btn btn-default" ng-click="uctrl.limitQty(2)">Afficher 2 users</button>
+                <button class="btn btn-default" ng-click="uctrl.limitQty()">Afficher tous les users</button>
+            </td>
+        </tr>
+    </tfoot>
+</table>

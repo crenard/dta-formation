@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "recipe": "Regina",
+    "toppings": [
+      "Jambon",
+      "Fromage",
+      "Champignon"
+    ]
+  },
+  {
+    "id": 2,
+    "recipe": "3 fromages",
+    "toppings": [
+      "Mozzarella",
+      "Chèvre",
+      "Bleu"
+    ]
+  },
+  {
+    "id": 3,
+    "recipe": "Hawaii",
+    "toppings": [
+      "Mozzarella",
+      "Ananas",
+      "Jambon"
+    ]
+  },
+  {
+    "id": 4,
+    "recipe": "Bolognaise",
+    "toppings": [
+      "Boeuf",
+      "Tomate",
+      "Fromage"
+    ]
+  }
+]

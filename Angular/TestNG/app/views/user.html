@@ -1,0 +1,16 @@
+<form name="addForm" novalidate ng-submit="uctrl.save(addForm)">
+    <div class="form-group" ng-class="{ 'has-error': addForm.userName.$invalid && addForm.userName.$touched }">
+        <label for="userName">Nom</label>
+        <input type="text" required name="userName" class="form-control" id="userName" ng-model="uctrl.user.name">
+        <p class="text-danger" ng-if="addForm.userName.$invalid && addForm.userName.$touched">Veuillez remplir ce champ</p>
+    </div>
+    <label for="userAge">Age</label>
+    <input type="number" required name="userAge" class="form-control" id="userAge" ng-model="uctrl.user.age">
+
+    <div class="form-group" ng-class="{ 'has-error': addForm.userBio.$invalid }">
+        <label for="userBio">Bio</label>
+        <textarea class="form-control" name="userBio" id="userBio" rows="4" cols="50" ng-minlength="10" required ng-model="uctrl.user.bio"></textarea>
+        <p class="text-danger" ng-if="addForm.userBio.$invalid">Veuillez entrer au moins 10 caractères</p>
+    </div>
+    <button type="submit" ng-disabled="addForm.$invalid">Enregistrer</button>
+</form>
