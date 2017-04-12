@@ -3,7 +3,7 @@ export class GameService {
         this.RecipesService = RecipesService;
         this.$timeout = $timeout;
         this.pizzas = [];
-        this.speed = 1000;
+        this.speed = 3000;
         this.$q = $q;
         this.score = 0;
         this.id =1;

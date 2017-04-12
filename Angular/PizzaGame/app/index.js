@@ -3,6 +3,7 @@ import ngRoute from 'angular-route';
 import { RecipesModule } from './recipes'
 import { GameModule } from './game'
 import md5 from 'md5';
+import { PizzasDirective } from "./pizzas.directive"
 
 angular.module('app', [
     ngRoute,
@@ -29,7 +30,7 @@ angular.module('app', [
                 controllerAs: 'rctrl'
             })
             .otherwise({
-                redirectTo: "play/"
+                redirectTo: 'play/'
             });
     })
 
@@ -37,24 +38,6 @@ angular.module('app', [
         console.log('Start controller');
     })
 
-    .controller('DtaGravatarController', function () {
-        this.email = md5("renard.cyrille@gmail.com")
+    .directive('dtaPizzas', PizzasDirective)
 
-        this.action = (email) => {
-            console.log('Vous avez cliquez sur le gravatar de ' + email);
-        }
-    })
-
-    .directive('dtaGravatar', function () {
-        return {
-            restrict: 'E',
-            template: `<img ng-src="https://www.gravatar.com/avatar/{{ctrl.email}}">{{ctrl.email}}`,
-            bindToController: {
-                myEvent: "&"
-            },
-            scope: {},
-            controller: 'DtaGravatarController',
-            controllerAs: 'ctrl'
-        }
-    })
     ;

@@ -3,6 +3,8 @@ export class GameController{
         this.GameService = GameService;
         this.RecipesService = RecipesService;
         this.pizzas = GameService.pizzas;
+        this.RecipesService.getToppings()
+            .then(toppings => this.toppings = toppings);
         GameService.start().then(score => {
             console.log('PERDU ! Votre score est : ' + score);
             GameService.score = 0;

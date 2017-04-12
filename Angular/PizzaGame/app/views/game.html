@@ -1,11 +1,11 @@
 <div clas="row">
-    <div class="col-xs-4" ng-controller="RecipesController as rctrl">
+    <div class="col-xs-4">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h2>Toppings</h2>
             </div>
             <ul id="toppings" class="list-group">
-                <li class="list-group-item" ng-repeat="topping in rctrl.toppings" ng-click="gctrl.addTopping(topping)">{{ topping }}
+                <li class="list-group-item" ng-repeat="topping in gctrl.toppings" ng-click="gctrl.addTopping(topping)">{{ topping }}
                 </li>
             </ul>
         </div>
@@ -32,13 +32,7 @@
             <div class="panel-heading">
                 <h2>Commandes</h2>
             </div>
-            <ul id="commands" class="list-group">
-                <li class="list-group-item" ng-repeat="pizza in gctrl.pizzas track by $index" ng-click="gctrl.setPizza(pizza)">{{ pizza.recipe }}
-                </li>
-            </ul>
+            <dta-pizzas pizzas="gctrl.pizzas" on-select="gctrl.setPizza($event)"></dta-pizza>
         </div>
     </div>
-</div>
-<div ng-controller="DtaGravatarController as ctrl">  
-    <dta-gravatar my-event="ctrl.action($event)"></dta-gravatar>
 </div>
