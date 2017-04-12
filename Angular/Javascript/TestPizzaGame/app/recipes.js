@@ -1,6 +1,5 @@
 import { uniq } from 'lodash';
 
-let cacheRecipes;
 export class RecipeService {
     getToppings() {
         return this.getRecipes()

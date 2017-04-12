@@ -1,19 +1,97 @@
 {
-  "posts": [
+  "recipes": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "Regina",
+      "toppings": [
+        "Jambon",
+        "Fromage",
+        "Champignon"
+      ]
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "name": "3 fromages",
+      "toppings": [
+        "Mozzarella",
+        "Chèvre",
+        "Bleu"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Hawaii",
+      "toppings": [
+        "Mozzarella",
+        "Ananas",
+        "Jambon"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Bolognaise",
+      "toppings": [
+        "Boeuf",
+        "Tomate",
+        "Fromage"
+      ]
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "pizzas": [
+    {
+      "recipe": "Hawaii",
+      "toppings": [],
+      "id": 1
+    },
+    {
+      "recipe": "Bolognaise",
+      "toppings": [],
+      "id": 2
+    },
+    {
+      "recipe": "3 fromages",
+      "toppings": [],
+      "id": 3
+    },
+    {
+      "recipe": "Regina",
+      "toppings": [],
+      "id": 4
+    },
+    {
+      "recipe": "Bolognaise",
+      "toppings": [],
+      "id": 5
+    },
+    {
+      "recipe": "3 fromages",
+      "toppings": [],
+      "id": 6
+    },
+    {
+      "recipe": "3 fromages",
+      "toppings": [],
+      "id": 7
+    },
+    {
+      "recipe": "Regina",
+      "toppings": [],
+      "id": 8
+    },
+    {
+      "recipe": "Regina",
+      "toppings": [],
+      "id": 9
+    },
+    {
+      "recipe": "3 fromages",
+      "toppings": [],
+      "id": 10
+    },
+    {
+      "recipe": "Regina",
+      "toppings": [],
+      "id": 11
+    }
+  ]
 }
