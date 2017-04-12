@@ -3,7 +3,8 @@ import ngRoute from 'angular-route';
 import { RecipesModule } from './recipes'
 import { GameModule } from './game'
 import md5 from 'md5';
-import { PizzasDirective } from "./pizzas.directive"
+import { CommandsDirective } from "./commands.directive"
+import { ToppingsDirective } from "./toppings.directive"
 
 angular.module('app', [
     ngRoute,
@@ -38,6 +39,8 @@ angular.module('app', [
         console.log('Start controller');
     })
 
-    .directive('dtaPizzas', PizzasDirective)
+    .directive('dtaCommands', CommandsDirective)
+
+    .directive('dtaToppings', ToppingsDirective)
 
     ;

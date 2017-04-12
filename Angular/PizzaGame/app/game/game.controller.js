@@ -1,5 +1,5 @@
-export class GameController{
-    constructor(GameService, RecipesService){
+export class GameController {
+    constructor(GameService, RecipesService) {
         this.GameService = GameService;
         this.RecipesService = RecipesService;
         this.pizzas = GameService.pizzas;
@@ -9,21 +9,20 @@ export class GameController{
             console.log('PERDU ! Votre score est : ' + score);
             GameService.score = 0;
         });
-        this.pizza = { recipe : 'Choisissez votre recette', toppings: [] };
+        this.pizza = { recipe: 'Choisissez votre recette', toppings: [] };
     }
-    
-    setPizza(pizza){
+
+    setPizza(pizza) {
         this.pizza = pizza;
     }
 
-    addTopping(topping){
-        if (this.pizza){
-            this.pizza.toppings.push(topping);
-            this.RecipesService.validRecipe(this.pizza)
-                .then(status => {
-                    console.log(status);
-                    this.GameService.validPizza(this.pizza, status)
-                });
-        }
+    addTopping(topping) {
+        if (!this.pizza) return;
+        this.pizza.toppings.push(topping);
+        this.RecipesService.validRecipe(this.pizza)
+            .then(status => {
+                console.log(status);
+                this.GameService.validPizza(this.pizza, status)
+            });
     }
 }
