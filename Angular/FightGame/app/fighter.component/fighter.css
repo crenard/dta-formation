@@ -1,0 +1,21 @@
+fighter {
+    display: inline-block;
+    padding: .5em;
+    margin: 1em;
+    border: 1px solid #666;
+    border-radius: .5em;
+}
+
+fighter img {
+    display: inline-block;
+}
+
+fighter p {
+    text-align: center;
+    margin: 0;
+}
+
+fighter p i {
+    vertical-align: middle;
+    color: red;
+}

@@ -1,0 +1,16 @@
+<!--<div class="row">
+    <div class="col-xs-6">
+        <h1>{{$ctrl.team1.name}}</h1>
+        <fighter ng-repeat="fighter in $ctrl.team1.fighters track by $index" on-fight="$ctrl.setDamages($event)" email="fighter.email" hp="fighter.hp" strength="fighter.strength" damages="$ctrl.damages"
+            mode="$ctrl.team1.mode" after-injured="$ctrl.attackEnd()"></fighter>
+    </div>
+    <div class="col-xs-6">
+        <h1>{{$ctrl.team2.name}}</h1>
+        <fighter ng-repeat="fighter in $ctrl.team2.fighters track by $index" on-fight="$ctrl.setDamages($event)" email="fighter.email" hp="fighter.hp" strength="fighter.strength" damages="$ctrl.damages"
+            mode="$ctrl.team2.mode" after-injured="$ctrl.attackEnd()"></fighter>
+    </div>
+</div>-->
+
+<div class="row">
+    <team ng-repeat="team in $ctrl.teams track by $index" name="team.name" mode="team.mode" fighters="team.fighters" damages="$ctrl.damages" on-fight="$ctrl.setDamages($event)" on-after-fight="$ctrl.nextTurn()"></team>
+</div>

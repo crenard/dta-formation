@@ -1,0 +1,9 @@
+<img ng-if='$ctrl.hp > 0' ng-src='https://www.gravatar.com/avatar/{{ $ctrl.md5 }}' alt='{{ $ctrl.email }}' width='75px'>
+<img ng-if='$ctrl.hp === 0' src='./skull.png' alt='{{ $ctrl.email }}' width='75px'>
+
+<p>
+    <i class="material-icons">favorite</i> {{ $ctrl.hp }}, <i class="material-icons">fitness_center</i> {{ $ctrl.strength }}
+</p>
+<p><button type='button' ng-if='$ctrl.mode === "attack"' class='btn btn-danger btn-xs' ng-click='$ctrl.fight()' ng-disabled='$ctrl.hp === 0'>FIGHT</button>
+
+<button type='button' ng-if='$ctrl.mode === "defense"' class='btn btn-danger btn-xs' ng-click='$ctrl.suffer()' ng-disabled='$ctrl.hp === 0'>TARGET</button></p>
