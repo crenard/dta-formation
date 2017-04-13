@@ -3,7 +3,7 @@ import ngRoute from 'angular-route';
 import { RecipesModule } from './recipes'
 import { GameModule } from './game'
 import md5 from 'md5';
-import { CommandsDirective } from "./commands.directive"
+import { Commands } from "./commands.directive"
 import { ToppingsDirective } from "./toppings.directive"
 
 angular.module('app', [
@@ -39,7 +39,7 @@ angular.module('app', [
         console.log('Start controller');
     })
 
-    .directive('dtaCommands', CommandsDirective)
+    .component('dtaCommands', Commands)
 
     .directive('dtaToppings', ToppingsDirective)
 

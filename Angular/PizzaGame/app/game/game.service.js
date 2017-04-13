@@ -47,5 +47,6 @@ export class GameService {
             this.speedUp();
             this.removePizza(pizza);
         }
+        else if (status === 'WRONG') pizza.status = 'WRONG';
     }
 }

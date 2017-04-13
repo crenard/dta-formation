@@ -20,9 +20,6 @@ export class GameController {
         if (!this.pizza) return;
         this.pizza.toppings.push(topping);
         this.RecipesService.validRecipe(this.pizza)
-            .then(status => {
-                console.log(status);
-                this.GameService.validPizza(this.pizza, status)
-            });
+            .then(status => this.GameService.validPizza(this.pizza, status));
     }
 }

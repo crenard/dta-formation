@@ -1,5 +1,5 @@
 class ToppingsDirectiveController {
-    constructor() {}
+    constructor() { }
     click(topping) {
         this.onSelect({
             $event: topping
@@ -7,14 +7,12 @@ class ToppingsDirectiveController {
     }
 }
 
-export function ToppingsDirective () {
+export function ToppingsDirective() {
     return {
         restrict: 'E',
         template: `
-            <ul id="toppings" class="list-group">
-                <li class="list-group-item" ng-repeat="topping in ctrl.toppings track by $index" ng-click="ctrl.click(topping) ">{{ topping }}
-                </li>
-            </ul>`,
+                <button type="button" class="list-group-item" ng-repeat="topping in ctrl.toppings track by $index" ng-click="ctrl.click(topping) ">{{ topping }}
+                </button>`,
         controller: ToppingsDirectiveController,
         controllerAs: 'ctrl',
         bindToController: {

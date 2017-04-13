@@ -1,4 +1,4 @@
-class CommandsDirectiveController {
+class CommandsController {
     constructor() {}
     click(pizza) {
         this.onSelect({
@@ -7,20 +7,13 @@ class CommandsDirectiveController {
     }
 }
 
-export function CommandsDirective () {
-    return {
-        restrict: 'E',
-        template: `
-            <ul id="commands" class="list-group">
-                <li class="list-group-item" ng-repeat="pizza in ctrl.pizzas track by $index" ng-click="ctrl.click(pizza) ">{{ pizza.recipe }}
-                </li>
-            </ul>`,
-        controller: CommandsDirectiveController,
-        controllerAs: 'ctrl',
-        bindToController: {
+export const Commands = {
+        bindings: {
             pizzas: '=',
             onSelect: '&'
         },
-        scope: {}
-    }
+        controller: CommandsController,
+        template: `
+                <button type="button" class="list-group-item" ng-repeat="pizza in $ctrl.pizzas track by $index" ng-click="$ctrl.click(pizza)" ng-class="{'list-group-item-danger': pizza.status === 'WRONG'}" ng-disabled="pizza.status === 'WRONG'">{{ pizza.recipe }}
+                </button>`
 }
