@@ -15,6 +15,7 @@ class controller {
 
     suffer() {
         this.hp = Math.max(this.hp - this.damages, 0);
+        if (this.hp === 0) this.onDead();
         this.afterInjured();
     }
 }
@@ -27,7 +28,8 @@ export const FighterComponent = {
         onFight: '&',
         damages: '<',
         mode: '<',
-        afterInjured: '&'
+        afterInjured: '&',
+        onDead: '&'
     },
     controller,
     template
