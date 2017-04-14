@@ -97,7 +97,7 @@ export class FightService {
 
     getRandomFighter() {
         let opponents = this.getFighters(1);
-        return opponents[Math.floor(Math.random() * opponents.length)];
+        return opponents !== [] ? opponents[Math.floor(Math.random() * opponents.length)] : {};
     }
 
     attackFighter(boss, isRandom) {
