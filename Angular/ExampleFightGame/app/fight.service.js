@@ -100,6 +100,13 @@ export class FightService {
         return opponents !== [] ? opponents[Math.floor(Math.random() * opponents.length)] : {};
     }
 
+    getWeakerFighter() {
+        let opponents = this.getFighters(1);
+        return opponents !== [] ? opponents.reduce((acc, fighter) => {
+                    return (fighter.life < acc.life) ? fighter : acc;
+                }, { life: 100 }) : {}
+    }
+
     attackFighter(boss, isRandom) {
         if (boss.mana >= 5) {
             console.log('BOOM !!');
@@ -111,9 +118,7 @@ export class FightService {
                 this.resolveAttack([this.getRandomFighter().email]);
             }
             else {
-                this.resolveAttack([this.getFighters(1).reduce((acc, fighter) => {
-                    return (fighter.life < acc.life) ? fighter : acc;
-                }, { life: 100 }).email]);
+                this.resolveAttack([this.getWeakerFighter().email]);
             }
         }
     }
